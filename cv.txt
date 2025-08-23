@@ -1,0 +1,82 @@
+PETER WILLIAMS-KEY	Address: Pont-y-clun, UK | Phone: (+44)7711233307
+Target Role: Help Desk Support Specialist 	Email: prkey94@gmail.com | GitHub: github.com/peterkey 
+
+Profile
+
+Customer-focused IT Service Desk professional with hands-on experience delivering first-line technical support in a high-volume environment. Skilled at diagnosing and resolving Microsoft 365, Windows OS, and Active Directory issues, logging tickets, and escalating when required. Known as the go-to troubleshooting contact for colleagues, with a proven ability to resolve login, device, and system problems within minutes. Strong foundation in ticketing systems, remote support tools, and device administration. Seeking to bring a calm, professional, and solutions-driven approach to Admiral Group’s Service Desk team, ensuring excellent staff support and operational continuity.
+
+Skills
+
+Technical Support & Help Desk: First-Line IT Support | Ticket Logging & Management | Troubleshooting | Microsoft 365 | Windows OS | Active Directory (basic) | Remote Support Tools
+
+Systems & Tools: Microsoft Teams | Google Workspace | Git | REST APIs | Basic Networking | Terminal/CLI
+
+Hardware & Devices: Handheld Scanners | Laptops | Desktop PCs | Mobile Device Support | Hardware Resets & Configuration
+
+Soft Skills: Customer Service | Problem Solving | Documentation | Team Collaboration | Adaptable | Calm Under Pressure
+
+Professional Development
+
+Microsoft 365 Fundamentals (MS‑900) – In Progress (Self Study via Microsoft Learn)
+
+
+Basic Active Directory Administration – In Progress (Self-study via Microsoft Learn & YouTube Labs)
+
+
+ServiceNow & Jira Service Desk Ticketing Basics – In Progress (Self-study via YouTube tutorials)
+
+
+Google IT Support Skills – In Progress (Google Digital Garage)
+
+Experience
+ 
+Tesco Stores PLC. | Customer Delivery Driver	06-2016 – Present
+Provided first-line IT support for 20+ colleagues, diagnosing and resolving Microsoft 365 login, Windows OS access, and scheduling issues within minutes, ensuring business continuity without escalation.
+
+
+Logged and managed IT issues informally, troubleshooting device and application errors and escalating unresolved problems to managers for IT follow-up.
+
+
+Delivered 1:1 training to colleagues on a new online shift and holiday request system, enabling independent use of internal tools and reducing dependency on management for basic IT queries.
+
+
+Administered and reset handheld delivery devices, resolving hardware/software malfunctions to minimise downtime.
+
+
+Assisted 120+ customers weekly, providing real-time technical support for mobile devices, e‑receipt systems, and handheld scanners.
+Technical Projects
+
+Invoice Automation
+(self-led automation project)
+Designed and implemented an automated invoicing workflow in Google Sheets using Apps Script, generating structured PDFs from spreadsheet data. Reduced manual errors and admin time by automating repetitive tasks — demonstrating process improvement and scripting expertise.
+Wedding Website
+(client-facing project)
+Built and maintained a client-facing web application with RSVP management, a countdown timer, and an image gallery using HTML, CSS, JavaScript, and React. Translated client requirements into functional features and provided ongoing technical support to ensure site stability and usability.
+Online Portfolio
+(personal project)
+Created and deployed a personal online portfolio to showcase technical projects and code samples. Implemented troubleshooting measures for front-end display issues, managed version control via Git, and documented all configurations for maintainability.
+
+
+Education
+
+Udemy | The Web Developers Bootcamp	04-2022 – 04-2024
+
+Hands-on course covering HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, and version control. Developed practical skills in technical troubleshooting, scripting, and system logic.
+
+University of South Wales | B.Sc. Sound Technology	Cardiff, UK | 09-2012 — 07-2015
+
+Developed strong collaboration, technical documentation, and project coordination skills. Led technical projects using industry-standard hardware/software.
+CompTIA A+ Certification (In Progress)
+Focused on hardware, software, and troubleshooting fundamentals for IT support.
+Additional Information
+
+Exploring CompTIA A+ Certification (In Progress)
+
+
+Full UK Driving Licence | Right to Work in the UK
+
+
+Available for hybrid or in-person roles across South Wales
+
+
+Passionate about problem-solving, continuous learning, and helping users overcome technical challenges

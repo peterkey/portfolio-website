@@ -1,0 +1,25 @@
+interface TabButtonProps {
+  selectTab: () => void;
+  active: boolean;
+  children: React.ReactNode;
+}
+
+const TabButton = ({ selectTab, active, children }: TabButtonProps) => {
+  return (
+    <button
+      className={`px-1 py-1 w-full sm:w-auto rounded-md font-medium transition-colors ${
+        active
+          ? "text-white border-b-2 border-[#5fdafa]"
+          : "text-[#ADB7BE] hover:text-white"
+      }`}
+      onClick={selectTab}
+      role="tab"
+      aria-selected={active}
+      aria-label={`${children} tab`}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default TabButton; 
