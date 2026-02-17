@@ -24,26 +24,26 @@ theme: {
     colors: {
       trueAutumn: {
         // Light mode
-        light: '#FAF7F2',              // background
-        textLight: '#2F332A',          // primary text
-        textSecondaryLight: '#6B6B61', // secondary text
-        accentLight: '#8A9A5B',        // sage accent
-        buttonLight: '#8A9A5B',        // button bg
-        buttonLightHover: '#7B8C52',   // button hover
-        linkLight: '#6F8250',          // links
+        light: '#F0F5FF',              // background
+        textLight: '#0B1120',          // primary text
+        textSecondaryLight: '#3B5278', // secondary text
+        accentLight: '#0284C7',        // cyan accent
+        buttonLight: '#0284C7',        // button bg
+        buttonLightHover: '#0369A1',   // button hover
+        linkLight: '#7C3AED',          // violet links
         cardLight: '#FFFFFF',          // surfaces/cards
-        borderLight: '#E9E4DD',        // borders
+        borderLight: '#BFD0EB',        // borders
 
         // Dark mode
-        dark: '#131414',               // background
-        textDark: '#E7E4DF',           // primary text
-        textSecondaryDark: '#B8B3AC',  // secondary text
-        accentDark: '#B3A369',         // brass accent
-        buttonDark: '#B3A369',         // button bg
-        buttonDarkHover: '#C2AE79',    // button hover
-        linkDark: '#D6D3CD',           // links
-        cardDark: '#1C1E1D',           // surfaces/cards
-        borderDark: '#2A2C2A',         // borders
+        dark: '#06090F',               // background
+        textDark: '#CDD9FF',           // primary text
+        textSecondaryDark: '#6E88B5',  // secondary text
+        accentDark: '#22D3EE',         // cyan accent
+        buttonDark: '#22D3EE',         // button bg
+        buttonDarkHover: '#38BDF8',    // button hover
+        linkDark: '#A78BFA',           // violet links
+        cardDark: '#0B1120',           // surfaces/cards
+        borderDark: '#1A2744',         // borders
       },
         // Legacy colors (for backward compatibility during transition)
         primary: {
@@ -67,6 +67,9 @@ theme: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
+        'spin-slow': 'spin 60s linear infinite',
+        'spin-reverse-slow': 'spinReverse 45s linear infinite',
+        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -76,6 +79,14 @@ theme: {
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        spinReverse: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
         },
       },
       screens: {
@@ -87,6 +98,7 @@ theme: {
         heading: ['Lora', 'serif'],
         display: ['Lora', 'serif'],
         body: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       fontWeight: {
         'light': '300',

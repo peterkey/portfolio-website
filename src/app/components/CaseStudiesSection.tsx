@@ -93,8 +93,9 @@ const CaseStudiesSection = () => {
   ];
 
   return (
-    <section id="case-studies" className="py-16 sm:py-24 px-4 bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark">
-      <div className="max-w-7xl mx-auto">
+    <section id="case-studies" className="py-20 sm:py-28 px-4 bg-trueAutumn-cardDark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,8 +103,9 @@ const CaseStudiesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-4 font-heading">Technical Support Case Studies</h2>
-          <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-lg max-w-content mx-auto font-body">
+          <span className="eyebrow mb-3">Problem → Solution</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">Technical Support Case Studies</h2>
+          <p className="text-trueAutumn-textSecondaryDark text-lg max-w-content mx-auto font-body">
             Real-world examples of technical issues I&apos;ve resolved in my current role, demonstrating systematic problem-solving and efficient resolution.
           </p>
         </motion.div>
@@ -116,15 +118,15 @@ const CaseStudiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-trueAutumn-light dark:bg-trueAutumn-dark rounded-lg2 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark overflow-hidden"
+              className="glow-card glass border rounded-2xl overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-trueAutumn-accentLight/10 dark:bg-trueAutumn-accentDark/10 p-8 border-b border-trueAutumn-borderLight dark:border-trueAutumn-borderDark">
+              <div className="bg-[#22D3EE]/5 p-8 border-b border-[#1A2744]">
                 <div className="flex items-center gap-4 mb-3">
                   {study.icon}
                   <div>
-                    <h3 className="text-xl font-semibold text-trueAutumn-textLight dark:text-trueAutumn-textDark font-heading">{study.title}</h3>
-                    <span className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-sm bg-trueAutumn-accentLight/20 dark:bg-trueAutumn-accentDark/20 px-2 py-1 rounded-full font-body">
+                    <h3 className="text-xl font-semibold text-trueAutumn-textDark font-heading">{study.title}</h3>
+                    <span className="text-[#22D3EE] text-xs font-mono bg-[#22D3EE]/10 px-3 py-1 rounded-full font-body tracking-wide">
                       {study.category}
                     </span>
                   </div>
@@ -132,11 +134,11 @@ const CaseStudiesSection = () => {
                 
                 {/* Metrics */}
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-1 text-[#ADB7BE]">
+                  <div className="flex items-center gap-1 text-[#6E88B5]">
                     <ClockIcon className="h-4 w-4" />
                     <span>Resolution: {study.metrics.resolutionTime}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[#ADB7BE]">
+                  <div className="flex items-center gap-1 text-[#6E88B5]">
                     <UserGroupIcon className="h-4 w-4" />
                     <span>Users Affected: {study.metrics.usersAffected}</span>
                   </div>
@@ -159,7 +161,7 @@ const CaseStudiesSection = () => {
                         <ExclamationTriangleIcon className="h-5 w-5 text-red-500" />
                         Problem
                       </h4>
-                      <p className="text-[#ADB7BE] text-sm">{study.problem}</p>
+                      <p className="text-[#6E88B5] text-sm">{study.problem}</p>
                     </div>
 
                     <div>
@@ -169,7 +171,7 @@ const CaseStudiesSection = () => {
                       </h4>
                       <ol className="list-decimal list-inside space-y-1">
                         {study.process.map((step, stepIndex) => (
-                          <li key={stepIndex} className="text-[#ADB7BE] text-sm">
+                          <li key={stepIndex} className="text-[#6E88B5] text-sm">
                             {step}
                           </li>
                         ))}
@@ -184,7 +186,7 @@ const CaseStudiesSection = () => {
                         <WrenchScrewdriverIcon className="h-5 w-5 text-green-500" />
                         Solution
                       </h4>
-                      <p className="text-[#ADB7BE] text-sm">{study.solution}</p>
+                      <p className="text-[#6E88B5] text-sm">{study.solution}</p>
                     </div>
 
                     <div>
@@ -192,7 +194,7 @@ const CaseStudiesSection = () => {
                         <CheckCircleIcon className="h-5 w-5 text-green-500" />
                         Result
                       </h4>
-                      <p className="text-[#ADB7BE] text-sm">{study.result}</p>
+                      <p className="text-[#6E88B5] text-sm">{study.result}</p>
                     </div>
                   </div>
                 </div>
@@ -208,9 +210,9 @@ const CaseStudiesSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <div className="bg-[#1a1a1a] rounded-lg2 p-8 border border-[#333] max-w-content mx-auto">
+          <div className="glass border rounded-2xl p-8 max-w-content mx-auto">
             <h3 className="text-white font-semibold mb-2">Systematic Problem-Solving Approach</h3>
-            <p className="text-[#ADB7BE] text-sm">
+            <p className="text-[#6E88B5] text-sm">
               Every technical issue follows a structured methodology: Identify the problem, analyze the root cause, 
               implement the solution, and verify the resolution. This approach ensures consistent, reliable results in fast-paced environments.
             </p>

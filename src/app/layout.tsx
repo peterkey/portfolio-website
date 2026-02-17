@@ -1,4 +1,4 @@
-import { Inter, Lora } from "next/font/google";
+import { Inter, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -8,9 +8,15 @@ const inter = Inter({
   display: 'swap',
 });
 
-const lora = Lora({ 
-  subsets: ["latin"], 
+const lora = Lora({
+  subsets: ["latin"],
   variable: '--font-lora',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -75,15 +81,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#92400e" />
+        <meta name="theme-color" content="#06090F" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body 
-        className={`${inter.variable} ${lora.variable} font-body bg-trueAutumn-light dark:bg-trueAutumn-dark text-trueAutumn-textLight dark:text-trueAutumn-textDark transition-colors duration-300`}
+        className={`${inter.variable} ${lora.variable} ${jetbrainsMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
         suppressHydrationWarning={true}
       >
         {children}

@@ -2,54 +2,87 @@
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-// Dynamically import AnimatedNumbers to avoid SSR issues
 const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
   ssr: false,
-  loading: () => <span className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-4xl font-bold">0</span>
+  loading: () => <span className="text-5xl font-bold font-mono">0</span>,
 });
 
-const AchievementsSection = () => {
-  const achievements = [
-    {
-      metric: "Colleagues Supported",
-      value: 20,
-      postfix: "+",
-    },
-    {
-      metric: "Customers Served Weekly",
-      value: 120,
-      postfix: "+",
-    },
-    {
-      metric: "Years Customer Service",
-      value: 8,
-      postfix: "+",
-    },
-  ];
+const achievements = [
+  { value: 20,  postfix: "+", label: "Colleagues Supported",   desc: "First-line IT support in the workplace" },
+  { value: 120, postfix: "+", label: "Customers Served Weekly", desc: "Consistent high-volume service delivery" },
+  { value: 8,   postfix: "+", label: "Years of Experience",     desc: "In customer service and technical roles" },
+];
 
+const AchievementsSection = () => {
   return (
-    <section id="achievements" className="py-16 sm:py-24 bg-trueAutumn-light dark:bg-trueAutumn-dark">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="border-trueAutumn-accentLight dark:border-trueAutumn-accentDark border rounded-lg py-12 px-8 flex flex-col md:flex-row items-center justify-between bg-trueAutumn-cardLight/50 dark:bg-trueAutumn-cardDark/50 backdrop-blur-sm">
-          {achievements.map((achievement, index) => (
+    <section id="achievements" className="py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute inset-0 bg-grid opacity-100" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-32 bg-[#22D3EE] blur-[120px] opacity-[0.04] pointer-events-none" />
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="eyebrow mb-3">By the numbers</span>
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-trueAutumn-textDark">
+            Impact at a Glance
+          </h2>
+        </motion.div>
+
+        {/* Stats grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1A2744] rounded-2xl overflow-hidden">
+          {achievements.map((item, index) => (
             <motion.div
-              key={index}
-              className="flex flex-col items-center justify-center mx-4 my-4"
-              initial={{ opacity: 0, y: 20 }}
+              key={item.label}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
               viewport={{ once: true }}
+              className="glow-card bg-trueAutumn-dark flex flex-col items-center justify-center py-12 px-8 text-center group"
             >
-              <h2 className="text-trueAutumn-textLight dark:text-trueAutumn-textDark text-4xl font-bold flex flex-row font-heading">
-                <AnimatedNumbers
-                  includeComma
-                  animateToNumber={achievement.value}
-                  locale="en-US"
-                  className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-4xl font-bold"
-                />
-                {achievement.postfix}
-              </h2>
-              <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-base font-body mt-2">{achievement.metric}</p>
+              {/* Animated number */}
+              <div className="flex items-end gap-0.5 mb-3">
+                <span
+                  className="text-5xl sm:text-6xl font-bold font-mono"
+                  style={{
+                    background: "linear-gradient(135deg, #22D3EE 0%, #A78BFA 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  <AnimatedNumbers
+                    includeComma
+                    animateToNumber={item.value}
+                    locale="en-US"
+                    className="inline"
+                  />
+                </span>
+                <span
+                  className="text-3xl font-bold font-mono pb-1"
+                  style={{
+                    background: "linear-gradient(135deg, #22D3EE, #A78BFA)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {item.postfix}
+                </span>
+              </div>
+
+              <p className="text-trueAutumn-textDark font-heading font-semibold text-base mb-2">
+                {item.label}
+              </p>
+              <p className="text-trueAutumn-textSecondaryDark font-body text-sm leading-relaxed max-w-[20ch]">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -58,4 +91,4 @@ const AchievementsSection = () => {
   );
 };
 
-export default AchievementsSection; 
+export default AchievementsSection;

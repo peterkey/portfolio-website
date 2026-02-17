@@ -33,7 +33,7 @@ const ExperienceTimeline = () => {
         "Delivered 1:1 training on new internal systems",
         "Assisted 120+ customers weekly with technical support"
       ],
-      icon: <BriefcaseIcon className="h-6 w-6 text-[#5fdafa]" />
+      icon: <BriefcaseIcon className="h-6 w-6 text-[#22D3EE]" />
     },
     {
       id: 2,
@@ -49,7 +49,7 @@ const ExperienceTimeline = () => {
         "Developed technical troubleshooting abilities",
         "Built practical web applications"
       ],
-      icon: <AcademicCapIcon className="h-6 w-6 text-[#5fdafa]" />
+      icon: <AcademicCapIcon className="h-6 w-6 text-[#22D3EE]" />
     },
     {
       id: 3,
@@ -65,13 +65,14 @@ const ExperienceTimeline = () => {
         "Gained problem-solving and analytical thinking",
         "Completed degree with strong academic performance"
       ],
-      icon: <AcademicCapIcon className="h-6 w-6 text-[#5fdafa]" />
+      icon: <AcademicCapIcon className="h-6 w-6 text-[#22D3EE]" />
     }
   ];
 
   return (
-    <section id="experience" className="py-16 sm:py-24 bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="experience" className="py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,15 +80,16 @@ const ExperienceTimeline = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-6 font-heading">Experience & Education</h2>
-          <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-lg max-w-3xl mx-auto font-body leading-relaxed">
+          <span className="eyebrow mb-3">Where I&apos;ve been</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">Experience & Education</h2>
+          <p className="text-trueAutumn-textSecondaryDark text-lg max-w-3xl mx-auto font-body leading-relaxed">
             My professional journey from customer service to IT support, combined with ongoing education and technical training.
           </p>
         </motion.div>
 
         <div className="relative">
                      {/* Timeline Line */}
-           <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-trueAutumn-borderLight dark:bg-trueAutumn-borderDark"></div>
+           <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#22D3EE]/40 via-[#A78BFA]/30 to-transparent" />
 
           <div className="space-y-12">
             {timelineData.map((item, index) => (
@@ -102,10 +104,10 @@ const ExperienceTimeline = () => {
                 } flex-col md:gap-8`}
               >
                                  {/* Timeline Dot */}
-                 <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-trueAutumn-accentLight dark:bg-trueAutumn-accentDark rounded-full border-4 border-trueAutumn-light dark:border-trueAutumn-dark z-10"></div>
+                 <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-[#22D3EE] rounded-full z-10 glow-ring" />
 
                 {/* Content Card */}
-                                 <div className={`bg-trueAutumn-light dark:bg-trueAutumn-dark rounded-xl p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark hover:border-trueAutumn-accentLight dark:hover:border-trueAutumn-accentDark transition-colors shadow-lg ${
+                                 <div className={`glow-card glass border rounded-2xl p-6 ${
                   index % 2 === 0 ? 'md:ml-auto md:w-5/12' : 'md:mr-auto md:w-5/12'
                 } w-full ml-16 md:ml-0`}>
                     <div className="flex items-center gap-3 mb-4">
@@ -117,21 +119,21 @@ const ExperienceTimeline = () => {
                         </span>
                       </div>
 
-                                     <h3 className="text-xl font-semibold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-2 font-heading">{item.title}</h3>
+                                     <h3 className="text-xl font-semibold text-trueAutumn-textDark mb-2 font-heading">{item.title}</h3>
                    <p className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-lg mb-1 font-body">{item.company}</p>
                   
-                                     <div className="flex items-center gap-2 mb-4 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm font-body">
+                                     <div className="flex items-center gap-2 mb-4 text-trueAutumn-textSecondaryDark text-sm font-body">
                      <CalendarIcon className="h-4 w-4" />
                      <span>{item.period}</span>
                     </div>
 
-                   <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm mb-6 font-body leading-relaxed">{item.description}</p>
+                   <p className="text-trueAutumn-textSecondaryDark text-sm mb-6 font-body leading-relaxed">{item.description}</p>
 
                     <div className="space-y-2">
-                                         <h4 className="text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold text-sm font-heading">Key Achievements:</h4>
+                                         <h4 className="text-trueAutumn-textDark font-semibold text-sm font-heading">Key Achievements:</h4>
                      <ul className="space-y-2">
                         {item.achievements.map((achievement, achievementIndex) => (
-                         <li key={achievementIndex} className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed flex items-start gap-2">
+                         <li key={achievementIndex} className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed flex items-start gap-2">
                            <span className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark mt-1">•</span>
                           <span>{achievement}</span>
                           </li>
@@ -152,8 +154,8 @@ const ExperienceTimeline = () => {
           className="text-center mt-16"
         >
                      <div className="bg-trueAutumn-light dark:bg-trueAutumn-dark rounded-xl p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark max-w-2xl mx-auto shadow-lg">
-             <h3 className="text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Career Transition</h3>
-             <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body leading-relaxed">
+             <h3 className="text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Career Transition</h3>
+             <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
               My journey from customer service to IT support demonstrates my adaptability and commitment to continuous learning. 
               Each role has built upon the previous, creating a strong foundation for technical support excellence.
             </p>

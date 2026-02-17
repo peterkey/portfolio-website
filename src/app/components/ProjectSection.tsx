@@ -60,12 +60,16 @@ const ProjectSection = () => {
   const allTags = Array.from(new Set(projectData.flatMap(project => project.tag)));
 
   return (
-    <section id='projects' className='py-16 sm:py-24' aria-labelledby="projects-heading">
-      <div className='max-w-7xl mx-auto px-4 sm:px-6'>
-        <h2 id="projects-heading" className='text-center text-4xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-8 font-heading'>
-          My Technical Projects
-        </h2>
-        <div className='text-trueAutumn-textLight dark:text-trueAutumn-textDark flex flex-row justify-center items-center gap-2 py-8 flex-wrap'>
+    <section id='projects' className='py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden' aria-labelledby="projects-heading">
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6'>
+        <div className="text-center mb-4">
+          <span className="eyebrow mb-3">What I&apos;ve built</span>
+          <h2 id="projects-heading" className='text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading'>
+            My Technical Projects
+          </h2>
+        </div>
+        <div className='text-trueAutumn-textDark flex flex-row justify-center items-center gap-2 py-8 flex-wrap'>
           {allTags.map((tag) => (
             <ProjectTag 
               key={tag}

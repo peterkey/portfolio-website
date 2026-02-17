@@ -69,28 +69,28 @@ const EnhancedContactSection = () => {
 
   const contactInfo = [
     {
-      icon: <EnvelopeIcon className="h-6 w-6 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark" />,
+      icon: <EnvelopeIcon className="h-6 w-6 text-[#22D3EE]" />,
       title: "Email",
       value: "prkey94@gmail.com",
       link: "mailto:prkey94@gmail.com",
       description: "Primary contact method"
     },
     {
-      icon: <PhoneIcon className="h-6 w-6 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark" />,
+      icon: <PhoneIcon className="h-6 w-6 text-[#22D3EE]" />,
       title: "Phone",
       value: "(+44) 7711233307",
       link: "tel:+447711233307",
       description: "Available during business hours"
     },
     {
-      icon: <MapPinIcon className="h-6 w-6 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark" />,
+      icon: <MapPinIcon className="h-6 w-6 text-[#22D3EE]" />,
       title: "Location",
       value: "Pont-y-clun, UK",
       link: "#",
       description: "Available for hybrid or in-person roles across South Wales"
     },
     {
-      icon: <ClockIcon className="h-6 w-6 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark" />,
+      icon: <ClockIcon className="h-6 w-6 text-[#22D3EE]" />,
       title: "Availability",
       value: "Immediate Start Available",
       link: "#",
@@ -108,17 +108,19 @@ const EnhancedContactSection = () => {
   ];
 
   return (
-        <section id='contact' className='py-16 sm:py-24 px-4 bg-trueAutumn-light dark:bg-trueAutumn-dark'>
-      <div className='max-w-7xl mx-auto'>
+        <section id='contact' className='py-20 sm:py-28 px-4 bg-trueAutumn-cardDark relative overflow-hidden'>
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className='relative z-10 max-w-7xl mx-auto'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-12"
         >
-          <h2 className='text-4xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-4 font-heading'>Get In Touch</h2>
-          <p className='text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-lg max-w-content mx-auto font-body'>
+          <span className="eyebrow mb-3">Let&apos;s talk</span>
+          <h2 className='text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading'>Get In Touch</h2>
+          <p className='text-trueAutumn-textSecondaryDark text-lg max-w-content mx-auto font-body'>
             I&apos;m actively seeking new opportunities in IT support and help desk roles. 
             If you have a position that matches my skills and experience, I&apos;d love to hear from you.
           </p>
@@ -134,27 +136,27 @@ const EnhancedContactSection = () => {
             className='space-y-6'
           >
             <div>
-              <h3 className='text-2xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-4 font-heading'>Contact Information</h3>
-              <p className='text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark mb-6 font-body'>
+              <h3 className='text-2xl font-bold text-trueAutumn-textDark mb-4 font-heading'>Contact Information</h3>
+              <p className='text-trueAutumn-textSecondaryDark mb-6 font-body'>
                 Multiple ways to reach me for job opportunities, networking, or professional discussions.
               </p>
             </div>
 
             <div className='space-y-4'>
               {contactInfo.map((info, index) => (
-                <div key={index} className='flex items-start gap-4 p-4 bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark rounded-lg border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark hover:border-trueAutumn-accentLight dark:hover:border-trueAutumn-accentDark transition-colors'>
+                <div key={index} className='glow-card glass border flex items-start gap-4 p-4 rounded-xl'>
                   <div className='flex-shrink-0 mt-1'>
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className='text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold font-heading'>{info.title}</h4>
-                    <a 
-                      href={info.link} 
-                      className='text-trueAutumn-accentLight dark:text-trueAutumn-accentDark hover:text-trueAutumn-linkLight dark:hover:text-trueAutumn-linkDark transition-colors font-body'
+                    <h4 className='text-trueAutumn-textDark font-semibold font-heading'>{info.title}</h4>
+                    <a
+                      href={info.link}
+                      className='text-[#22D3EE] hover:text-[#A78BFA] transition-colors font-body'
                     >
                       {info.value}
                     </a>
-                    <p className='text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm mt-1 font-body'>{info.description}</p>
+                    <p className='text-trueAutumn-textSecondaryDark text-sm mt-1 font-body'>{info.description}</p>
                   </div>
                 </div>
               ))}
@@ -162,19 +164,19 @@ const EnhancedContactSection = () => {
 
             {/* Social Links */}
             <div className='pt-6'>
-              <h4 className='text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold mb-4 font-heading'>Professional Profiles</h4>
+              <h4 className='text-trueAutumn-textDark font-semibold mb-4 font-heading'>Professional Profiles</h4>
               <div className='flex gap-4'>
-                <Link 
+                <Link
                   href='https://github.com/peterkey'
                   aria-label="Visit my GitHub profile"
-                  className="transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-light dark:focus:ring-offset-trueAutumn-dark rounded"
+                  className="transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F] rounded"
                 >
                   <Image src={GithubIcon} alt='GitHub Icon' className='w-12 h-12' />
                 </Link>
-                <Link 
+                <Link
                   href='https://www.linkedin.com/in/pkey/'
                   aria-label="Visit my LinkedIn profile"
-                  className="transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-light dark:focus:ring-offset-trueAutumn-dark rounded"
+                  className="transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F] rounded"
                 >
                   <Image 
                     src={LinkedinIcon} 
@@ -187,22 +189,22 @@ const EnhancedContactSection = () => {
             </div>
 
             {/* Professional Highlights */}
-            <div className='bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark rounded-lg2 p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark'>
-              <h4 className='text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold mb-4 font-heading'>Professional Highlights</h4>
+            <div className='glass border rounded-2xl p-6'>
+              <h4 className='text-trueAutumn-textDark font-semibold mb-4 font-heading'>Professional Highlights</h4>
               <div className='grid grid-cols-2 gap-4 text-sm'>
-                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body'>
+                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryDark font-body'>
                   <CheckCircleIcon className='h-4 w-4 text-green-500' />
                   <span>MS-900 (In Progress)</span>
                 </div>
-                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body'>
+                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryDark font-body'>
                   <CheckCircleIcon className='h-4 w-4 text-green-500' />
                   <span>8+ Years Experience</span>
                 </div>
-                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body'>
+                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryDark font-body'>
                   <CheckCircleIcon className='h-4 w-4 text-green-500' />
                   <span>Right to Work UK</span>
                 </div>
-                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body'>
+                <div className='flex items-center gap-2 text-trueAutumn-textSecondaryDark font-body'>
                   <CheckCircleIcon className='h-4 w-4 text-green-500' />
                   <span>Full Driving Licence</span>
                 </div>
@@ -216,14 +218,14 @@ const EnhancedContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className='bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark rounded-lg2 p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark'
+            className='glass border rounded-2xl p-8'
           >
-            <h3 className='text-2xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-6 font-heading'>Send Me a Message</h3>
+            <h3 className='text-2xl font-bold text-trueAutumn-textDark mb-6 font-heading'>Send Me a Message</h3>
             
             <form className='space-y-6' onSubmit={handleSubmit} noValidate>
               <div className='grid md:grid-cols-2 gap-4'>
                 <div>
-                  <label htmlFor='name' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                  <label htmlFor='name' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                     Name *
                   </label>
                   <input
@@ -231,12 +233,12 @@ const EnhancedContactSection = () => {
                     id='name'
                     name='name'
                     required
-                    className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark placeholder-trueAutumn-textSecondaryLight/50 dark:placeholder-trueAutumn-textSecondaryDark/50 text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent font-body'
+                    className='bg-[#06090F] border border-[#1A2744] placeholder-[#6E88B5]/50 text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 font-body'
                     placeholder='Your full name'
                   />
                 </div>
                 <div>
-                  <label htmlFor='email' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                  <label htmlFor='email' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                     Email *
                   </label>
                   <input
@@ -244,33 +246,33 @@ const EnhancedContactSection = () => {
                     id='email'
                     name='email'
                     required
-                    className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark placeholder-trueAutumn-textSecondaryLight/50 dark:placeholder-trueAutumn-textSecondaryDark/50 text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent font-body'
+                    className='bg-[#06090F] border border-[#1A2744] placeholder-[#6E88B5]/50 text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 font-body'
                     placeholder='your.email@company.com'
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor='company' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                <label htmlFor='company' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                   Company
                 </label>
                 <input
                   type='text'
                   id='company'
                   name='company'
-                  className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark placeholder-trueAutumn-textSecondaryLight/50 dark:placeholder-trueAutumn-textSecondaryDark/50 text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent font-body'
+                  className='bg-[#06090F] border border-[#1A2744] placeholder-[#6E88B5]/50 text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 font-body'
                   placeholder='Your company name'
                 />
               </div>
 
               <div>
-                <label htmlFor='opportunityType' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                <label htmlFor='opportunityType' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                   Opportunity Type
                 </label>
                 <select
                   id='opportunityType'
                   name='opportunityType'
-                  className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent font-body'
+                  className='bg-[#06090F] border border-[#1A2744] text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 font-body'
                 >
                   <option value="">Select opportunity type</option>
                   {opportunityTypes.map((type) => (
@@ -280,7 +282,7 @@ const EnhancedContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor='subject' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                <label htmlFor='subject' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                   Subject *
                 </label>
                 <input
@@ -288,13 +290,13 @@ const EnhancedContactSection = () => {
                   id='subject'
                   name='subject'
                   required
-                  className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark placeholder-trueAutumn-textSecondaryLight/50 dark:placeholder-trueAutumn-textSecondaryDark/50 text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent font-body'
+                  className='bg-[#06090F] border border-[#1A2744] placeholder-[#6E88B5]/50 text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 font-body'
                   placeholder='Brief description of the opportunity'
                 />
               </div>
 
               <div>
-                <label htmlFor='message' className='text-trueAutumn-textLight dark:text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
+                <label htmlFor='message' className='text-trueAutumn-textDark block mb-2 text-sm font-medium font-body'>
                   Message *
                 </label>
                 <textarea
@@ -302,7 +304,7 @@ const EnhancedContactSection = () => {
                   name='message'
                   required
                   rows={5}
-                  className='bg-trueAutumn-light dark:bg-trueAutumn-dark border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark placeholder-trueAutumn-textSecondaryLight/50 dark:placeholder-trueAutumn-textSecondaryDark/50 text-trueAutumn-textLight dark:text-trueAutumn-textDark text-sm rounded-md block w-full p-3 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:border-transparent resize-vertical font-body'
+                  className='bg-[#06090F] border border-[#1A2744] placeholder-[#6E88B5]/50 text-trueAutumn-textDark text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-1 focus:ring-[#22D3EE] focus:border-[#22D3EE]/50 transition-all duration-200 resize-vertical font-body'
                   placeholder='Tell me about the position, requirements, or any questions you have about my background...'
                 />
               </div>
@@ -310,7 +312,8 @@ const EnhancedContactSection = () => {
               <button
                 type='submit'
                 disabled={isSubmitting}
-                className='bg-trueAutumn-buttonLight dark:bg-trueAutumn-buttonDark hover:bg-trueAutumn-buttonLightHover dark:hover:bg-trueAutumn-buttonDarkHover disabled:bg-trueAutumn-buttonLight/50 dark:disabled:bg-trueAutumn-buttonDark/50 disabled:cursor-not-allowed text-trueAutumn-light dark:text-trueAutumn-dark font-medium py-3 px-6 rounded-md w-full transition-colors focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-cardLight dark:focus:ring-offset-trueAutumn-cardDark font-body'
+                className='bg-[#22D3EE] hover:bg-[#38BDF8] disabled:bg-[#22D3EE]/40 disabled:cursor-not-allowed text-[#06090F] font-bold py-3 px-6 rounded-full w-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F] font-body'
+                style={{ boxShadow: isSubmitting ? "none" : "0 0 24px rgba(34, 211, 238, 0.3)" }}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
