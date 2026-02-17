@@ -14,15 +14,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
           {/* Name + role */}
           <div>
-            <span
-              className="font-heading font-bold text-xl"
-              style={{
-                background: "linear-gradient(135deg, #ffffff 0%, #22D3EE 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <span className="font-heading font-bold text-xl text-white">
               Peter Williams-Key
             </span>
             <p className="font-mono text-[#6E88B5] text-xs mt-1 tracking-wide">

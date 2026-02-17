@@ -48,15 +48,7 @@ const AchievementsSection = () => {
             >
               {/* Animated number */}
               <div className="flex items-end gap-0.5 mb-3">
-                <span
-                  className="text-5xl sm:text-6xl font-bold font-mono"
-                  style={{
-                    background: "linear-gradient(135deg, #22D3EE 0%, #A78BFA 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
+                <span className="text-5xl sm:text-6xl font-bold font-mono text-[#22D3EE]">
                   <AnimatedNumbers
                     includeComma
                     animateToNumber={item.value}
@@ -64,15 +56,7 @@ const AchievementsSection = () => {
                     className="inline"
                   />
                 </span>
-                <span
-                  className="text-3xl font-bold font-mono pb-1"
-                  style={{
-                    background: "linear-gradient(135deg, #22D3EE, #A78BFA)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
+                <span className="text-3xl font-bold font-mono pb-1 text-[#22D3EE]">
                   {item.postfix}
                 </span>
               </div>

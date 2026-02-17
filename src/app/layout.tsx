@@ -1,16 +1,17 @@
-import { Inter, Lora, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 
-const inter = Inter({ 
-  subsets: ["latin"], 
+const inter = Inter({
+  subsets: ["latin"],
   variable: '--font-inter',
   display: 'swap',
 });
 
-const lora = Lora({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: '--font-lora',
+  variable: '--font-space',
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -89,7 +90,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body 
-        className={`${inter.variable} ${lora.variable} ${jetbrainsMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
         suppressHydrationWarning={true}
       >
         {children}

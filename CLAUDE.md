@@ -11,47 +11,86 @@ npm run lint         # Run ESLint
 npm run type-check   # Run TypeScript compiler (no emit)
 ```
 
-There is no test suite configured in this project.
+**Node.js constraint:** The environment runs Node 18, which is too old for Next.js build/lint commands. Use `npm run dev` from the user's terminal for local development. There is no test suite.
 
 ## Architecture
 
-**Next.js 14 App Router** single-page portfolio. Everything routes through `src/app/page.tsx`, which composes all sections in order. The only backend surface is `src/app/api/send/route.ts` — a contact form endpoint using the Resend email service.
+**Next.js 14 App Router** single-page portfolio. `src/app/page.tsx` composes all sections in this order:
 
-### Key structural patterns
+```
+Navbar → HeroSection → AchievementsSection → AboutSection → ToolsSection →
+CertificationsSection → ExperienceTimeline → ProjectSection → CaseStudiesSection →
+TestimonialsSection → EnhancedContactSection → Footer
+```
 
-- All components live in `src/app/components/` and are client components (`"use client"`).
-- The `@/*` path alias maps to `src/*`.
-- Dark mode is class-based (toggled via `ThemeToggle`, persisted to `localStorage`).
-- Animations use **Framer Motion**; the hero typing effect uses `react-type-animation`.
+All components live in `src/app/components/` and are `"use client"` components. The `@/*` alias maps to `src/*`. The only backend surface is `src/app/api/send/route.ts` (Resend email, Zod validation, rate-limited 5 req/15 min per IP).
 
-### Styling
+## Design System (Neon-Noir theme)
 
-The project uses a custom **"True Autumn"** color palette defined in `tailwind.config.js`:
-- Light mode: cream background (`#FAF7F2`), sage accents (`#8A9A5B`)
-- Dark mode: very dark background (`#131414`), brass accents (`#B3A369`)
+The site is **permanently dark** — `<html>` has a hardcoded `dark` class; there is no light/dark toggle.
 
-Fonts are Inter (body) and Lora (headings), loaded via `next/font/google` in the root layout.
+### Color tokens (`tailwind.config.js` → `trueAutumn.*`)
 
-### Contact API (`src/app/api/send/route.ts`)
+| Token | Value | Use |
+|---|---|---|
+| `dark` | `#06090F` | Page background |
+| `cardDark` | `#0B1120` | Card/section background |
+| `borderDark` | `#1A2744` | Borders |
+| `textDark` | `#CDD9FF` | Primary text |
+| `textSecondaryDark` | `#6E88B5` | Secondary/muted text |
+| `accentDark` | `#22D3EE` | Cyan accent |
+| `linkDark` | `#A78BFA` | Violet accent |
 
-- Uses **Resend** for sending email
-- Validates input with **Zod**
-- Rate-limited to 5 requests per 15 minutes per IP
-- Requires `RESEND_API_KEY` and `FROM_EMAIL` environment variables
-- Recipient email (`prkey94@gmail.com`) is hardcoded in the route handler
+Use raw hex (`#22D3EE`, `#A78BFA`) for accents in className — the Tailwind tokens are for background/text.
+
+### CSS utilities (`src/app/globals.css`)
+
+- `.glass` — frosted glass surface (semi-transparent bg + backdrop-blur)
+- `.glow-card` — hover lift with cyan box-shadow; always pair with `glass border rounded-2xl`
+- `.bg-grid` — subtle cyan dot-grid texture
+- `.eyebrow` — mono uppercase label above section headings
+- `.gradient-text` — cyan→violet gradient text (via `-webkit-text-fill-color`)
+- `.glow-ring` — pulsing cyan border animation for profile images
+
+**Critical:** gradient text must use inline `style` prop, not Tailwind `bg-clip-text` with `dark:` prefix — the `dark:` prefix breaks inside `bg-clip-text`.
+
+### Fonts
+
+Loaded in `src/app/layout.tsx` via `next/font/google`:
+- `--font-inter` → `font-body` / `font-sans` (body text)
+- `--font-lora` → `font-heading` / `font-display` (headings, h1–h6 globally)
+- `--font-mono` → `font-mono` (JetBrains Mono; used for eyebrows, number labels, badges)
+
+### Section pattern
+
+Every section follows this structure:
+```tsx
+<section className="py-20 sm:py-28 px-4 bg-trueAutumn-[dark|cardDark] relative overflow-hidden">
+  <div className="absolute inset-0 bg-grid opacity-60" />       {/* dot grid */}
+  <div className="relative z-10 max-w-7xl mx-auto">
+    <span className="eyebrow mb-3">Label</span>
+    <h2>Section Title</h2>
+    {/* cards use: glow-card glass border rounded-2xl */}
+  </div>
+</section>
+```
+
+Alternate sections between `bg-trueAutumn-dark` and `bg-trueAutumn-cardDark` for visual rhythm.
+
+## Contact API (`src/app/api/send/route.ts`)
+
+- **Resend** for email delivery; recipient hardcoded to `prkey94@gmail.com`
+- Pre-existing TS error on line 41 (`request.ip` removed in newer Next.js) — not introduced by editing
 
 ### Environment variables
 
-Copy `.env.example` to `.env.local`. Required for email functionality:
+Copy `.env.example` to `.env.local`:
 
 ```
-RESEND_API_KEY=
-FROM_EMAIL=
-```
+RESEND_API_KEY=       # Required for contact form
+FROM_EMAIL=           # Required for contact form
 
-Optional (analytics/SEO):
-```
-NEXT_PUBLIC_GA_ID=
-NEXT_PUBLIC_GTM_ID=
-NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_GA_ID=    # Optional analytics
+NEXT_PUBLIC_GTM_ID=   # Optional analytics
+NEXT_PUBLIC_SITE_URL= # Optional SEO
 ```

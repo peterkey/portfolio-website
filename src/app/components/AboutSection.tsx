@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
@@ -157,7 +156,7 @@ const AboutSection = () => {
                   className="absolute -top-3 -right-3 glass border rounded-xl px-4 py-3 text-center"
                   style={{ boxShadow: "0 0 20px rgba(34, 211, 238, 0.15)" }}
                 >
-                  <div className="font-mono font-bold text-xl" style={{ background: "linear-gradient(135deg, #22D3EE, #A78BFA)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>8+</div>
+                  <div className="font-mono font-bold text-xl" style={{ color: "#22D3EE" }}>8+</div>
                   <div className="text-[10px] font-mono text-[#6E88B5] tracking-wide mt-0.5">Years Exp.</div>
                 </motion.div>
 
@@ -166,7 +165,7 @@ const AboutSection = () => {
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                   className="absolute -bottom-3 -left-3 glass border rounded-xl px-4 py-3 text-center"
                 >
-                  <div className="font-mono font-bold text-xl" style={{ background: "linear-gradient(135deg, #22D3EE, #A78BFA)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>20+</div>
+                  <div className="font-mono font-bold text-xl" style={{ color: "#22D3EE" }}>20+</div>
                   <div className="text-[10px] font-mono text-[#6E88B5] tracking-wide mt-0.5">Colleagues</div>
                 </motion.div>
               </div>

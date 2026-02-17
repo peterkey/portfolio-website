@@ -93,12 +93,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between px-5 h-16 border-b border-[#1A2744] shrink-0">
               <span
                 className="font-heading font-bold text-base"
-                style={{
-                  background: "linear-gradient(135deg, #ffffff 0%, #22D3EE 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                style={{ color: "#ffffff" }}
               >
                 Peter Williams-Key
               </span>
@@ -205,12 +200,7 @@ const Navbar = () => {
             >
               <span
                 className="font-heading font-bold text-[15px] xl:text-base leading-tight"
-                style={{
-                  background: "linear-gradient(135deg, #ffffff 0%, #22D3EE 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                style={{ color: "#ffffff" }}
               >
                 Peter Williams-Key
               </span>

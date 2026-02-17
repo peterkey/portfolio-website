@@ -94,11 +94,11 @@ theme: {
         '3xl': '1600px',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        heading: ['Lora', 'serif'],
-        display: ['Lora', 'serif'],
-        body: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['var(--font-space)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-space)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
+        mono: ['var(--font-mono)', 'Fira Code', 'monospace'],
       },
       fontWeight: {
         'light': '300',

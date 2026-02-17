@@ -137,15 +137,7 @@ const ToolsSection = () => {
               ].map((s) => (
                 <div key={s.step} className="text-center">
                   <span className="font-mono text-[#22D3EE]/40 text-xs">{s.step}</span>
-                  <div
-                    className="font-heading font-bold text-lg mt-1 mb-2"
-                    style={{
-                      background: "linear-gradient(135deg, #22D3EE, #A78BFA)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
+                  <div className="font-heading font-bold text-lg mt-1 mb-2 text-white">
                     {s.title}
                   </div>
                   <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">{s.body}</p>

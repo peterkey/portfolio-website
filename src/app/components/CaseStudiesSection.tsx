@@ -1,12 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { 
-  ExclamationTriangleIcon, 
-  MagnifyingGlassIcon, 
-  WrenchScrewdriverIcon, 
+import {
+  ExclamationTriangleIcon,
+  MagnifyingGlassIcon,
+  WrenchScrewdriverIcon,
   CheckCircleIcon,
   ClockIcon,
-  UserGroupIcon
+  UserGroupIcon,
+  ServerIcon
 } from "@heroicons/react/24/outline";
 
 interface CaseStudy {
@@ -89,6 +90,28 @@ const CaseStudiesSection = () => {
         costSavings: "Reduced management dependency"
       },
       icon: <MagnifyingGlassIcon className="h-8 w-8 text-green-500" />
+    },
+    {
+      id: 4,
+      title: "Home Lab & Linux Migration",
+      category: "Infrastructure & Linux",
+      problem: "Overreliance on macOS and third-party cloud services limiting system control, performance tuning, and hands-on Linux administration experience. A legacy iMac sat idle — capable hardware with no productive purpose.",
+      process: [
+        "Evaluated Linux distributions for hardware compatibility and long-term stability",
+        "Performed full data backup and planned a zero-loss migration workflow",
+        "Executed clean OS installation with custom disk partitioning and driver configuration",
+        "Established terminal-driven workflows for package management, system diagnostics, and configuration",
+        "Repurposed legacy iMac as a dedicated server with a clean OS install optimised for headless use",
+        "Deployed Docker Compose stacks for media management, network utilities, and productivity tools with persistent volumes and isolated networking"
+      ],
+      solution: "Fully migrated primary workstation to Linux and transformed a legacy iMac into a self-hosted Docker server running multiple containerised services — all managed via command line with no ongoing cloud dependency.",
+      result: "A functioning home lab used for Linux administration practice, self-hosted application testing, and hands-on networking and service architecture exploration. Demonstrated ability to plan, execute, and maintain complex infrastructure changes independently.",
+      metrics: {
+        resolutionTime: "Ongoing personal project",
+        usersAffected: 1,
+        costSavings: "Zero cloud costs — fully self-hosted"
+      },
+      icon: <ServerIcon className="h-8 w-8 text-[#A78BFA]" />
     }
   ];
 

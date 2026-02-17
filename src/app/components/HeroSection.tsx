@@ -57,13 +57,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.35 }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-none tracking-tight"
-                style={{
-                  background: "linear-gradient(135deg, #ffffff 0%, #CDD9FF 50%, #22D3EE 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-none tracking-tight text-white"
               >
                 Peter Williams-Key
               </motion.h1>
@@ -89,12 +83,7 @@ const HeroSection = () => {
                   speed={55}
                   deletionSpeed={75}
                   repeat={Infinity}
-                  style={{
-                    background: "linear-gradient(135deg, #22D3EE, #A78BFA)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
+                  style={{ color: "#22D3EE" }}
                   aria-label="IT Support Specialist roles"
                 />
               </motion.div>
@@ -128,15 +117,7 @@ const HeroSection = () => {
                   key={stat.label}
                   className="glass border rounded-full px-5 py-2 flex items-center gap-2"
                 >
-                  <span
-                    className="font-mono font-bold text-sm"
-                    style={{
-                      background: "linear-gradient(135deg, #22D3EE, #A78BFA)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
+                  <span className="font-mono font-bold text-sm text-[#22D3EE]">
                     {stat.value}
                   </span>
                   <span className="text-trueAutumn-textSecondaryDark text-xs font-body">{stat.label}</span>
@@ -235,7 +216,7 @@ const HeroSection = () => {
               {/* Profile image */}
               <div className="relative w-full h-full rounded-full overflow-hidden glow-ring" style={{ border: "2px solid rgba(34, 211, 238, 0.25)" }}>
                 <Image
-                  src="/images/profile-pic-light.png"
+                  src="/images/profile-pic.png"
                   alt="Peter Williams-Key — IT Support Specialist"
                   fill
                   className="object-cover"
