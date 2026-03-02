@@ -54,7 +54,7 @@ const EnhancedContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 px-4 bg-trueAutumn-dark relative overflow-hidden"
+      className="py-20 sm:py-28 px-4 bg-trueAutumn-cardDark relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className="relative z-10 max-w-7xl mx-auto">

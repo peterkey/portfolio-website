@@ -7,6 +7,7 @@ const fromEmail = process.env.FROM_EMAIL;
 
 // Input validation schema
 const contactSchema = z.object({
+  name: z.string().min(1, "Name is required").max(100, "Name too long"),
   email: z.string().email("Invalid email address"),
   subject: z.string().min(1, "Subject is required").max(100, "Subject too long"),
   message: z.string().min(10, "Message must be at least 10 characters").max(1000, "Message too long"),
@@ -74,9 +75,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { email, subject, message } = validationResult.data;
+    const { name, email, subject, message } = validationResult.data;
 
     // Sanitize inputs (basic sanitization - consider using DOMPurify for more complex cases)
+    const sanitizedName = name.trim();
     const sanitizedEmail = email.trim().toLowerCase();
     const sanitizedSubject = subject.trim();
     const sanitizedMessage = message.trim();
@@ -89,7 +91,7 @@ export async function POST(request: NextRequest) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #078ea4;">New Contact Form Submission</h2>
-          <p><strong>From:</strong> ${sanitizedEmail}</p>
+          <p><strong>From:</strong> ${sanitizedName} &lt;${sanitizedEmail}&gt;</p>
           <p><strong>Subject:</strong> ${sanitizedSubject}</p>
           <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin: 20px 0;">
             <p><strong>Message:</strong></p>

@@ -143,7 +143,7 @@ const Navbar = () => {
     <>
       {/* ── Full-screen mobile overlay ──────────────────────────── */}
       {isOpen && (
-        <div className="fixed inset-0 z-[60] bg-[#060D18] flex flex-col">
+        <div id="mobile-overlay" className="fixed inset-0 z-[60] bg-[#060D18] flex flex-col">
           {/* Top bar */}
           <div className="flex items-center justify-between px-5 h-16 border-b border-[#1A3A5C] shrink-0">
             <NavMonogram />

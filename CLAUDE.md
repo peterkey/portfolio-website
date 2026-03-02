@@ -18,14 +18,14 @@ npm run type-check   # Run TypeScript compiler (no emit)
 **Next.js 14 App Router** single-page portfolio. `src/app/page.tsx` composes all sections in this order:
 
 ```
-Navbar → HeroSection → AchievementsSection → AboutSection → ToolsSection →
-CertificationsSection → ExperienceTimeline → ProjectSection → CaseStudiesSection →
+Navbar → HeroSection → AboutSection → ExperienceTimeline → ProjectSection →
+CaseStudiesSection → ToolsSection → CertificationsSection → AchievementsSection →
 TestimonialsSection → EnhancedContactSection → Footer
 ```
 
 All components live in `src/app/components/` and are `"use client"` components. The `@/*` alias maps to `src/*`. The only backend surface is `src/app/api/send/route.ts` (Resend email, Zod validation, rate-limited 5 req/15 min per IP).
 
-## Design System (Neon-Noir theme)
+## Design System (NOC — Network Operations Center theme)
 
 The site is **permanently dark** — `<html>` has a hardcoded `dark` class; there is no light/dark toggle.
 
@@ -33,33 +33,37 @@ The site is **permanently dark** — `<html>` has a hardcoded `dark` class; ther
 
 | Token | Value | Use |
 |---|---|---|
-| `dark` | `#06090F` | Page background |
-| `cardDark` | `#0B1120` | Card/section background |
-| `borderDark` | `#1A2744` | Borders |
-| `textDark` | `#CDD9FF` | Primary text |
-| `textSecondaryDark` | `#6E88B5` | Secondary/muted text |
-| `accentDark` | `#22D3EE` | Cyan accent |
-| `linkDark` | `#A78BFA` | Violet accent |
+| `dark` | `#060D18` | Page background |
+| `cardDark` | `#0A1628` | Card/section background |
+| `borderDark` | `#1A3A5C` | Borders |
+| `textDark` | `#B8D4F0` | Primary text |
+| `textSecondaryDark` | `#4A6A8A` | Secondary/muted text |
 
-Use raw hex (`#22D3EE`, `#A78BFA`) for accents in className — the Tailwind tokens are for background/text.
+Accent colors are used as raw hex in `className`:
+- **Cyan** `#00D9FF` — primary accent, glows, CTAs, active states
+- **Orange** `#FF6B35` — secondary accent, icon highlights, destructive
+- **Green** `#22C55E` — status LEDs, success states
 
 ### CSS utilities (`src/app/globals.css`)
 
-- `.glass` — frosted glass surface (semi-transparent bg + backdrop-blur)
+- `.glass` — dark panel (`rgba(10,22,40,0.85)`) + cyan border + backdrop-blur
 - `.glow-card` — hover lift with cyan box-shadow; always pair with `glass border rounded-2xl`
-- `.bg-grid` — subtle cyan dot-grid texture
-- `.eyebrow` — mono uppercase label above section headings
-- `.gradient-text` — cyan→violet gradient text (via `-webkit-text-fill-color`)
+- `.bg-grid` — cyan crosshatch line texture
+- `.eyebrow` — `//`-prefixed mono uppercase label above section headings
+- `.gradient-text` — cyan→orange gradient text (via `-webkit-text-fill-color`)
 - `.glow-ring` — pulsing cyan border animation for profile images
+- `.tech-corner` — decorative corner bracket overlay
+- `.status-led` — small pulsing status indicator dot
+- `.cursor-blink` — blinking terminal cursor
 
 **Critical:** gradient text must use inline `style` prop, not Tailwind `bg-clip-text` with `dark:` prefix — the `dark:` prefix breaks inside `bg-clip-text`.
 
 ### Fonts
 
 Loaded in `src/app/layout.tsx` via `next/font/google`:
-- `--font-inter` → `font-body` / `font-sans` (body text)
-- `--font-lora` → `font-heading` / `font-display` (headings, h1–h6 globally)
-- `--font-mono` → `font-mono` (JetBrains Mono; used for eyebrows, number labels, badges)
+- `--font-rajdhani` → `font-heading` / `font-display` (headings, h1–h6 globally; semi-condensed tech feel)
+- `--font-ibm` → `font-body` / `font-sans` (IBM Plex Sans; body text)
+- `--font-mono` → `font-mono` (IBM Plex Mono; eyebrows, number labels, badges, code)
 
 ### Section pattern
 

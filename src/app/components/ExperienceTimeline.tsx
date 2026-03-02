@@ -113,7 +113,7 @@ const ExperienceTimeline = () => {
   return (
     <section
       id="experience"
-      className="py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden"
+      className="py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">

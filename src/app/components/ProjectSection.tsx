@@ -60,7 +60,7 @@ const ProjectSection = () => {
   const allTags = Array.from(new Set(projectData.flatMap(project => project.tag)));
 
   return (
-    <section id='projects' className='py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden' aria-labelledby="projects-heading">
+    <section id='projects' className='py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden' aria-labelledby="projects-heading">
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className='relative z-10 max-w-7xl mx-auto px-4 sm:px-6'>
         <div className="text-center mb-4">
