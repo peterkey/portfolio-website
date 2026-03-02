@@ -1,23 +1,25 @@
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Rajdhani, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 
-const inter = Inter({
+const rajdhani = Rajdhani({
   subsets: ["latin"],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: '--font-space',
+  variable: '--font-rajdhani',
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: '--font-ibm',
+  weight: ['300', '400', '500', '600'],
+  display: 'swap',
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: '--font-mono',
+  weight: ['400', '500', '600'],
   display: 'swap',
 });
 
@@ -33,14 +35,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://your-domain.com"), // Replace with your actual domain
+  metadataBase: new URL("https://your-domain.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Peter Williams-Key - IT Support Specialist Portfolio",
-    description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance. Experienced in Windows administration, network support, and CompTIA A+ certified professional.",
-    url: "https://your-domain.com", // Replace with your actual domain
+    description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance.",
+    url: "https://your-domain.com",
     siteName: "Peter Williams-Key Portfolio",
     images: [
       {
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
     title: "Peter Williams-Key - IT Support Specialist Portfolio",
     description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance.",
     images: ["/images/profile-pic.png"],
-    creator: "@peterkey", // Replace with your Twitter handle
+    creator: "@peterkey",
   },
   robots: {
     index: true,
@@ -72,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Add your Google Search Console verification code
+    google: "your-google-verification-code",
   },
 };
 
@@ -86,15 +88,15 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#06090F" />
+        <meta name="theme-color" content="#060D18" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body 
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
+      <body
+        className={`${rajdhani.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
         suppressHydrationWarning={true}
       >
         {children}
       </body>
     </html>
   );
-} 
+}

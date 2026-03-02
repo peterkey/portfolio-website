@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { 
-  CheckCircleIcon, 
-  ClockIcon, 
-  AcademicCapIcon 
+import {
+  CheckCircleIcon,
+  ClockIcon,
+  AcademicCapIcon
 } from "@heroicons/react/24/outline";
 
 interface Certification {
@@ -111,36 +111,36 @@ const CertificationsSection = () => {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {getStatusIcon(cert.status)}
-                                     <span className={`text-sm font-medium px-3 py-1 rounded-full ${
-                     cert.status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                     cert.status === 'in-progress' ? 'bg-trueAutumn-accentLight/20 dark:bg-trueAutumn-accentDark/20 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark' :
-                     'bg-blue-500/20 text-blue-400'
-                   }`}>
+                  <span className={`text-sm font-medium px-3 py-1 rounded-full ${
+                    cert.status === 'completed' ? 'bg-green-500/20 text-green-600' :
+                    cert.status === 'in-progress' ? 'bg-[#00D9FF]/10 text-[#00D9FF]' :
+                    'bg-blue-500/20 text-blue-600'
+                  }`}>
                     {getStatusText(cert.status)}
                   </span>
                 </div>
                 {cert.progress && (
                   <div className="text-right">
-                                         <div className="text-2xl font-bold text-trueAutumn-accentLight dark:text-trueAutumn-accentDark font-heading">{cert.progress}%</div>
-                     <div className="text-sm text-trueAutumn-textSecondaryDark font-body">Complete</div>
+                    <div className="text-2xl font-bold text-[#00D9FF] font-heading">{cert.progress}%</div>
+                    <div className="text-sm text-trueAutumn-textSecondaryDark font-body">Complete</div>
                   </div>
                 )}
               </div>
 
-                             <h3 className="text-xl font-semibold text-trueAutumn-textDark mb-2 font-heading">{cert.name}</h3>
-               <p className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-sm mb-4 font-body">{cert.issuer}</p>
-               <p className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{cert.description}</p>
+              <h3 className="text-xl font-semibold text-trueAutumn-textDark mb-2 font-heading">{cert.name}</h3>
+              <p className="text-[#FF6B35] text-sm mb-4 font-body">{cert.issuer}</p>
+              <p className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{cert.description}</p>
 
               {cert.progress && (
                 <div className="mt-6">
-                                     <div className="flex justify-between text-sm text-trueAutumn-textSecondaryDark mb-2 font-body">
-                     <span>Progress</span>
-                     <span>{cert.progress}%</span>
+                  <div className="flex justify-between text-sm text-trueAutumn-textSecondaryDark mb-2 font-body">
+                    <span>Progress</span>
+                    <span>{cert.progress}%</span>
                   </div>
-                  <div className="w-full bg-[#1A2744] rounded-full h-2">
+                  <div className="w-full bg-[#1A3A5C] rounded-full h-2">
                     <div
-                      className="bg-gradient-to-r from-[#22D3EE] to-[#A78BFA] h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${cert.progress}%`, boxShadow: "0 0 8px rgba(34, 211, 238, 0.5)" }}
+                      className="bg-gradient-to-r from-[#00D9FF] to-[#FF6B35] h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${cert.progress}%` }}
                     />
                   </div>
                 </div>
@@ -156,9 +156,9 @@ const CertificationsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-                     <div className="glass border rounded-2xl p-8 max-w-2xl mx-auto">
-             <h3 className="text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Commitment to Learning</h3>
-             <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
+          <div className="glass border rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Commitment to Learning</h3>
+            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
               I&apos;m actively pursuing these certifications to demonstrate my commitment to professional growth and technical excellence in IT support.
             </p>
           </div>
@@ -168,4 +168,4 @@ const CertificationsSection = () => {
   );
 };
 
-export default CertificationsSection; 
+export default CertificationsSection;

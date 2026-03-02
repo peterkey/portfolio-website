@@ -111,7 +111,7 @@ const CaseStudiesSection = () => {
         usersAffected: 1,
         costSavings: "Zero cloud costs — fully self-hosted"
       },
-      icon: <ServerIcon className="h-8 w-8 text-[#A78BFA]" />
+      icon: <ServerIcon className="h-8 w-8 text-[#00D9FF]" />
     }
   ];
 
@@ -144,29 +144,29 @@ const CaseStudiesSection = () => {
               className="glow-card glass border rounded-2xl overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-[#22D3EE]/5 p-8 border-b border-[#1A2744]">
+              <div className="bg-[#00D9FF]/5 p-8 border-b border-[#1A3A5C]">
                 <div className="flex items-center gap-4 mb-3">
                   {study.icon}
                   <div>
                     <h3 className="text-xl font-semibold text-trueAutumn-textDark font-heading">{study.title}</h3>
-                    <span className="text-[#22D3EE] text-xs font-mono bg-[#22D3EE]/10 px-3 py-1 rounded-full font-body tracking-wide">
+                    <span className="text-[#FF6B35] text-xs font-mono bg-[#FF6B35]/10 px-3 py-1 rounded-full font-body tracking-wide">
                       {study.category}
                     </span>
                   </div>
                 </div>
-                
+
                 {/* Metrics */}
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-1 text-[#6E88B5]">
+                  <div className="flex items-center gap-1 text-trueAutumn-textSecondaryDark">
                     <ClockIcon className="h-4 w-4" />
                     <span>Resolution: {study.metrics.resolutionTime}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-[#6E88B5]">
+                  <div className="flex items-center gap-1 text-trueAutumn-textSecondaryDark">
                     <UserGroupIcon className="h-4 w-4" />
                     <span>Users Affected: {study.metrics.usersAffected}</span>
                   </div>
                   {study.metrics.costSavings && (
-                    <div className="flex items-center gap-1 text-green-400">
+                    <div className="flex items-center gap-1 text-green-600">
                       <CheckCircleIcon className="h-4 w-4" />
                       <span>Impact: {study.metrics.costSavings}</span>
                     </div>
@@ -180,21 +180,21 @@ const CaseStudiesSection = () => {
                   {/* Problem & Process */}
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                      <h4 className="text-trueAutumn-textDark font-semibold mb-2 flex items-center gap-2">
                         <ExclamationTriangleIcon className="h-5 w-5 text-red-500" />
                         Problem
                       </h4>
-                      <p className="text-[#6E88B5] text-sm">{study.problem}</p>
+                      <p className="text-trueAutumn-textSecondaryDark text-sm">{study.problem}</p>
                     </div>
 
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                      <h4 className="text-trueAutumn-textDark font-semibold mb-2 flex items-center gap-2">
                         <MagnifyingGlassIcon className="h-5 w-5 text-blue-500" />
                         Process
                       </h4>
                       <ol className="list-decimal list-inside space-y-1">
                         {study.process.map((step, stepIndex) => (
-                          <li key={stepIndex} className="text-[#6E88B5] text-sm">
+                          <li key={stepIndex} className="text-trueAutumn-textSecondaryDark text-sm">
                             {step}
                           </li>
                         ))}
@@ -205,19 +205,19 @@ const CaseStudiesSection = () => {
                   {/* Solution & Result */}
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                      <h4 className="text-trueAutumn-textDark font-semibold mb-2 flex items-center gap-2">
                         <WrenchScrewdriverIcon className="h-5 w-5 text-green-500" />
                         Solution
                       </h4>
-                      <p className="text-[#6E88B5] text-sm">{study.solution}</p>
+                      <p className="text-trueAutumn-textSecondaryDark text-sm">{study.solution}</p>
                     </div>
 
                     <div>
-                      <h4 className="text-white font-semibold mb-2 flex items-center gap-2">
+                      <h4 className="text-trueAutumn-textDark font-semibold mb-2 flex items-center gap-2">
                         <CheckCircleIcon className="h-5 w-5 text-green-500" />
                         Result
                       </h4>
-                      <p className="text-[#6E88B5] text-sm">{study.result}</p>
+                      <p className="text-trueAutumn-textSecondaryDark text-sm">{study.result}</p>
                     </div>
                   </div>
                 </div>
@@ -234,9 +234,9 @@ const CaseStudiesSection = () => {
           className="text-center mt-12"
         >
           <div className="glass border rounded-2xl p-8 max-w-content mx-auto">
-            <h3 className="text-white font-semibold mb-2">Systematic Problem-Solving Approach</h3>
-            <p className="text-[#6E88B5] text-sm">
-              Every technical issue follows a structured methodology: Identify the problem, analyze the root cause, 
+            <h3 className="text-trueAutumn-textDark font-semibold mb-2">Systematic Problem-Solving Approach</h3>
+            <p className="text-trueAutumn-textSecondaryDark text-sm">
+              Every technical issue follows a structured methodology: Identify the problem, analyze the root cause,
               implement the solution, and verify the resolution. This approach ensures consistent, reliable results in fast-paced environments.
             </p>
           </div>
@@ -246,4 +246,4 @@ const CaseStudiesSection = () => {
   );
 };
 
-export default CaseStudiesSection; 
+export default CaseStudiesSection;

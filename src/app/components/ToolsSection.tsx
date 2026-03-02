@@ -90,7 +90,7 @@ const ToolsSection = () => {
               className="glow-card glass border rounded-2xl p-6 group"
             >
               {/* Icon */}
-              <div className="w-10 h-10 rounded-xl bg-[#22D3EE]/10 flex items-center justify-center text-[#22D3EE] mb-5 group-hover:bg-[#22D3EE]/20 transition-colors duration-300">
+              <div className="w-10 h-10 rounded-xl bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF] mb-5 group-hover:bg-[#00D9FF]/20 transition-colors duration-300">
                 {category.icon}
               </div>
 
@@ -106,7 +106,7 @@ const ToolsSection = () => {
                 {category.tools.map((tool) => (
                   <span
                     key={tool}
-                    className="font-mono text-xs border border-[#22D3EE]/25 text-[#22D3EE] bg-[#22D3EE]/5 rounded-full px-3 py-1"
+                    className="font-mono text-xs border border-[#FF6B35]/25 text-[#FF6B35] bg-[#FF6B35]/5 rounded-full px-3 py-1"
                   >
                     {tool}
                   </span>
@@ -136,8 +136,8 @@ const ToolsSection = () => {
                 { step: "03", title: "Escalate", body: "Document thoroughly and escalate when resolution requires additional expertise" },
               ].map((s) => (
                 <div key={s.step} className="text-center">
-                  <span className="font-mono text-[#22D3EE]/40 text-xs">{s.step}</span>
-                  <div className="font-heading font-bold text-lg mt-1 mb-2 text-white">
+                  <span className="font-mono text-[#00D9FF]/40 text-xs">{s.step}</span>
+                  <div className="font-heading font-bold text-lg mt-1 mb-2 text-trueAutumn-textDark">
                     {s.title}
                   </div>
                   <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">{s.body}</p>

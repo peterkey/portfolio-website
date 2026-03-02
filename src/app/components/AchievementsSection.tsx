@@ -18,7 +18,7 @@ const AchievementsSection = () => {
     <section id="achievements" className="py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute inset-0 bg-grid opacity-100" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-32 bg-[#22D3EE] blur-[120px] opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-32 bg-[#00D9FF] blur-[120px] opacity-[0.03] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
@@ -36,7 +36,7 @@ const AchievementsSection = () => {
         </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1A2744] rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1A3A5C] rounded-2xl overflow-hidden">
           {achievements.map((item, index) => (
             <motion.div
               key={item.label}
@@ -48,7 +48,7 @@ const AchievementsSection = () => {
             >
               {/* Animated number */}
               <div className="flex items-end gap-0.5 mb-3">
-                <span className="text-5xl sm:text-6xl font-bold font-mono text-[#22D3EE]">
+                <span className="text-5xl sm:text-6xl font-bold font-mono text-[#00D9FF]">
                   <AnimatedNumbers
                     includeComma
                     animateToNumber={item.value}
@@ -56,7 +56,7 @@ const AchievementsSection = () => {
                     className="inline"
                   />
                 </span>
-                <span className="text-3xl font-bold font-mono pb-1 text-[#22D3EE]">
+                <span className="text-3xl font-bold font-mono pb-1 text-[#00D9FF]">
                   {item.postfix}
                 </span>
               </div>

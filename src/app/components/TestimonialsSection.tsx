@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
             className="glow-card glass border rounded-2xl p-8 text-center"
             >
             <div className="flex justify-center mb-4">
-                            <UserGroupIcon className="h-12 w-12 text-[#22D3EE]" />
+              <UserGroupIcon className="h-12 w-12 text-[#00D9FF]" />
               </div>
             <h3 className="text-trueAutumn-textDark font-semibold mb-3 font-heading">Current Employer</h3>
             <p className="text-trueAutumn-textSecondaryDark text-sm mb-4 font-body">
@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
             className="glow-card glass border rounded-2xl p-8 text-center"
           >
             <div className="flex justify-center mb-4">
-              <DocumentTextIcon className="h-12 w-12 text-[#22D3EE]" />
+              <DocumentTextIcon className="h-12 w-12 text-[#00D9FF]" />
             </div>
             <h3 className="text-trueAutumn-textDark font-semibold mb-3 font-heading">Professional Development</h3>
             <p className="text-trueAutumn-textSecondaryDark text-sm mb-4 font-body">
@@ -68,7 +68,7 @@ const TestimonialsSection = () => {
             className="glow-card glass border rounded-2xl p-8 text-center"
           >
             <div className="flex justify-center mb-4">
-              <CheckCircleIcon className="h-12 w-12 text-[#22D3EE]" />
+              <CheckCircleIcon className="h-12 w-12 text-[#00D9FF]" />
                   </div>
             <h3 className="text-trueAutumn-textDark font-semibold mb-3 font-heading">Character Reference</h3>
             <p className="text-trueAutumn-textSecondaryDark text-sm mb-4 font-body">
@@ -94,15 +94,15 @@ const TestimonialsSection = () => {
             </p>
             <div className="flex items-center justify-center gap-4 text-sm">
               <div className="text-center">
-                <div className="text-[#22D3EE] font-bold text-xl font-heading">8+</div>
+                <div className="text-[#00D9FF] font-bold text-xl font-heading">8+</div>
                 <div className="text-trueAutumn-textSecondaryDark font-body">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-[#22D3EE] font-bold text-xl font-heading">20+</div>
+                <div className="text-[#00D9FF] font-bold text-xl font-heading">20+</div>
                 <div className="text-trueAutumn-textSecondaryDark font-body">Colleagues Supported</div>
               </div>
               <div className="text-center">
-                <div className="text-[#22D3EE] font-bold text-xl font-heading">Available</div>
+                <div className="text-[#00D9FF] font-bold text-xl font-heading">Available</div>
                 <div className="text-trueAutumn-textSecondaryDark font-body">Immediate Start</div>
               </div>
             </div>
@@ -113,4 +113,4 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection; 
+export default TestimonialsSection;

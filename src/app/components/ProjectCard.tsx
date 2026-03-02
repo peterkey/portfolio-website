@@ -12,32 +12,32 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }: ProjectCardProps) => {
   return (
-    <article className="group glow-card border border-[#1A2744] rounded-2xl overflow-hidden">
+    <article className="group glow-card border border-[#1A3A5C] rounded-2xl overflow-hidden">
       <div
         className='h-52 md:h-72 rounded-t-2xl relative'
         style={{ background: `url(${imgUrl})`, backgroundSize: "cover" }}
         role="img"
         aria-label={`Screenshot of ${title} project`}
       >
-        <div className='overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#06090F]/80 backdrop-blur-sm hidden group-hover:flex transition-all duration-300 gap-4'>
+        <div className='overlay items-center justify-center absolute top-0 left-0 w-full h-full bg-[#060D18]/80 backdrop-blur-sm hidden group-hover:flex transition-all duration-300 gap-4'>
           <Link
             href={gitUrl}
-            className='h-12 w-12 border border-[#22D3EE]/50 hover:border-[#22D3EE] hover:bg-[#22D3EE]/10 relative rounded-full group/link transition-all duration-200'
+            className='h-12 w-12 border border-[#00D9FF]/50 hover:border-[#00D9FF] hover:bg-[#00D9FF]/10 relative rounded-full group/link transition-all duration-200'
             target='_blank'
             rel="noopener noreferrer"
             aria-label={`View ${title} case study details`}
           >
-            <DocumentTextIcon className='h-6 w-6 text-[#6E88B5] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-[#22D3EE] transition-colors' />
+            <DocumentTextIcon className='h-6 w-6 text-trueAutumn-textSecondaryDark absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-[#00D9FF] transition-colors' />
           </Link>
           {previewUrl && previewUrl !== "#" && (
             <Link
               href={previewUrl}
-              className='h-12 w-12 border border-[#22D3EE]/50 hover:border-[#22D3EE] hover:bg-[#22D3EE]/10 relative rounded-full group/link transition-all duration-200'
+              className='h-12 w-12 border border-[#00D9FF]/50 hover:border-[#00D9FF] hover:bg-[#00D9FF]/10 relative rounded-full group/link transition-all duration-200'
               target='_blank'
               rel="noopener noreferrer"
               aria-label={`View ${title} project overview`}
             >
-              <EyeIcon className='h-6 w-6 text-[#6E88B5] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-[#22D3EE] transition-colors' />
+              <EyeIcon className='h-6 w-6 text-trueAutumn-textSecondaryDark absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-[#00D9FF] transition-colors' />
             </Link>
           )}
         </div>
@@ -50,4 +50,4 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }: Project
   );
 };
 
-export default ProjectCard; 
+export default ProjectCard;
