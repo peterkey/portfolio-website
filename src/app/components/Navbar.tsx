@@ -1,332 +1,353 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Bars3Icon, 
-  XMarkIcon, 
-  DocumentArrowDownIcon 
-} from "@heroicons/react/24/outline";
+import { useState, useEffect, useRef, type MouseEvent } from "react";
+import { motion } from "framer-motion";
+import { DocumentArrowDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import Logo from "../../../public/peterkey-black.png";
 import GithubIcon from "../../../public/github-icon.svg";
 import LinkedinIcon from "../../../public/linkedin.svg";
-import ThemeToggle from "./ThemeToggle";
 
-interface NavLink {
-  title: string;
-  path: string;
-  description?: string;
-}
-
-const navLinks: NavLink[] = [
-  { title: "Home", path: "#home", description: "Back to top" },
-  { title: "About", path: "#about", description: "Professional summary" },
-  { title: "Skills", path: "#skills", description: "Technical & soft skills" },
-  { title: "Certifications", path: "#certifications", description: "Current studies" },
-  { title: "Experience", path: "#experience", description: "Work history" },
-  { title: "Projects", path: "#projects", description: "Technical projects" },
-  { title: "Achievements", path: "#achievements", description: "Key metrics" },
-  { title: "Contact", path: "#contact", description: "Get in touch" },
+const navLinks = [
+  { title: "About",          path: "#about",          num: "01" },
+  { title: "Experience",     path: "#experience",     num: "02" },
+  { title: "Projects",       path: "#projects",       num: "03" },
+  { title: "Skills",         path: "#skills",         num: "04" },
+  { title: "Certifications", path: "#certifications", num: "05" },
+  { title: "Achievements",   path: "#achievements",   num: "06" },
+  { title: "Contact",        path: "#contact",        num: "07" },
 ];
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+const ICON_FILTER = "brightness(0) invert(1)";
 
-  // Handle scroll effect for sticky navbar
+/* ── PWK Hexagonal Monogram ─────────────────────────────────────── */
+const NavMonogram = () => (
+  <svg
+    width="82"
+    height="76"
+    viewBox="0 0 48 44"
+    fill="none"
+    aria-hidden="true"
+    focusable="false"
+  >
+    {/* Outer rotating dashed ring */}
+    <circle
+      cx="24" cy="22" r="20.5"
+      stroke="#00D9FF" strokeWidth="0.6" strokeDasharray="3 4" strokeOpacity="0.22"
+    >
+      <animateTransform attributeName="transform" type="rotate"
+        from="0 24 22" to="360 24 22" dur="24s" repeatCount="indefinite" />
+    </circle>
+
+    {/* Ambient glow */}
+    <ellipse cx="24" cy="22" rx="18" ry="14" fill="#00D9FF" opacity="0.03" />
+
+    {/* Main flat-top hexagon */}
+    <polygon
+      points="42,22 40,13 8,13 6,22 8,31 40,31"
+      fill="#0A1628"
+      stroke="#00D9FF"
+      strokeWidth="1.5"
+      strokeOpacity="0.65"
+    />
+
+    {/* Monogram text */}
+    <text
+      x="24" y="26"
+      textAnchor="middle"
+      fill="#00D9FF"
+      fontSize="13"
+      fontFamily="var(--font-rajdhani)"
+      fontWeight="700"
+      letterSpacing="0.04em"
+    >
+      PWK
+    </text>
+
+    {/* Status pulse dot — top-right vertex */}
+    <circle cx="40" cy="13" r="4.5" fill="#060D18" />
+    <circle cx="40" cy="13" r="3" fill="#22C55E">
+      <animate attributeName="opacity" values="1;0.25;1" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+
+    {/* Circuit trace marks — flat left/right sides */}
+    <line x1="42" y1="22" x2="48" y2="22"
+      stroke="#00D9FF" strokeWidth="1" strokeOpacity="0.28" />
+    <line x1="0"  y1="22" x2="6"  y2="22"
+      stroke="#00D9FF" strokeWidth="1" strokeOpacity="0.28" />
+  </svg>
+);
+
+const Navbar = () => {
+  const [isOpen,         setIsOpen]         = useState(false);
+  const [scrolled,       setScrolled]       = useState(false);
+  const [hidden,         setHidden]         = useState(false);
+  const [activeSection,  setActiveSection]  = useState("");
+  const lastScrollY = useRef(0);
+
+  /* ── Hide-on-scroll-down behaviour ─────────────────────────── */
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      const curr = window.scrollY;
+      setScrolled(curr > 20);
+      setHidden(curr > lastScrollY.current && curr > 100);
+      lastScrollY.current = curr;
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Handle escape key to close mobile menu
+  /* ── Active section tracking ────────────────────────────────── */
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsOpen(false);
-    };
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent background scroll
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
+    const observers: IntersectionObserver[] = [];
+    navLinks.forEach(({ path }) => {
+      const el = document.getElementById(path.slice(1));
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(path.slice(1)); },
+        { rootMargin: "-30% 0px -60% 0px" }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  /* ── Body scroll lock when overlay open ─────────────────────── */
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Smooth scroll function
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  /* ── Escape key closes overlay ───────────────────────────────── */
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setIsOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  const goto = (e: MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
-    const targetId = path.replace('#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const offsetTop = element.offsetTop - 80; // Account for navbar height
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-    
-    setIsOpen(false); // Close mobile menu
+    const el = document.getElementById(path.slice(1));
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+    setIsOpen(false);
   };
 
   const downloadCV = () => {
-    // Replace with actual CV download link
-    const link = document.createElement('a');
-    link.href = '/cv.txt'; // Update with actual CV file path
-    link.download = 'Peter_Williams-Key_CV.pdf';
-    link.click();
+    const a = document.createElement("a");
+    a.href = "/cv.txt";
+    a.download = "Peter_Williams-Key_CV.pdf";
+    a.click();
   };
 
   return (
     <>
-      {/* Backdrop for mobile menu */}
-      <AnimatePresence>
-        {isOpen && (
+      {/* ── Full-screen mobile overlay ──────────────────────────── */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[60] bg-[#060D18] flex flex-col">
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-5 h-16 border-b border-[#1A3A5C] shrink-0">
+            <NavMonogram />
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-10 h-10 flex items-center justify-center text-trueAutumn-textSecondaryDark hover:text-[#00D9FF] transition-colors"
+              aria-label="Close menu"
+            >
+              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                <line x1="1" y1="1" x2="15" y2="15" />
+                <line x1="15" y1="1" x2="1" y2="15" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Nav links */}
+          <nav className="flex-1 flex flex-col justify-center px-8 sm:px-12 overflow-y-auto">
+            {navLinks.map((link) => {
+              const active = activeSection === link.path.slice(1);
+              return (
+                <a
+                  key={link.title}
+                  href={link.path}
+                  onClick={(e) => goto(e, link.path)}
+                  aria-current={active ? "location" : undefined}
+                  className={`flex items-center gap-5 py-4 border-b border-[#1A3A5C]/40 last:border-0 group transition-colors ${
+                    active ? "text-[#00D9FF]" : "text-trueAutumn-textDark hover:text-[#00D9FF]"
+                  }`}
+                >
+                  <span className={`font-mono text-[10px] tracking-widest w-6 shrink-0 transition-colors ${
+                    active ? "text-[#00D9FF]" : "text-[#00D9FF]/35 group-hover:text-[#00D9FF]/65"
+                  }`}>
+                    {link.num}
+                  </span>
+                  <span className="font-heading font-bold text-2xl sm:text-3xl leading-none">
+                    {link.title}
+                  </span>
+                  {active && (
+                    <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#00D9FF] shrink-0" />
+                  )}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Bottom bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
-            onClick={() => setIsOpen(false)}
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Main Navbar */}
-      <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-trueAutumn-light/95 dark:bg-trueAutumn-dark/95 backdrop-blur-md border-b border-trueAutumn-borderLight/50 dark:border-trueAutumn-borderDark/50 shadow-lg' 
-            : 'bg-trueAutumn-light dark:bg-trueAutumn-dark'
-        }`}
-      role="navigation"
-      aria-label="Main navigation"
-    >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            
-            {/* Logo/Name */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center space-x-3"
+            transition={{ delay: 0.45 }}
+            className="flex items-center justify-between px-8 sm:px-12 py-5 border-t border-[#1A3A5C] shrink-0"
+          >
+            <div className="flex items-center gap-3">
+              <a
+                href="https://github.com/peterkey"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="p-1 opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <Image src={GithubIcon} alt="" className="w-5 h-5" style={{ filter: ICON_FILTER }} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pkey/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-1 opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <Image src={LinkedinIcon} alt="" className="w-5 h-5" style={{ filter: ICON_FILTER }} />
+              </a>
+            </div>
+            <button
+              onClick={downloadCV}
+              className="flex items-center gap-1.5 bg-[#00D9FF] text-[#060D18] px-4 py-2 rounded-full font-mono font-bold text-xs tracking-wide hover:bg-[#00B8E0] transition-colors"
+              style={{ boxShadow: "0 4px 14px rgba(0,217,255,0.25)" }}
             >
-              {/* <Image 
-                src={Logo} 
-                alt="Peter Williams-Key" 
-                className="w-10 h-10 lg:w-12 lg:h-12 rounded-full"
-              priority
-              /> */}
-              <span className="text-trueAutumn-textLight dark:text-trueAutumn-textDark font-heading font-semibold text-lg lg:text-xl hidden sm:block">
-                Peter Williams-Key
-              </span>
-            </motion.div>
+              <DocumentArrowDownIcon className="w-4 h-4" />
+              Download CV
+            </button>
+          </motion.div>
+        </div>
+      )}
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {navLinks.map((link, index) => (
-                <motion.div
-                  key={link.title}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
+      {/* ── Primary navbar ──────────────────────────────────────── */}
+      <motion.nav
+        animate={{ y: hidden ? "-100%" : "0%" }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+          scrolled ? "bg-[#060D18]/90 backdrop-blur-xl" : "bg-transparent"
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 xl:h-20">
+
+            {/* Logo */}
+            <a
+              href="#home"
+              onClick={(e) => goto(e, "#home")}
+              className="flex items-center group"
+              aria-label="Peter Williams-Key — back to top"
+            >
+              <span className="transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(0,217,255,0.45)]">
+                <NavMonogram />
+              </span>
+            </a>
+
+            {/* Desktop nav — visible at xl+ only to guarantee space */}
+            <div className="hidden xl:flex items-center gap-7">
+              {navLinks.map(({ title, path, num }) => {
+                const active = activeSection === path.slice(1);
+                return (
                   <a
-                    href={link.path}
-                    onClick={(e) => handleNavClick(e, link.path)}
-                    className="relative text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark hover:text-trueAutumn-accentLight dark:hover:text-trueAutumn-accentDark transition-colors duration-200 font-body font-medium text-sm group"
-                    aria-label={`Navigate to ${link.title} section`}
+                    key={title}
+                    href={path}
+                    onClick={(e) => goto(e, path)}
+                    aria-current={active ? "location" : undefined}
+                    className="relative group flex flex-col items-center gap-1 pb-1"
                   >
-                    {link.title}
-                    {/* Hover underline effect */}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-trueAutumn-accentLight dark:bg-trueAutumn-accentDark transition-all duration-300 group-hover:w-full"></span>
-                    {/* Tooltip */}
-                    <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-trueAutumn-cardDark dark:bg-trueAutumn-cardLight text-trueAutumn-textDark dark:text-trueAutumn-textLight text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                      {link.description}
+                    <span className={`flex items-baseline gap-1 font-mono leading-none transition-colors duration-200 ${
+                      active ? "text-[#00D9FF]" : "text-trueAutumn-textSecondaryDark group-hover:text-trueAutumn-textDark"
+                    }`}>
+                      <span className={`text-[9px] tracking-widest transition-colors ${
+                        active ? "text-[#00D9FF]" : "text-[#00D9FF]/35 group-hover:text-[#00D9FF]/60"
+                      }`}>
+                        {num}
+                      </span>
+                      <span className="text-[11px] tracking-wider">{title}</span>
                     </span>
+                    {/* Scale-in underline */}
+                    <span
+                      className={`absolute bottom-0 left-0 right-0 h-px origin-center transition-all duration-300 ${
+                        active
+                          ? "bg-[#00D9FF] scale-x-100"
+                          : "bg-[#00D9FF]/50 scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
                   </a>
-                </motion.div>
-              ))}
+                );
+              })}
             </div>
 
-            {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4">
-              {/* Social Links */}
-              <div className="flex items-center space-x-2">
-                <a
-                  href="https://github.com/peterkey"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark hover:text-trueAutumn-accentLight dark:hover:text-trueAutumn-accentDark transition-colors duration-200"
-                  aria-label="Visit GitHub profile"
-                >
-                  <Image src={GithubIcon} alt="GitHub" className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/pkey/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 transition-all duration-200 hover:scale-110"
-                  aria-label="Visit LinkedIn profile"
-          >
-            <Image 
-              src={LinkedinIcon} 
-                    alt="LinkedIn" 
-                    className="w-5 h-5"
-                    style={{ filter: 'brightness(0) saturate(100%) invert(23%) sepia(87%) saturate(1734%) hue-rotate(191deg) brightness(93%) contrast(91%)' }}
-                  />
-                </a>
-        </div>
-        
-              {/* Theme Toggle */}
-              <ThemeToggle />
-        
-              {/* Download CV Button */}
+            {/* Desktop actions */}
+            <div className="hidden xl:flex items-center gap-2">
+              <a
+                href="https://github.com/peterkey"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="p-2 opacity-50 hover:opacity-100 transition-opacity duration-200"
+              >
+                <Image src={GithubIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: ICON_FILTER }} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pkey/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="p-2 opacity-50 hover:opacity-100 transition-opacity duration-200"
+              >
+                <Image src={LinkedinIcon} alt="" className="w-[18px] h-[18px]" style={{ filter: ICON_FILTER }} />
+              </a>
+
+              <div className="w-px h-4 bg-[#1A3A5C] mx-1" aria-hidden="true" />
+
               <motion.button
                 onClick={downloadCV}
-                className="flex items-center space-x-2 bg-trueAutumn-buttonLight dark:bg-trueAutumn-buttonDark hover:bg-trueAutumn-buttonLightHover dark:hover:bg-trueAutumn-buttonDarkHover text-trueAutumn-light dark:text-trueAutumn-dark px-4 py-2 rounded-lg font-body font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-light dark:focus:ring-offset-trueAutumn-dark"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-1.5 bg-[#00D9FF] text-[#060D18] px-3.5 py-2 rounded-full font-mono font-bold text-[11px] tracking-wide hover:bg-[#00B8E0] transition-colors focus:outline-none focus:ring-2 focus:ring-[#00D9FF] focus:ring-offset-2 focus:ring-offset-[#060D18]"
+                style={{ boxShadow: "0 4px 14px rgba(0,217,255,0.25)" }}
                 aria-label="Download CV"
               >
-                <DocumentArrowDownIcon className="w-4 h-4" />
-                <span className="hidden sm:inline">Download CV</span>
+                <DocumentArrowDownIcon className="w-3.5 h-3.5" />
+                Download CV
               </motion.button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-trueAutumn-textLight dark:text-trueAutumn-textDark hover:text-trueAutumn-accentLight dark:hover:text-trueAutumn-accentDark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-light dark:focus:ring-offset-trueAutumn-dark rounded"
+            {/* Mobile hamburger — asymmetric two-line style */}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="xl:hidden flex flex-col gap-[5px] p-2 group"
+              aria-label="Open navigation menu"
               aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              whileTap={{ scale: 0.95 }}
+              aria-controls="mobile-overlay"
             >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <XMarkIcon className="w-6 h-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Bars3Icon className="w-6 h-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              <span className="block w-5 h-0.5 bg-trueAutumn-textDark group-hover:bg-[#00D9FF] transition-colors" />
+              <span className="block w-3 h-0.5 bg-trueAutumn-textDark group-hover:bg-[#00D9FF] transition-colors ml-auto" />
+            </button>
           </div>
         </div>
-        
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              id="mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="lg:hidden bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark border-t border-trueAutumn-borderLight dark:border-trueAutumn-borderDark"
-            >
-              <div className="px-4 py-6 space-y-4">
-                {/* Mobile Navigation Links */}
-                <div className="space-y-2">
-            {navLinks.map((link, index) => (
-                    <motion.a
-                      key={link.title}
-                      href={link.path}
-                      onClick={(e) => handleNavClick(e, link.path)}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="block py-3 px-4 text-trueAutumn-textLight dark:text-trueAutumn-textDark hover:text-trueAutumn-accentLight dark:hover:text-trueAutumn-accentDark hover:bg-trueAutumn-borderLight dark:hover:bg-trueAutumn-borderDark rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-cardLight dark:focus:ring-offset-trueAutumn-cardDark font-body"
-                      aria-label={`Navigate to ${link.title} section`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium">{link.title}</span>
-                        {link.description && (
-                          <span className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm">{link.description}</span>
-                        )}
-                      </div>
-                    </motion.a>
-                  ))}
-        </div>
 
-                {/* Mobile Actions */}
-                <div className="pt-4 border-t border-trueAutumn-borderLight dark:border-trueAutumn-borderDark space-y-4">
-                  {/* Social Links */}
-                  <div className="flex items-center justify-center space-x-4">
-                    <a
-                      href="https://github.com/peterkey"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark hover:text-trueAutumn-accentLight dark:hover:text-trueAutumn-accentDark transition-colors duration-200"
-                      aria-label="Visit GitHub profile"
-                    >
-                      <Image src={GithubIcon} alt="GitHub" className="w-6 h-6" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/pkey/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 transition-all duration-200 hover:scale-110"
-                      aria-label="Visit LinkedIn profile"
-                    >
-                      <Image 
-                        src={LinkedinIcon} 
-                        alt="LinkedIn" 
-                        className="w-6 h-6"
-                        style={{ filter: 'brightness(0) saturate(100%) invert(23%) sepia(87%) saturate(1734%) hue-rotate(191deg) brightness(93%) contrast(91%)' }}
-                      />
-                    </a>
-                    
-                    {/* Theme Toggle */}
-                    <ThemeToggle className="!w-10 !h-10" />
-      </div>
-      
-                  {/* Download CV Button */}
-                  <motion.button
-                    onClick={downloadCV}
-                    className="w-full flex items-center justify-center space-x-2 bg-trueAutumn-buttonLight dark:bg-trueAutumn-buttonDark hover:bg-trueAutumn-buttonLightHover dark:hover:bg-trueAutumn-buttonDarkHover text-trueAutumn-light dark:text-trueAutumn-dark px-4 py-3 rounded-lg font-body font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-trueAutumn-accentLight dark:focus:ring-trueAutumn-accentDark focus:ring-offset-2 focus:ring-offset-trueAutumn-cardLight dark:focus:ring-offset-trueAutumn-cardDark"
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Download CV"
-                  >
-                    <DocumentArrowDownIcon className="w-5 h-5" />
-                    <span>Download CV</span>
-                  </motion.button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-    </nav>
-
-      {/* Spacer to prevent content from hiding under navbar */}
-      <div className="h-16 lg:h-20"></div>
+        {/* Gradient separator — appears on scroll */}
+        <motion.div
+          animate={{ opacity: scrolled ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="h-px bg-gradient-to-r from-transparent via-[#00D9FF]/15 to-transparent"
+          aria-hidden="true"
+        />
+      </motion.nav>
     </>
   );
 };
 
-export default Navbar; 
+export default Navbar;

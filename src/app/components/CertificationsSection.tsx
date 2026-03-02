@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { 
-  CheckCircleIcon, 
-  ClockIcon, 
-  AcademicCapIcon 
+import {
+  CheckCircleIcon,
+  ClockIcon,
+  AcademicCapIcon
 } from "@heroicons/react/24/outline";
 
 interface Certification {
@@ -81,8 +81,9 @@ const CertificationsSection = () => {
   };
 
   return (
-    <section id="certifications" className="py-16 sm:py-24 bg-trueAutumn-light dark:bg-trueAutumn-dark">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="certifications" className="py-20 sm:py-28 bg-trueAutumn-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-100" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,8 +91,9 @@ const CertificationsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-6 font-heading">Certifications & Training</h2>
-          <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-lg max-w-3xl mx-auto font-body leading-relaxed">
+          <span className="eyebrow mb-3">Professional development</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">Certifications & Training</h2>
+          <p className="text-trueAutumn-textSecondaryDark text-lg max-w-3xl mx-auto font-body leading-relaxed">
             Ongoing professional development and certifications to strengthen my technical foundation and stay current with industry standards.
           </p>
         </motion.div>
@@ -104,42 +106,42 @@ const CertificationsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark rounded-xl p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark hover:border-trueAutumn-accentLight dark:hover:border-trueAutumn-accentDark transition-colors shadow-lg"
+              className="glow-card glass border rounded-2xl p-6"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {getStatusIcon(cert.status)}
-                                     <span className={`text-sm font-medium px-3 py-1 rounded-full ${
-                     cert.status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                     cert.status === 'in-progress' ? 'bg-trueAutumn-accentLight/20 dark:bg-trueAutumn-accentDark/20 text-trueAutumn-accentLight dark:text-trueAutumn-accentDark' :
-                     'bg-blue-500/20 text-blue-400'
-                   }`}>
+                  <span className={`text-sm font-medium px-3 py-1 rounded-full ${
+                    cert.status === 'completed' ? 'bg-green-500/20 text-green-600' :
+                    cert.status === 'in-progress' ? 'bg-[#00D9FF]/10 text-[#00D9FF]' :
+                    'bg-blue-500/20 text-blue-600'
+                  }`}>
                     {getStatusText(cert.status)}
                   </span>
                 </div>
                 {cert.progress && (
                   <div className="text-right">
-                                         <div className="text-2xl font-bold text-trueAutumn-accentLight dark:text-trueAutumn-accentDark font-heading">{cert.progress}%</div>
-                     <div className="text-sm text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body">Complete</div>
+                    <div className="text-2xl font-bold text-[#00D9FF] font-heading">{cert.progress}%</div>
+                    <div className="text-sm text-trueAutumn-textSecondaryDark font-body">Complete</div>
                   </div>
                 )}
               </div>
 
-                             <h3 className="text-xl font-semibold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-2 font-heading">{cert.name}</h3>
-               <p className="text-trueAutumn-accentLight dark:text-trueAutumn-accentDark text-sm mb-4 font-body">{cert.issuer}</p>
-               <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{cert.description}</p>
+              <h3 className="text-xl font-semibold text-trueAutumn-textDark mb-2 font-heading">{cert.name}</h3>
+              <p className="text-[#FF6B35] text-sm mb-4 font-body">{cert.issuer}</p>
+              <p className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{cert.description}</p>
 
               {cert.progress && (
                 <div className="mt-6">
-                                     <div className="flex justify-between text-sm text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark mb-2 font-body">
-                     <span>Progress</span>
-                     <span>{cert.progress}%</span>
+                  <div className="flex justify-between text-sm text-trueAutumn-textSecondaryDark mb-2 font-body">
+                    <span>Progress</span>
+                    <span>{cert.progress}%</span>
                   </div>
-                  <div className="w-full bg-[#333] rounded-full h-2">
-                    <div 
-                                             className="bg-gradient-to-r from-trueAutumn-accentLight to-trueAutumn-accentLight dark:from-trueAutumn-accentDark dark:to-trueAutumn-accentDark h-2 rounded-full transition-all duration-500"
+                  <div className="w-full bg-[#1A3A5C] rounded-full h-2">
+                    <div
+                      className="bg-gradient-to-r from-[#00D9FF] to-[#FF6B35] h-2 rounded-full transition-all duration-500"
                       style={{ width: `${cert.progress}%` }}
-                    ></div>
+                    />
                   </div>
                 </div>
               )}
@@ -154,9 +156,9 @@ const CertificationsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-                     <div className="bg-trueAutumn-cardLight dark:bg-trueAutumn-cardDark rounded-xl p-8 border border-trueAutumn-borderLight dark:border-trueAutumn-borderDark max-w-2xl mx-auto shadow-lg">
-             <h3 className="text-trueAutumn-textLight dark:text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Commitment to Learning</h3>
-             <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark font-body leading-relaxed">
+          <div className="glass border rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-trueAutumn-textDark font-semibold mb-4 text-xl font-heading">Commitment to Learning</h3>
+            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
               I&apos;m actively pursuing these certifications to demonstrate my commitment to professional growth and technical excellence in IT support.
             </p>
           </div>
@@ -166,4 +168,4 @@ const CertificationsSection = () => {
   );
 };
 
-export default CertificationsSection; 
+export default CertificationsSection;

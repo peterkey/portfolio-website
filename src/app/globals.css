@@ -2,75 +2,237 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS Custom Properties ── */
+:root {
+  --cyan: #00D9FF;
+  --cyan-dim: rgba(0, 217, 255, 0.07);
+  --cyan-glow: rgba(0, 217, 255, 0.18);
+  --orange: #FF6B35;
+  --orange-dim: rgba(255, 107, 53, 0.08);
+  --green: #22C55E;
+  --surface: #0A1628;
+  --surface-2: #0D1F35;
+  --border: #1A3A5C;
+  --border-active: rgba(0, 217, 255, 0.35);
+}
+
 html {
   scroll-behavior: smooth;
 }
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #060D18; }
+::-webkit-scrollbar-thumb { background: #1A3A5C; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00D9FF; }
 
 body {
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #060D18;
 }
 
-/* Typography utilities */
+/* ── Typography Utilities ── */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .font-heading {
-    font-family: var(--font-lora), serif;
+    font-family: var(--font-rajdhani), system-ui, sans-serif;
     font-weight: 600;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.02em;
   }
-  
+
   .font-body {
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-ibm), sans-serif;
     font-weight: 400;
   }
-  
+
   .font-display {
-    font-family: var(--font-lora), serif;
+    font-family: var(--font-rajdhani), system-ui, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.04em;
   }
 }
 
-/* Heading styles */
+/* ── Heading styles — Rajdhani ── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-lora), serif;
+  font-family: var(--font-rajdhani), system-ui, sans-serif;
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
 h1 {
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
+  line-height: 1.0;
 }
 
 h2 {
   font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
 }
 
 h3, h4, h5, h6 {
   font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-/* Button and form element styles */
+/* ── Form and nav elements ── */
 button, input, textarea, select {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-ibm), sans-serif;
 }
 
-/* Navigation styles */
 nav {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-ibm), sans-serif;
   font-weight: 500;
 }
 
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM UTILITIES
+═══════════════════════════════════════════════ */
+
+/* Technical crosshatch grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 217, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Dark technical panel surface */
+.glass {
+  background: rgba(10, 22, 40, 0.85);
+  border: 1px solid rgba(0, 217, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Technical panel hover — cyan glow */
+.glow-card {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+.glow-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 217, 255, 0.22),
+    0 0 24px rgba(0, 217, 255, 0.07),
+    0 16px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 217, 255, 0.28) !important;
+  transform: translateY(-2px);
+}
+
+/* Section eyebrow — terminal comment style */
+.eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #00D9FF;
+  display: block;
+}
+.eyebrow::before {
+  content: '// ';
+  opacity: 0.45;
+}
+
+/* Gradient text — cyan to orange */
+.gradient-text {
+  background: linear-gradient(135deg, #00D9FF 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Pulsing cyan glow ring */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(0, 217, 255, 0); }
+}
+.glow-ring {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Network / NOC utilities ── */
+
+/* Flowing dashes — network wire animation */
+@keyframes flow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* Status LED */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px #22C55E, 0 0 10px #22C55E; }
+  50%       { opacity: 0.6; box-shadow: 0 0 2px #22C55E; }
+}
+.status-led {
+  width: 6px;
+  height: 6px;
+  background: #22C55E;
+  border-radius: 50%;
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+/* Cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink::after {
+  content: '_';
+  animation: cursor-blink 1s step-end infinite;
+  color: #00D9FF;
+}
+
+/* Tech panel corner accents */
+.tech-corner {
+  position: relative;
+}
+.tech-corner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 12px; height: 12px;
+  border-top: 1px solid rgba(0, 217, 255, 0.5);
+  border-left: 1px solid rgba(0, 217, 255, 0.5);
+  border-radius: 2px 0 0 0;
+  pointer-events: none;
+}
+.tech-corner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 12px; height: 12px;
+  border-bottom: 1px solid rgba(0, 217, 255, 0.5);
+  border-right: 1px solid rgba(0, 217, 255, 0.5);
+  border-radius: 0 0 2px 0;
+  pointer-events: none;
+}
+
+/* Gradient border utility */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.5), rgba(255, 107, 53, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Scan line effect (very subtle) */
 .radial-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(95, 218, 250, 0.2) 0%, transparent 60%), rgba(18, 18, 18, 1);
+  background: radial-gradient(circle at 50% 0%, rgba(0, 217, 255, 0.12) 0%, transparent 60%), #060D18;
 }
 
 .linear-mask {
@@ -91,9 +253,9 @@ nav {
 .linear-overlay {
   background: linear-gradient(
     -75deg,
-    rgba(255, 255, 255, 0.1) calc(var(--x) + 20%),
-    rgba(95, 218, 250, 0.5) calc(var(--x) + 25%),
-    rgba(255, 255, 255, 0.1) calc(var(--x) + 100%)
+    rgba(0, 217, 255, 0.05) calc(var(--x) + 20%),
+    rgba(0, 217, 255, 0.15) calc(var(--x) + 25%),
+    rgba(0, 217, 255, 0.05) calc(var(--x) + 100%)
   );
   mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
   -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black);
