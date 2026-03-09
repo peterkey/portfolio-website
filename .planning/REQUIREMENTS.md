@@ -61,34 +61,32 @@
 
 ## Traceability
 
-Populated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FIX-01 | — | Pending |
-| FIX-02 | — | Pending |
-| HERO-01 | — | Pending |
-| HERO-02 | — | Pending |
-| HERO-03 | — | Pending |
-| HERO-04 | — | Pending |
-| STRUCT-01 | — | Pending |
-| STRUCT-02 | — | Pending |
-| STRUCT-03 | — | Pending |
-| STRUCT-04 | — | Pending |
-| COPY-01 | — | Pending |
-| COPY-02 | — | Pending |
-| COPY-03 | — | Pending |
-| COPY-04 | — | Pending |
-| COPY-05 | — | Pending |
-| DESIGN-01 | — | Pending |
-| DESIGN-02 | — | Pending |
-| DESIGN-03 | — | Pending |
+| FIX-01 | Phase 1 | Pending |
+| FIX-02 | Phase 1 | Pending |
+| HERO-01 | Phase 2 | Pending |
+| HERO-02 | Phase 2 | Pending |
+| HERO-03 | Phase 2 | Pending |
+| HERO-04 | Phase 2 | Pending |
+| STRUCT-01 | Phase 3 | Pending |
+| STRUCT-02 | Phase 3 | Pending |
+| STRUCT-03 | Phase 3 | Pending |
+| STRUCT-04 | Phase 3 | Pending |
+| COPY-01 | Phase 4 | Pending |
+| COPY-02 | Phase 4 | Pending |
+| COPY-03 | Phase 4 | Pending |
+| COPY-04 | Phase 4 | Pending |
+| COPY-05 | Phase 4 | Pending |
+| DESIGN-01 | Phase 4 | Pending |
+| DESIGN-02 | Phase 4 | Pending |
+| DESIGN-03 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 18 total
-- Mapped to phases: 0
-- Unmapped: 18 ⚠️
+- Mapped to phases: 18
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-09*
-*Last updated: 2026-03-09 after initial definition*
+*Last updated: 2026-03-09 after roadmap creation*
