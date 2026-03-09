@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-emergency-fix-01-01-PLAN.md — awaiting Task 3 human-verify checkpoint
-last_updated: "2026-03-09T11:59:08.360Z"
+stopped_at: Completed 01-emergency-fix-01-01 — CV download verified and functional
+last_updated: "2026-03-09T12:05:02.070Z"
 last_activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
 progress:
   total_phases: 4
@@ -51,6 +51,7 @@ Progress: [██████████] 100%
 
 *Updated after each plan completion*
 | Phase 01-emergency-fix P01 | 10 | 2 tasks | 2 files |
+| Phase 01-emergency-fix P01 | 10 | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -59,6 +60,7 @@ Progress: [██████████] 100%
 - [Init]: Brownfield improvements only — codebase is solid; problems are presentation not architecture
 - [Init]: Content reframe before new features — weak copy undermines even good new features
 - [Init]: Phase 1 before everything else — CV download defect is live and breaks the primary recruiter CTA
+- [Phase 01-emergency-fix]: Hyphenated filename Peter-Key-CV.pdf chosen for download attribute — consistent with public/ file convention, clean for recruiters
 - [Phase 01-emergency-fix]: Hyphenated filename Peter-Key-CV.pdf chosen for download attribute — consistent with public/ file convention, clean for recruiters
 
 ### Pending Todos
@@ -72,6 +74,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T11:59:08.356Z
-Stopped at: Completed 01-emergency-fix-01-01-PLAN.md — awaiting Task 3 human-verify checkpoint
+Last session: 2026-03-09T12:05:02.066Z
+Stopped at: Completed 01-emergency-fix-01-01 — CV download verified and functional
 Resume file: None

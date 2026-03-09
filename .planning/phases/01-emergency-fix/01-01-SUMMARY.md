@@ -61,9 +61,9 @@ Each task was committed atomically:
 
 1. **Task 1: Place PDF in public/** - human-action (no commit — user action)
 2. **Task 2: Update Navbar download link** - `886eaa5` (fix)
-3. **Task 3: Human verify download end-to-end** - checkpoint (awaiting user)
+3. **Task 3: Human verify download end-to-end** - `54b6716` (human-verify approved)
 
-**Plan metadata:** (final commit after checkpoint approval)
+**Plan metadata:** `54b6716` (docs: complete emergency fix plan)
 
 ## Files Created/Modified
 - `public/peter-key-cv.pdf` — real CV PDF file placed by user; served statically by Next.js at /peter-key-cv.pdf
