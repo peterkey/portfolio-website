@@ -40,7 +40,10 @@ Plans:
   2. A one-sentence value proposition is visible above the fold that states an outcome, not an activity
   3. The stat strip uses outcome-oriented language (impact and scope, not just headcounts)
   4. Both CTA buttons are visible and clickable immediately on load without waiting for animation
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Rewrite HeroSection: static title, outcome value prop, reframed stats, zero animation delays
 
 ### Phase 3: Page Structure
 **Goal**: The strongest credibility evidence (Case Studies) is visible within 60 seconds of scrolling, and placeholder sections are removed
@@ -74,6 +77,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Emergency Fix | 1/1 | Complete    | 2026-03-09 |
-| 2. Hero Hook | 0/TBD | Not started | - |
+| 2. Hero Hook | 0/1 | Not started | - |
 | 3. Page Structure | 0/TBD | Not started | - |
 | 4. Copy and Design | 0/TBD | Not started | - |
