@@ -9,10 +9,10 @@ import LinkedinIcon from "../../../public/linkedin.svg";
 const navLinks = [
   { title: "About",          path: "#about",          num: "01" },
   { title: "Experience",     path: "#experience",     num: "02" },
-  { title: "Projects",       path: "#projects",       num: "03" },
-  { title: "Skills",         path: "#skills",         num: "04" },
-  { title: "Certifications", path: "#certifications", num: "05" },
-  { title: "Achievements",   path: "#achievements",   num: "06" },
+  { title: "Case Studies",   path: "#case-studies",   num: "03" },
+  { title: "Projects",       path: "#projects",       num: "04" },
+  { title: "Skills",         path: "#skills",         num: "05" },
+  { title: "Certifications", path: "#certifications", num: "06" },
   { title: "Contact",        path: "#contact",        num: "07" },
 ];
 
