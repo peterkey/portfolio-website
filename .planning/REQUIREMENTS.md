@@ -7,8 +7,8 @@
 
 ### Emergency Fixes
 
-- [ ] **FIX-01**: CV download button links to an actual PDF file (not cv.txt)
-- [ ] **FIX-02**: CV file download attribute and filename are consistent (no mismatch)
+- [x] **FIX-01**: CV download button links to an actual PDF file (not cv.txt)
+- [x] **FIX-02**: CV file download attribute and filename are consistent (no mismatch)
 
 ### Hero
 
@@ -63,8 +63,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FIX-01 | Phase 1 | Pending |
-| FIX-02 | Phase 1 | Pending |
+| FIX-01 | Phase 1 | Complete |
+| FIX-02 | Phase 1 | Complete |
 | HERO-01 | Phase 2 | Pending |
 | HERO-02 | Phase 2 | Pending |
 | HERO-03 | Phase 2 | Pending |

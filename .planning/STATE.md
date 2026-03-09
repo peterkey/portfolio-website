@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: planning
+stopped_at: Completed 01-emergency-fix-01-01-PLAN.md — awaiting Task 3 human-verify checkpoint
+last_updated: "2026-03-09T11:59:08.360Z"
+last_activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
+progress:
+  total_phases: 4
+  completed_phases: 1
+  total_plans: 1
+  completed_plans: 1
+  percent: 100
+---
+
 # Project State
 
 ## Project Reference
@@ -14,7 +30,7 @@ Plan: 0 of TBD in current phase
 Status: Ready to plan
 Last activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -34,6 +50,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-emergency-fix P01 | 10 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -42,6 +59,7 @@ Progress: [░░░░░░░░░░] 0%
 - [Init]: Brownfield improvements only — codebase is solid; problems are presentation not architecture
 - [Init]: Content reframe before new features — weak copy undermines even good new features
 - [Init]: Phase 1 before everything else — CV download defect is live and breaks the primary recruiter CTA
+- [Phase 01-emergency-fix]: Hyphenated filename Peter-Key-CV.pdf chosen for download attribute — consistent with public/ file convention, clean for recruiters
 
 ### Pending Todos
 
@@ -54,6 +72,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09
-Stopped at: Roadmap created, STATE.md initialized — ready to plan Phase 1
+Last session: 2026-03-09T11:59:08.356Z
+Stopped at: Completed 01-emergency-fix-01-01-PLAN.md — awaiting Task 3 human-verify checkpoint
 Resume file: None
