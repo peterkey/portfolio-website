@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 3 context gathered
-last_updated: "2026-03-09T14:46:28.809Z"
-last_activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
+status: in-progress
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-03-09T00:00:00.000Z"
+last_activity: 2026-03-09 — Phase 3 Plan 01 complete — page structure reordered, placeholders removed
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 2
-  completed_plans: 2
-  percent: 100
+  total_plans: 3
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** Within 10 seconds of landing, any recruiter or hiring manager should think: "This person knows what they're doing, I need to contact them, and they're different from everyone else I've seen today."
-**Current focus:** Phase 1 — Emergency Fix
+**Current focus:** Phase 3 — Page Structure
 
 ## Current Position
 
-Phase: 1 of 4 (Emergency Fix)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
+Phase: 3 of 4 (Page Structure)
+Plan: 1 of TBD in current phase
+Status: Plan 01 complete — ready for next plan
+Last activity: 2026-03-09 — Phase 3 Plan 01 complete — page structure reordered, placeholders removed
 
-Progress: [██████████] 100%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Progress: [██████████] 100%
 | Phase 01-emergency-fix P01 | 10 | 2 tasks | 2 files |
 | Phase 01-emergency-fix P01 | 10 | 3 tasks | 2 files |
 | Phase 02-hero-hook P01 | 15 | 2 tasks | 3 files |
+| Phase 03-page-structure P01 | checkpoint-gated | 4 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Progress: [██████████] 100%
 - [Phase 02-hero-hook]: Static role title chosen over typing animation — eliminates ambiguity for recruiters scanning fast
 - [Phase 02-hero-hook]: FCR-FOCUSED stat replaces 20+ Staff Supported — metric reframed as quality signal not headcount
 - [Phase 02-hero-hook]: react-type-animation uninstalled — dead dependency removed, bundle kept lean
+- [Phase 03-page-structure]: Case Studies surfaced before Projects — credibility evidence must appear early in scroll journey
+- [Phase 03-page-structure]: Achievements and Testimonials removed — placeholder sections with no real content damage trust
+- [Phase 03-page-structure]: Background swap required after reorder — CaseStudiesSection gets cardDark, ProjectSection gets dark
 
 ### Pending Todos
 
@@ -73,11 +77,10 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 3]: Testimonials decision requires product owner call — does a real quote exist? Section either stays with real content or is removed per STRUCT-02
 - [Phase 4]: `useReducedMotion` exact API in Framer Motion 11 should be verified against docs before implementation
 
 ## Session Continuity
 
-Last session: 2026-03-09T14:46:28.800Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-page-structure/03-CONTEXT.md
+Last session: 2026-03-09T00:00:00.000Z
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-page-structure/03-01-SUMMARY.md

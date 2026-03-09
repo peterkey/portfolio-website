@@ -19,10 +19,10 @@
 
 ### Structure
 
-- [ ] **STRUCT-01**: Case Studies section appears early in scroll order (before Tools, Certifications)
-- [ ] **STRUCT-02**: Testimonials section removed from the page (no real quotes; placeholders hurt credibility)
-- [ ] **STRUCT-03**: Achievements section removed as a standalone section (duplicate of hero stats)
-- [ ] **STRUCT-04**: Section background alternation (dark / cardDark) remains correct after reorder
+- [x] **STRUCT-01**: Case Studies section appears early in scroll order (before Tools, Certifications)
+- [x] **STRUCT-02**: Testimonials section removed from the page (no real quotes; placeholders hurt credibility)
+- [x] **STRUCT-03**: Achievements section removed as a standalone section (duplicate of hero stats)
+- [x] **STRUCT-04**: Section background alternation (dark / cardDark) remains correct after reorder
 
 ### Copy
 
@@ -69,10 +69,10 @@
 | HERO-02 | Phase 2 | Complete |
 | HERO-03 | Phase 2 | Complete |
 | HERO-04 | Phase 2 | Complete |
-| STRUCT-01 | Phase 3 | Pending |
-| STRUCT-02 | Phase 3 | Pending |
-| STRUCT-03 | Phase 3 | Pending |
-| STRUCT-04 | Phase 3 | Pending |
+| STRUCT-01 | Phase 3 | Complete |
+| STRUCT-02 | Phase 3 | Complete |
+| STRUCT-03 | Phase 3 | Complete |
+| STRUCT-04 | Phase 3 | Complete |
 | COPY-01 | Phase 4 | Pending |
 | COPY-02 | Phase 4 | Pending |
 | COPY-03 | Phase 4 | Pending |

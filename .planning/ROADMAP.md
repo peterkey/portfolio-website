@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Emergency Fix** - Repair the broken CV download so the primary recruiter CTA works (completed 2026-03-09)
 - [x] **Phase 2: Hero Hook** - Rewrite the hero to communicate role and value within 5 seconds (completed 2026-03-09)
-- [ ] **Phase 3: Page Structure** - Reorder sections so evidence appears before biography
+- [x] **Phase 3: Page Structure** - Reorder sections so evidence appears before biography (completed 2026-03-09)
 - [ ] **Phase 4: Copy and Design** - Sharpen every word and strengthen the visual identity
 
 ## Phase Details
@@ -57,7 +57,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md — Reorder sections, remove placeholders, fix background alternation, update Navbar
+- [x] 03-01-PLAN.md — Reorder sections, remove placeholders, fix background alternation, update Navbar
 
 ### Phase 4: Copy and Design
 **Goal**: Every section sells rather than describes, and the NOC visual identity is bold enough to be memorable
@@ -81,5 +81,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Emergency Fix | 1/1 | Complete    | 2026-03-09 |
 | 2. Hero Hook | 1/1 | Complete   | 2026-03-09 |
-| 3. Page Structure | 0/1 | Not started | - |
+| 3. Page Structure | 1/1 | Complete    | 2026-03-09 |
 | 4. Copy and Design | 0/TBD | Not started | - |
