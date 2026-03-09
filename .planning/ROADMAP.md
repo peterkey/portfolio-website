@@ -26,7 +26,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Success Criteria** (what must be TRUE):
   1. Clicking "Download CV" in the navbar downloads a real PDF that opens correctly in a PDF viewer
   2. The downloaded filename matches what is advertised (no `.txt` extension mismatch)
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Place real PDF in public/ and update Navbar download link
 
 ### Phase 2: Hero Hook
 **Goal**: Visitors understand who Peter is and why they should contact him before scrolling
@@ -70,7 +73,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Emergency Fix | 0/TBD | Not started | - |
+| 1. Emergency Fix | 0/1 | Planned | - |
 | 2. Hero Hook | 0/TBD | Not started | - |
 | 3. Page Structure | 0/TBD | Not started | - |
 | 4. Copy and Design | 0/TBD | Not started | - |
