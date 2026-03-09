@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { DocumentArrowDownIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
 
@@ -250,7 +249,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0 }}
             >
               <span className="inline-flex items-center gap-2.5 glass border rounded-full px-4 py-2 font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[#00D9FF]">
                 <span className="status-led shrink-0" />
@@ -263,7 +262,7 @@ const HeroSection = () => {
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0 }}
                 className="font-mono text-xs text-[#4A6A8A] tracking-widest uppercase"
               >
                 <span className="text-[#00D9FF]/50">// </span>HOSTNAME: PETER-WK
@@ -273,7 +272,7 @@ const HeroSection = () => {
                 id="hero-heading"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.8, delay: 0 }}
                 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-none text-trueAutumn-textDark uppercase tracking-wide"
               >
                 Peter<br />
@@ -290,23 +289,10 @@ const HeroSection = () => {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.45 }}
+                transition={{ duration: 0.7, delay: 0 }}
                 className="text-xl sm:text-2xl font-heading font-semibold min-h-[2rem] uppercase tracking-wide"
               >
-                <TypeAnimation
-                  sequence={[
-                    "Help Desk Support Specialist",   2400,
-                    "IT Service Desk Professional",   2400,
-                    "Technical Support Engineer",     2400,
-                    "Microsoft 365 Troubleshooter",   2400,
-                  ]}
-                  wrapper="span"
-                  speed={55}
-                  deletionSpeed={75}
-                  repeat={Infinity}
-                  style={{ color: "#00D9FF" }}
-                  aria-label="IT Support Specialist roles"
-                />
+                <span style={{ color: "#00D9FF" }}>IT Support Specialist</span>
               </motion.div>
             </div>
 
@@ -314,32 +300,32 @@ const HeroSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
+              transition={{ duration: 0.7, delay: 0 }}
               className="text-trueAutumn-textSecondaryDark font-body leading-relaxed text-base max-w-[50ch] mx-auto lg:mx-0"
             >
-              Customer-focused IT professional delivering first-line technical support
-              in high-volume environments. Skilled at resolving Microsoft 365, Windows OS,
-              and Active Directory issues within minutes.
+              I keep businesses running by resolving IT issues before they become problems.
             </motion.p>
 
             {/* System metrics strip */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.75 }}
+              transition={{ duration: 0.7, delay: 0 }}
               className="flex flex-wrap gap-3 justify-center lg:justify-start"
             >
               {[
-                { value: "8+",   label: "YRS EXPERIENCE" },
-                { value: "20+",  label: "STAFF SUPPORTED" },
-                { value: "120+", label: "USERS / WEEK" },
+                { value: "8+",          label: "YRS EXPERIENCE" },
+                { value: "FCR-FOCUSED", label: "" },
+                { value: "120+",        label: "USERS / WEEK" },
               ].map((stat) => (
                 <div
-                  key={stat.label}
+                  key={stat.label || stat.value}
                   className="glass border rounded-lg px-4 py-2.5 tech-corner"
                 >
                   <div className="font-mono font-bold text-lg text-[#00D9FF] leading-none">{stat.value}</div>
-                  <div className="font-mono text-[0.55rem] text-[#4A6A8A] tracking-widest mt-0.5">{stat.label}</div>
+                  {stat.label && (
+                    <div className="font-mono text-[0.55rem] text-[#4A6A8A] tracking-widest mt-0.5">{stat.label}</div>
+                  )}
                 </div>
               ))}
             </motion.div>
@@ -348,11 +334,11 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.9 }}
+              transition={{ duration: 0.7, delay: 0 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.a
-                href="/cv.txt"
+                href="/peter-key-cv.pdf"
                 download="Peter_Williams-Key_CV.pdf"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
@@ -380,7 +366,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 1.05 }}
+              transition={{ duration: 0.7, delay: 0 }}
               className="flex items-center gap-4 justify-center lg:justify-start"
             >
               <span className="font-mono text-[0.6rem] text-[#4A6A8A] tracking-widest uppercase">// CONNECT</span>
