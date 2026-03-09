@@ -134,8 +134,8 @@ const Navbar = () => {
 
   const downloadCV = () => {
     const a = document.createElement("a");
-    a.href = "/cv.txt";
-    a.download = "Peter_Williams-Key_CV.pdf";
+    a.href = "/peter-key-cv.pdf";
+    a.download = "Peter-Key-CV.pdf";
     a.click();
   };
 
