@@ -13,7 +13,7 @@ Four phases to transform a technically solid but persuasion-weak portfolio into 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Emergency Fix** - Repair the broken CV download so the primary recruiter CTA works (completed 2026-03-09)
-- [ ] **Phase 2: Hero Hook** - Rewrite the hero to communicate role and value within 5 seconds
+- [x] **Phase 2: Hero Hook** - Rewrite the hero to communicate role and value within 5 seconds (completed 2026-03-09)
 - [ ] **Phase 3: Page Structure** - Reorder sections so evidence appears before biography
 - [ ] **Phase 4: Copy and Design** - Sharpen every word and strengthen the visual identity
 
@@ -77,6 +77,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Emergency Fix | 1/1 | Complete    | 2026-03-09 |
-| 2. Hero Hook | 0/1 | Not started | - |
+| 2. Hero Hook | 1/1 | Complete   | 2026-03-09 |
 | 3. Page Structure | 0/TBD | Not started | - |
 | 4. Copy and Design | 0/TBD | Not started | - |

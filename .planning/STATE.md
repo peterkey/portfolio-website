@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 2 context gathered
-last_updated: "2026-03-09T14:14:59.666Z"
+stopped_at: Completed 02-hero-hook 02-01-PLAN.md
+last_updated: "2026-03-09T14:32:26.629Z"
 last_activity: 2026-03-09 — Roadmap created; 18 v1 requirements mapped to 4 phases
 progress:
   total_phases: 4
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
   percent: 100
 ---
 
@@ -52,6 +52,7 @@ Progress: [██████████] 100%
 *Updated after each plan completion*
 | Phase 01-emergency-fix P01 | 10 | 2 tasks | 2 files |
 | Phase 01-emergency-fix P01 | 10 | 3 tasks | 2 files |
+| Phase 02-hero-hook P01 | 15 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Progress: [██████████] 100%
 - [Init]: Phase 1 before everything else — CV download defect is live and breaks the primary recruiter CTA
 - [Phase 01-emergency-fix]: Hyphenated filename Peter-Key-CV.pdf chosen for download attribute — consistent with public/ file convention, clean for recruiters
 - [Phase 01-emergency-fix]: Hyphenated filename Peter-Key-CV.pdf chosen for download attribute — consistent with public/ file convention, clean for recruiters
+- [Phase 02-hero-hook]: Static role title chosen over typing animation — eliminates ambiguity for recruiters scanning fast
+- [Phase 02-hero-hook]: FCR-FOCUSED stat replaces 20+ Staff Supported — metric reframed as quality signal not headcount
+- [Phase 02-hero-hook]: react-type-animation uninstalled — dead dependency removed, bundle kept lean
 
 ### Pending Todos
 
@@ -74,6 +78,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T14:14:59.657Z
-Stopped at: Phase 2 context gathered
-Resume file: .planning/phases/02-hero-hook/02-CONTEXT.md
+Last session: 2026-03-09T14:32:26.623Z
+Stopped at: Completed 02-hero-hook 02-01-PLAN.md
+Resume file: None

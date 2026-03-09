@@ -12,10 +12,10 @@
 
 ### Hero
 
-- [ ] **HERO-01**: Hero displays a single stable role title — no rotating type animation
-- [ ] **HERO-02**: Hero has a clear one-sentence value proposition that states outcomes, not activities
-- [ ] **HERO-03**: Hero stats reframed with outcome-oriented language (e.g. impact and scope, not just headcounts)
-- [ ] **HERO-04**: Hero CTA buttons are visible on load without animation delay
+- [x] **HERO-01**: Hero displays a single stable role title — no rotating type animation
+- [x] **HERO-02**: Hero has a clear one-sentence value proposition that states outcomes, not activities
+- [x] **HERO-03**: Hero stats reframed with outcome-oriented language (e.g. impact and scope, not just headcounts)
+- [x] **HERO-04**: Hero CTA buttons are visible on load without animation delay
 
 ### Structure
 
@@ -65,10 +65,10 @@
 |-------------|-------|--------|
 | FIX-01 | Phase 1 | Complete |
 | FIX-02 | Phase 1 | Complete |
-| HERO-01 | Phase 2 | Pending |
-| HERO-02 | Phase 2 | Pending |
-| HERO-03 | Phase 2 | Pending |
-| HERO-04 | Phase 2 | Pending |
+| HERO-01 | Phase 2 | Complete |
+| HERO-02 | Phase 2 | Complete |
+| HERO-03 | Phase 2 | Complete |
+| HERO-04 | Phase 2 | Complete |
 | STRUCT-01 | Phase 3 | Pending |
 | STRUCT-02 | Phase 3 | Pending |
 | STRUCT-03 | Phase 3 | Pending |
