@@ -1,12 +1,9 @@
-import Image from "next/image";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import AboutSection from "./components/AboutSection";
 import ProjectSection from "./components/ProjectSection";
 import Footer from "./components/Footer";
-import AchievementsSection from "./components/AchievementsSection";
 import CertificationsSection from "./components/CertificationsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
 import ToolsSection from "./components/ToolsSection";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import CaseStudiesSection from "./components/CaseStudiesSection";
@@ -19,14 +16,12 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ExperienceTimeline />
-      <ProjectSection />
       <CaseStudiesSection />
+      <ProjectSection />
       <ToolsSection />
       <CertificationsSection />
-      <AchievementsSection />
-      <TestimonialsSection />
       <EnhancedContactSection />
       <Footer />
     </main>
   );
-} 
+}
