@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 4 context gathered
-last_updated: "2026-03-09T16:30:30.295Z"
+stopped_at: Completed 04-copy-and-design-01-PLAN.md
+last_updated: "2026-03-10T08:31:48.476Z"
 last_activity: 2026-03-09 — Phase 3 Plan 01 complete — page structure reordered, placeholders removed
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 3
-  completed_plans: 3
+  total_plans: 6
+  completed_plans: 4
   percent: 75
 ---
 
@@ -54,6 +54,7 @@ Progress: [████████░░] 75%
 | Phase 01-emergency-fix P01 | 10 | 3 tasks | 2 files |
 | Phase 02-hero-hook P01 | 15 | 2 tasks | 3 files |
 | Phase 03-page-structure P01 | checkpoint-gated | 4 tasks | 4 files |
+| Phase 04-copy-and-design P01 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Progress: [████████░░] 75%
 - [Phase 03-page-structure]: Case Studies surfaced before Projects — credibility evidence must appear early in scroll journey
 - [Phase 03-page-structure]: Achievements and Testimonials removed — placeholder sections with no real content damage trust
 - [Phase 03-page-structure]: Background swap required after reorder — CaseStudiesSection gets cardDark, ProjectSection gets dark
+- [Phase 04-copy-and-design]: Homelab placed at index 0 in entries array — IT infrastructure work surfaces before employment entry
+- [Phase 04-copy-and-design]: Tesco summary rewritten IT-first: opens with on-site IT support identity, positions delivery as contract not work
+- [Phase 04-copy-and-design]: All four case study results rewritten metric-led per CONTEXT.md locked copy decisions
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T16:30:30.291Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-copy-and-design/04-CONTEXT.md
+Last session: 2026-03-10T08:31:48.473Z
+Stopped at: Completed 04-copy-and-design-01-PLAN.md
+Resume file: None
