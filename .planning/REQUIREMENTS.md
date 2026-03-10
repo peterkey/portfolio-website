@@ -34,9 +34,9 @@
 
 ### Design
 
-- [ ] **DESIGN-01**: Visual contrast and glow effects are strengthened — bolder, more distinctive than a typical dark theme
-- [ ] **DESIGN-02**: NOC decorative elements (corner brackets, status LEDs, grid texture) used deliberately to reinforce theme identity
-- [ ] **DESIGN-03**: `useReducedMotion` hook implemented to wrap animations for accessibility
+- [x] **DESIGN-01**: Visual contrast and glow effects are strengthened — bolder, more distinctive than a typical dark theme
+- [x] **DESIGN-02**: NOC decorative elements (corner brackets, status LEDs, grid texture) used deliberately to reinforce theme identity
+- [x] **DESIGN-03**: `useReducedMotion` hook implemented to wrap animations for accessibility
 
 ## v2 Requirements
 
@@ -78,9 +78,9 @@
 | COPY-03 | Phase 4 | Complete |
 | COPY-04 | Phase 4 | Complete |
 | COPY-05 | Phase 4 | Complete |
-| DESIGN-01 | Phase 4 | Pending |
-| DESIGN-02 | Phase 4 | Pending |
-| DESIGN-03 | Phase 4 | Pending |
+| DESIGN-01 | Phase 4 | Complete |
+| DESIGN-02 | Phase 4 | Complete |
+| DESIGN-03 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 18 total
