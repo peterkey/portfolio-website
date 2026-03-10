@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ComputerDesktopIcon,
   WrenchScrewdriverIcon,
@@ -55,6 +55,7 @@ const toolCategories: ToolCategory[] = [
 ];
 
 const ToolsSection = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section id="skills" className="py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-60" />
@@ -62,9 +63,9 @@ const ToolsSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -82,9 +83,9 @@ const ToolsSection = () => {
           {toolCategories.map((category, index) => (
             <motion.div
               key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={shouldReduceMotion ? undefined : { duration: 0.5, delay: index * 0.08 }}
               viewport={{ once: true }}
               className="glow-card glass border rounded-2xl p-6 group"
             >
@@ -117,9 +118,9 @@ const ToolsSection = () => {
 
         {/* Problem-solving methodology */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
           className="mt-16"
         >

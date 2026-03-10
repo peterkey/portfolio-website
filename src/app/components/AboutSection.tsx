@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ComputerDesktopIcon,
   AcademicCapIcon,
@@ -19,6 +19,7 @@ const technicalSkills = [
 ];
 
 const AboutSection = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section
       id="about"
@@ -30,9 +31,9 @@ const AboutSection = () => {
 
         {/* ── Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12"
         >
@@ -58,9 +59,9 @@ const AboutSection = () => {
 
           {/* Bio card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             className="lg:col-span-2 glow-card glass border rounded-2xl p-8 space-y-4 relative"
           >
@@ -98,9 +99,9 @@ const AboutSection = () => {
 
           {/* Career Goals card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
             className="glow-card glass border rounded-2xl p-8 flex flex-col"
           >
@@ -131,9 +132,9 @@ const AboutSection = () => {
 
           {/* Technical Skills */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
             className="glow-card glass border rounded-2xl p-8"
           >
@@ -155,9 +156,9 @@ const AboutSection = () => {
 
           {/* Currently Studying */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
             className="glow-card glass border rounded-2xl p-8"
           >

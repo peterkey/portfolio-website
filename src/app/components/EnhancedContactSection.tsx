@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   EnvelopeIcon,
   PhoneIcon,
@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const EnhancedContactSection = () => {
+  const shouldReduceMotion = useReducedMotion();
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -61,9 +62,9 @@ const EnhancedContactSection = () => {
 
         {/* ── Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -84,9 +85,9 @@ const EnhancedContactSection = () => {
 
           {/* ── Left: Contact info ── */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -30 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
             viewport={{ once: true }}
             className="space-y-6"
           >
@@ -193,9 +194,9 @@ const EnhancedContactSection = () => {
 
           {/* ── Right: Form ── */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, x: 30 }}
+            whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+            transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             className="glow-card glass border rounded-2xl p-8"
           >

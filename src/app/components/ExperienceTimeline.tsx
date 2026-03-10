@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   BriefcaseIcon,
   AcademicCapIcon,
@@ -110,6 +110,7 @@ const typeLabel: Record<TimelineEntry["type"], string> = {
 };
 
 const ExperienceTimeline = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section
       id="experience"
@@ -120,9 +121,9 @@ const ExperienceTimeline = () => {
 
         {/* ── Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -155,9 +156,9 @@ const ExperienceTimeline = () => {
             {entries.map((entry, index) => (
               <motion.div
                 key={entry.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, x: -20 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+                transition={shouldReduceMotion ? undefined : { duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className={`relative pl-14${index === 0 ? " tech-corner" : ""}`}
               >
@@ -256,9 +257,9 @@ const ExperienceTimeline = () => {
 
         {/* ── Bottom callout ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
           className="mt-12 glass border rounded-2xl p-8 text-center max-w-2xl mx-auto"
         >

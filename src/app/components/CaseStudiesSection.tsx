@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ExclamationTriangleIcon,
   MagnifyingGlassIcon,
@@ -27,6 +27,7 @@ interface CaseStudy {
 }
 
 const CaseStudiesSection = () => {
+  const shouldReduceMotion = useReducedMotion();
   const caseStudies: CaseStudy[] = [
     {
       id: 1,
@@ -120,9 +121,9 @@ const CaseStudiesSection = () => {
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
@@ -142,9 +143,9 @@ const CaseStudiesSection = () => {
             const rackLabel = index === 0 ? "1U" : index === 3 ? "2U" : null;
             const card = (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="glow-card glass border rounded-2xl overflow-hidden"
               >
@@ -244,9 +245,9 @@ const CaseStudiesSection = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={shouldReduceMotion ? undefined : { duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
           className="text-center mt-12"
         >
