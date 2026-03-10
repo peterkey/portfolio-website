@@ -67,7 +67,10 @@ const EnhancedContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="eyebrow mb-3">Let&apos;s talk</span>
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="status-led flex-shrink-0" aria-hidden="true" />
+            <span className="eyebrow">Let&apos;s talk</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">
             Get In Touch
           </h2>

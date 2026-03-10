@@ -126,7 +126,10 @@ const CaseStudiesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="eyebrow mb-3">Problem → Solution</span>
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="status-led flex-shrink-0" aria-hidden="true" />
+            <span className="eyebrow">Problem → Solution</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">Technical Support Case Studies</h2>
           <p className="text-trueAutumn-textSecondaryDark text-lg max-w-content mx-auto font-body">
             Real-world examples of technical issues I&apos;ve resolved in my current role, demonstrating systematic problem-solving and efficient resolution.
@@ -134,17 +137,27 @@ const CaseStudiesSection = () => {
         </motion.div>
 
         <div className="space-y-8">
-          {caseStudies.map((study, index) => (
-            <motion.div
-              key={study.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="glow-card glass border rounded-2xl overflow-hidden"
-            >
-              {/* Header */}
-              <div className="bg-[#00D9FF]/5 p-8 border-b border-[#1A3A5C]">
+          {caseStudies.map((study, index) => {
+            const hasTechCorner = index === 0 || index === 3;
+            const rackLabel = index === 0 ? "1U" : index === 3 ? "2U" : null;
+            const card = (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glow-card glass border rounded-2xl overflow-hidden"
+              >
+                {/* Header */}
+                <div className="bg-[#00D9FF]/5 p-8 border-b border-[#1A3A5C] relative">
+                  {rackLabel && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-2 right-3 font-mono text-[9px] text-[#00D9FF] opacity-20 tracking-widest select-none pointer-events-none"
+                    >
+                      {rackLabel}
+                    </span>
+                  )}
                 <div className="flex items-center gap-4 mb-3">
                   {study.icon}
                   <div>
@@ -223,7 +236,11 @@ const CaseStudiesSection = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+            return hasTechCorner ? (
+              <div key={study.id} className="tech-corner relative">{card}</div>
+            ) : <div key={study.id}>{card}</div>;
+          })}
         </div>
 
         <motion.div

@@ -126,7 +126,10 @@ const ExperienceTimeline = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="eyebrow mb-3">Where I&apos;ve been</span>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="status-led flex-shrink-0" aria-hidden="true" />
+            <span className="eyebrow">Where I&apos;ve been</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">
             Experience & Education
           </h2>
@@ -156,7 +159,7 @@ const ExperienceTimeline = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative pl-14"
+                className={`relative pl-14${index === 0 ? " tech-corner" : ""}`}
               >
                 {/* Timeline dot */}
                 <div

@@ -62,8 +62,14 @@ const AboutSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 glow-card glass border rounded-2xl p-8 space-y-4"
+            className="lg:col-span-2 glow-card glass border rounded-2xl p-8 space-y-4 relative"
           >
+            <span
+              aria-hidden="true"
+              className="absolute bottom-2 right-3 font-mono text-[9px] text-[#00D9FF] opacity-20 tracking-widest select-none pointer-events-none"
+            >
+              1U
+            </span>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
                 <CommandLineIcon className="h-5 w-5" />
