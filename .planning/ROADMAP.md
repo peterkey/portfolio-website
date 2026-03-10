@@ -16,6 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Hero Hook** - Rewrite the hero to communicate role and value within 5 seconds (completed 2026-03-09)
 - [x] **Phase 3: Page Structure** - Reorder sections so evidence appears before biography (completed 2026-03-09)
 - [x] **Phase 4: Copy and Design** - Sharpen every word and strengthen the visual identity (completed 2026-03-10)
+- [ ] **Phase 5: Audit Gap Fixes** - Close gaps identified by v1.0 audit: filename consistency, reduced-motion coverage, footer nav staleness
 
 ## Phase Details
 
@@ -77,6 +78,21 @@ Plans:
 - [ ] 04-02-PLAN.md — Remove About soft skills, reduce Certifications, rewrite Tools descriptions (COPY-03, COPY-04, COPY-05)
 - [ ] 04-03-PLAN.md — Strengthen glow effects, add NOC decoratives, implement reduced-motion (DESIGN-01, DESIGN-02, DESIGN-03)
 
+### Phase 5: Audit Gap Fixes
+**Goal**: Close all gaps found in the v1.0 milestone audit — filename mismatch, reduced-motion coverage holes, and footer nav staleness
+**Depends on**: Phase 4
+**Requirements**: FIX-02, DESIGN-03
+**Gap Closure**: Closes gaps from v1.0-MILESTONE-AUDIT.md
+**Success Criteria** (what must be TRUE):
+  1. CV download filename is identical in Navbar and HeroSection
+  2. HeroSection all `motion.*` wrappers and bounce loop respect `useReducedMotion`
+  3. Navbar `motion.nav`, `motion.button`, `motion.div` respect `useReducedMotion`
+  4. Footer navLinks includes Case Studies and Certifications
+**Plans**: 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Fix CV filename, add useReducedMotion to HeroSection + Navbar, update Footer navLinks
+
 ## Progress
 
 **Execution Order:**
@@ -88,3 +104,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 2. Hero Hook | 1/1 | Complete   | 2026-03-09 |
 | 3. Page Structure | 1/1 | Complete    | 2026-03-09 |
 | 4. Copy and Design | 3/3 | Complete   | 2026-03-10 |
+| 5. Audit Gap Fixes | 0/1 | Pending    | — |

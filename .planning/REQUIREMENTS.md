@@ -8,7 +8,7 @@
 ### Emergency Fixes
 
 - [x] **FIX-01**: CV download button links to an actual PDF file (not cv.txt)
-- [x] **FIX-02**: CV file download attribute and filename are consistent (no mismatch)
+- [ ] **FIX-02**: CV file download attribute and filename are consistent (no mismatch)
 
 ### Hero
 
@@ -36,7 +36,7 @@
 
 - [x] **DESIGN-01**: Visual contrast and glow effects are strengthened — bolder, more distinctive than a typical dark theme
 - [x] **DESIGN-02**: NOC decorative elements (corner brackets, status LEDs, grid texture) used deliberately to reinforce theme identity
-- [x] **DESIGN-03**: `useReducedMotion` hook implemented to wrap animations for accessibility
+- [ ] **DESIGN-03**: `useReducedMotion` hook implemented to wrap animations for accessibility
 
 ## v2 Requirements
 
@@ -64,7 +64,7 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | FIX-01 | Phase 1 | Complete |
-| FIX-02 | Phase 1 | Complete |
+| FIX-02 | Phase 5 | Pending |
 | HERO-01 | Phase 2 | Complete |
 | HERO-02 | Phase 2 | Complete |
 | HERO-03 | Phase 2 | Complete |
@@ -80,12 +80,13 @@
 | COPY-05 | Phase 4 | Complete |
 | DESIGN-01 | Phase 4 | Complete |
 | DESIGN-02 | Phase 4 | Complete |
-| DESIGN-03 | Phase 4 | Complete |
+| DESIGN-03 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 18 total
 - Mapped to phases: 18
 - Unmapped: 0 ✓
+- Pending (gap closure): 2 (FIX-02, DESIGN-03)
 
 ---
 *Requirements defined: 2026-03-09*
