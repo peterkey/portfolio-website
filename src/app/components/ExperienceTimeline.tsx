@@ -24,26 +24,6 @@ interface TimelineEntry {
 
 const entries: TimelineEntry[] = [
   {
-    id: 1,
-    title: "Customer Delivery Driver & Informal IT Support",
-    org: "Tesco Stores PLC",
-    period: "2016 – Present",
-    type: "work",
-    summary:
-      "While in a customer-facing delivery role, I became the on-site go-to for technical problems — providing first-line IT support to colleagues and resolving issues that would otherwise require escalation or an external call.",
-    highlights: [
-      "Diagnosed and resolved Microsoft 365 login, access, and sync failures for 20+ colleagues",
-      "Administered, reset, and reconfigured handheld delivery devices to minimise downtime",
-      "Delivered one-to-one training sessions on new internal scheduling and HR systems",
-      "Provided technical assistance to 120+ customers weekly — triage, signposting, and resolution",
-      "Consistently resolved issues within minutes, maintaining operational continuity",
-    ],
-    tags: ["Microsoft 365", "Windows", "Active Directory", "Device Management", "User Training"],
-    accentColor: "#FF6B35",
-    accentBg: "rgba(255, 107, 53, 0.06)",
-    icon: <BriefcaseIcon className="h-5 w-5" />,
-  },
-  {
     id: 2,
     title: "Home Lab — Linux Migration & Self-Hosted Infrastructure",
     org: "Personal Project",
@@ -62,6 +42,26 @@ const entries: TimelineEntry[] = [
     accentColor: "#00D9FF",
     accentBg: "rgba(0, 217, 255, 0.06)",
     icon: <ServerIcon className="h-5 w-5" />,
+  },
+  {
+    id: 1,
+    title: "Customer Delivery Driver & Informal IT Support",
+    org: "Tesco Stores PLC",
+    period: "2016 – Present",
+    type: "work",
+    summary:
+      "My on-site colleagues' first call for any technical problem — I provide first-line IT support in a high-volume environment, diagnosing and resolving Microsoft 365, Windows OS, Active Directory, and device issues without escalation. The delivery role is the contract; IT support is the work I actually do.",
+    highlights: [
+      "Diagnosed and resolved Microsoft 365 login, access, and sync failures for 20+ colleagues",
+      "Administered, reset, and reconfigured handheld delivery devices to minimise downtime",
+      "Delivered one-to-one training sessions on new internal scheduling and HR systems",
+      "Provided technical assistance to 120+ customers weekly — triage, signposting, and resolution",
+      "Consistently resolved issues within minutes, maintaining operational continuity",
+    ],
+    tags: ["Microsoft 365", "Windows", "Active Directory", "Device Management", "User Training"],
+    accentColor: "#FF6B35",
+    accentBg: "rgba(255, 107, 53, 0.06)",
+    icon: <BriefcaseIcon className="h-5 w-5" />,
   },
   {
     id: 3,
