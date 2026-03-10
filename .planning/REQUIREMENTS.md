@@ -28,9 +28,9 @@
 
 - [x] **COPY-01**: Experience section leads with IT role identity — "Delivery Driver" not the headline
 - [x] **COPY-02**: Case study result fields use metric-led, outcome-first copy
-- [ ] **COPY-03**: About section soft skills list removed (adds no credibility; lists of adjectives are dismissed)
-- [ ] **COPY-04**: Certifications presented with target completion dates instead of percentage progress bars
-- [ ] **COPY-05**: Tools section describes tasks and outcomes, not vague proficiency labels ("Basic X")
+- [x] **COPY-03**: About section soft skills list removed (adds no credibility; lists of adjectives are dismissed)
+- [x] **COPY-04**: Certifications presented with target completion dates instead of percentage progress bars
+- [x] **COPY-05**: Tools section describes tasks and outcomes, not vague proficiency labels ("Basic X")
 
 ### Design
 
@@ -75,9 +75,9 @@
 | STRUCT-04 | Phase 3 | Complete |
 | COPY-01 | Phase 4 | Complete |
 | COPY-02 | Phase 4 | Complete |
-| COPY-03 | Phase 4 | Pending |
-| COPY-04 | Phase 4 | Pending |
-| COPY-05 | Phase 4 | Pending |
+| COPY-03 | Phase 4 | Complete |
+| COPY-04 | Phase 4 | Complete |
+| COPY-05 | Phase 4 | Complete |
 | DESIGN-01 | Phase 4 | Pending |
 | DESIGN-02 | Phase 4 | Pending |
 | DESIGN-03 | Phase 4 | Pending |

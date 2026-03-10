@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 04-copy-and-design-01-PLAN.md
-last_updated: "2026-03-10T08:31:48.476Z"
+stopped_at: Completed 04-copy-and-design-02-PLAN.md
+last_updated: "2026-03-10T08:35:23.151Z"
 last_activity: 2026-03-09 — Phase 3 Plan 01 complete — page structure reordered, placeholders removed
 progress:
   total_phases: 4
   completed_phases: 3
   total_plans: 6
-  completed_plans: 4
+  completed_plans: 5
   percent: 75
 ---
 
@@ -55,6 +55,7 @@ Progress: [████████░░] 75%
 | Phase 02-hero-hook P01 | 15 | 2 tasks | 3 files |
 | Phase 03-page-structure P01 | checkpoint-gated | 4 tasks | 4 files |
 | Phase 04-copy-and-design P01 | 2 | 2 tasks | 2 files |
+| Phase 04-copy-and-design P02 | 2 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -74,6 +75,8 @@ Progress: [████████░░] 75%
 - [Phase 04-copy-and-design]: Homelab placed at index 0 in entries array — IT infrastructure work surfaces before employment entry
 - [Phase 04-copy-and-design]: Tesco summary rewritten IT-first: opens with on-site IT support identity, positions delivery as contract not work
 - [Phase 04-copy-and-design]: All four case study results rewritten metric-led per CONTEXT.md locked copy decisions
+- [Phase 04-copy-and-design]: Certifications reduced from 5 to 2: only CompTIA A+ and MS-900 retained as credentialled industry exams; non-credentialled entries removed
+- [Phase 04-copy-and-design]: Professional Skills category removed from Tools — soft skills as technical tools is a weak candidate signal; replaced with Infrastructure & Automation to surface Docker/Linux homelab depth
 
 ### Pending Todos
 
@@ -85,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T08:31:48.473Z
-Stopped at: Completed 04-copy-and-design-01-PLAN.md
+Last session: 2026-03-10T08:35:18.293Z
+Stopped at: Completed 04-copy-and-design-02-PLAN.md
 Resume file: None
