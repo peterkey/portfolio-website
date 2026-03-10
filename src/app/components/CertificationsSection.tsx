@@ -11,46 +11,25 @@ interface Certification {
   issuer: string;
   status: string;
   date?: string;
-  progress?: number;
+  targetDate?: string;
   description: string;
 }
 
 const CertificationsSection = () => {
   const certifications: Certification[] = [
     {
-      name: "Microsoft 365 Fundamentals (MS-900)",
-      issuer: "Microsoft",
-      status: "in-progress",
-      progress: 60,
-      description: "Self-study via Microsoft Learn. Covers Microsoft 365 services, security, compliance, and pricing fundamentals."
-    },
-    {
-      name: "Basic Active Directory Administration",
-      issuer: "Microsoft Learning",
-      status: "in-progress",
-      progress: 40,
-      description: "Self-study via Microsoft Learn & YouTube Labs. User management and basic administration tasks."
-    },
-    {
-      name: "ServiceNow & Jira Service Desk Ticketing Basics",
-      issuer: "Self-Directed Learning",
-      status: "in-progress",
-      progress: 30,
-      description: "Self-study via YouTube tutorials. Ticket management and workflow processes for IT support."
-    },
-    {
-      name: "Google IT Support Skills",
-      issuer: "Google Digital Garage",
-      status: "in-progress",
-      progress: 50,
-      description: "IT fundamentals and support methodologies through Google's digital skills program."
-    },
-    {
       name: "CompTIA A+ Certification",
       issuer: "CompTIA",
       status: "in-progress",
-      progress: 25,
-      description: "Hardware, software, and troubleshooting fundamentals for IT support professionals."
+      targetDate: "2026",
+      description: "Industry-standard hardware, software, and troubleshooting certification for IT support professionals. Studying via Professor Messer."
+    },
+    {
+      name: "Microsoft 365 Fundamentals (MS-900)",
+      issuer: "Microsoft",
+      status: "in-progress",
+      targetDate: "2026",
+      description: "Covers Microsoft 365 services, cloud concepts, security, compliance, and pricing. Studying via Microsoft Learn."
     }
   ];
 
@@ -119,30 +98,17 @@ const CertificationsSection = () => {
                     {getStatusText(cert.status)}
                   </span>
                 </div>
-                {cert.progress && (
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-[#00D9FF] font-heading">{cert.progress}%</div>
-                    <div className="text-sm text-trueAutumn-textSecondaryDark font-body">Complete</div>
-                  </div>
-                )}
               </div>
 
               <h3 className="text-xl font-semibold text-trueAutumn-textDark mb-2 font-heading">{cert.name}</h3>
               <p className="text-[#FF6B35] text-sm mb-4 font-body">{cert.issuer}</p>
               <p className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{cert.description}</p>
 
-              {cert.progress && (
-                <div className="mt-6">
-                  <div className="flex justify-between text-sm text-trueAutumn-textSecondaryDark mb-2 font-body">
-                    <span>Progress</span>
-                    <span>{cert.progress}%</span>
-                  </div>
-                  <div className="w-full bg-[#1A3A5C] rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-[#00D9FF] to-[#FF6B35] h-2 rounded-full transition-all duration-500"
-                      style={{ width: `${cert.progress}%` }}
-                    />
-                  </div>
+              {cert.targetDate && (
+                <div className="mt-4 pt-4 border-t border-[#1A3A5C]">
+                  <span className="font-mono text-[9px] text-[#00D9FF] tracking-widest uppercase opacity-70">
+                    // TARGET: {cert.targetDate}
+                  </span>
                 </div>
               )}
             </motion.div>
