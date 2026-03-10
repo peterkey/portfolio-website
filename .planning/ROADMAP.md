@@ -70,7 +70,12 @@ Plans:
   4. Certifications show target completion dates, not percentage progress bars
   5. Tools section describes tasks done with each tool, not labels like "Basic X"
   6. Glow effects and contrast are visibly stronger than a generic dark theme; animations respect the OS reduced-motion setting
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Rewrite Experience timeline order and Case Studies result fields (COPY-01, COPY-02)
+- [ ] 04-02-PLAN.md — Remove About soft skills, reduce Certifications, rewrite Tools descriptions (COPY-03, COPY-04, COPY-05)
+- [ ] 04-03-PLAN.md — Strengthen glow effects, add NOC decoratives, implement reduced-motion (DESIGN-01, DESIGN-02, DESIGN-03)
 
 ## Progress
 
@@ -82,4 +87,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Emergency Fix | 1/1 | Complete    | 2026-03-09 |
 | 2. Hero Hook | 1/1 | Complete   | 2026-03-09 |
 | 3. Page Structure | 1/1 | Complete    | 2026-03-09 |
-| 4. Copy and Design | 0/TBD | Not started | - |
+| 4. Copy and Design | 0/3 | Not started | - |
