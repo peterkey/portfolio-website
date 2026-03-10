@@ -2,9 +2,7 @@
 import { motion } from "framer-motion";
 import {
   ComputerDesktopIcon,
-  UserGroupIcon,
   AcademicCapIcon,
-  CheckCircleIcon,
   ServerIcon,
   CommandLineIcon,
 } from "@heroicons/react/24/outline";
@@ -18,15 +16,6 @@ const technicalSkills = [
   { label: "TCP/IP Networking",          icon: "06" },
   { label: "Active Directory",           icon: "07" },
   { label: "Remote Support Tools",       icon: "08" },
-];
-
-const softSkills = [
-  "Problem Solving",
-  "Technical Documentation",
-  "User Training",
-  "Team Collaboration",
-  "Communication",
-  "Adaptability",
 ];
 
 const AboutSection = () => {
@@ -158,7 +147,7 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          {/* Soft Skills + Currently Learning */}
+          {/* Currently Studying */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,39 +156,24 @@ const AboutSection = () => {
             className="glow-card glass border rounded-2xl p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6B35]/10 flex items-center justify-center text-[#FF6B35]">
-                <UserGroupIcon className="h-5 w-5" />
+              <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
+                <ServerIcon className="h-5 w-5" />
               </div>
-              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Soft Skills</h3>
+              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Currently Studying</h3>
             </div>
             <div className="flex flex-wrap gap-2 mb-6">
-              {softSkills.map((skill) => (
+              {["CompTIA A+", "MS-900 (Microsoft 365 Fundamentals)"].map((item) => (
                 <span
-                  key={skill}
-                  className="text-xs font-mono text-trueAutumn-textSecondaryDark border border-[#1A3A5C] rounded-full px-3 py-1"
+                  key={item}
+                  className="text-xs font-mono text-[#FF6B35] border border-[#FF6B35]/25 bg-[#FF6B35]/5 rounded-full px-3 py-1"
                 >
-                  {skill}
+                  {item}
                 </span>
               ))}
             </div>
-            <div className="border-t border-[#1A3A5C] pt-5">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
-                  <ServerIcon className="h-5 w-5" />
-                </div>
-                <h4 className="font-heading font-medium text-trueAutumn-textDark text-sm">Currently Learning</h4>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {["CompTIA A+", "MS-900", "Kubernetes", "Ansible", "Networking+"].map((item) => (
-                  <span
-                    key={item}
-                    className="text-xs font-mono text-[#FF6B35] border border-[#FF6B35]/25 bg-[#FF6B35]/5 rounded-full px-3 py-1"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <p className="text-trueAutumn-textSecondaryDark text-sm font-body">
+              Targeting 2026 completion — active study via Microsoft Learn and Professor Messer.
+            </p>
           </motion.div>
         </div>
 
