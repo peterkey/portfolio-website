@@ -41,7 +41,7 @@ const CaseStudiesSection = () => {
         "Identified password expiration and account lockout issues"
       ],
       solution: "Reset passwords, unlocked accounts, and provided clear instructions for future login issues. Ensured all users could access Microsoft 365 services within minutes.",
-      result: "Resolved all login issues without escalation, maintaining business continuity. Users regained access to email, documents, and scheduling systems immediately.",
+      result: "5 users restored to full M365 access within 10 minutes each — zero escalation, zero downtime.",
       metrics: {
         resolutionTime: "5-10 minutes per user",
         usersAffected: 5,
@@ -62,7 +62,7 @@ const CaseStudiesSection = () => {
         "Coordinated with management for device replacement when needed"
       ],
       solution: "Administered device resets, updated configurations, and replaced faulty hardware. Provided training on proper device handling to prevent future issues.",
-      result: "Minimized delivery downtime and maintained customer service standards. Staff could process orders and complete deliveries without interruption.",
+      result: "3 delivery devices returned to full operation before shift end, preventing route delays for the affected drivers.",
       metrics: {
         resolutionTime: "15-30 minutes per device",
         usersAffected: 3,
@@ -83,7 +83,7 @@ const CaseStudiesSection = () => {
         "Gathered feedback to improve training materials"
       ],
       solution: "Delivered personalized training sessions and created clear documentation. Provided ongoing support to ensure independent system usage.",
-      result: "Enabled colleagues to use the system independently, reducing management workload and improving operational efficiency.",
+      result: "8 colleagues fully independent on the new system after a single training session each — eliminated recurring management requests for basic scheduling tasks.",
       metrics: {
         resolutionTime: "30-45 minutes per training session",
         usersAffected: 8,
@@ -105,7 +105,7 @@ const CaseStudiesSection = () => {
         "Deployed Docker Compose stacks for media management, network utilities, and productivity tools with persistent volumes and isolated networking"
       ],
       solution: "Fully migrated primary workstation to Linux and transformed a legacy iMac into a self-hosted Docker server running multiple containerised services — all managed via command line with no ongoing cloud dependency.",
-      result: "A functioning home lab used for Linux administration practice, self-hosted application testing, and hands-on networking and service architecture exploration. Demonstrated ability to plan, execute, and maintain complex infrastructure changes independently.",
+      result: "A production-grade home lab running multiple containerised services — fully self-hosted, zero cloud dependency, managed entirely via CLI.",
       metrics: {
         resolutionTime: "Ongoing personal project",
         usersAffected: 1,
