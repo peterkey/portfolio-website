@@ -29,7 +29,7 @@ const MenuOverlay = ({ links, onClose }: MenuOverlayProps) => {
       </ul>
       <button
         onClick={onClose}
-        className="text-white hover:text-[#22D3EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F]"
+        className="text-text hover:text-[#22D3EE] transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F]"
         aria-label="Close mobile menu"
       >
         Close Menu

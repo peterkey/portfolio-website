@@ -1,32 +1,37 @@
-import Image from "next/image";
-import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
-import AboutSection from "./components/AboutSection";
-import ProjectSection from "./components/ProjectSection";
-import Footer from "./components/Footer";
-import AchievementsSection from "./components/AchievementsSection";
-import CertificationsSection from "./components/CertificationsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import ToolsSection from "./components/ToolsSection";
-import ExperienceTimeline from "./components/ExperienceTimeline";
-import CaseStudiesSection from "./components/CaseStudiesSection";
-import EnhancedContactSection from "./components/EnhancedContactSection";
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import StatsStrip from './components/StatsStrip';
+import StatementSection from './components/StatementSection';
+import ExperienceTimeline from './components/ExperienceTimeline';
+import LabSection from './components/LabSection';
+import SkillsSection from './components/SkillsSection';
+import WorkSection from './components/WorkSection';
+import MarqueeStrip from './components/MarqueeStrip';
+import AboutSection from './components/AboutSection';
+import CertificationsSection from './components/CertificationsSection';
+import ContactSection from './components/ContactSection';
+import WritingTeaser from './components/WritingTeaser';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col'>
+    <>
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ExperienceTimeline />
-      <ProjectSection />
-      <CaseStudiesSection />
-      <ToolsSection />
-      <CertificationsSection />
-      <AchievementsSection />
-      <TestimonialsSection />
-      <EnhancedContactSection />
+      <main>
+        <HeroSection />
+        <StatsStrip />
+        <StatementSection />
+        <ExperienceTimeline />
+        <LabSection />
+        <SkillsSection />
+        <CertificationsSection />
+        <WorkSection />
+        <MarqueeStrip />
+        <AboutSection />
+        <ContactSection />
+        <WritingTeaser />
+      </main>
       <Footer />
-    </main>
+    </>
   );
-} 
+}

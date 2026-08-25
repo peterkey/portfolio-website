@@ -56,7 +56,7 @@ const EmailSection = () => {
     <section id='contact' className='grid md:grid-cols-2 py-16 sm:py-24 gap-8 relative'>
       <div className='bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#22D3EE] to-transparent rounded-full h-3/4 w-full z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 opacity-50'></div>
       <div className='z-10'>
-        <h2 className='text-xl font-bold text-white my-2'>Let&apos;s Connect!</h2>
+        <h2 className='text-xl font-bold text-text my-2'>Let&apos;s Connect!</h2>
         <p className='text-[#6E88B5] mb-4 max-w-md'>
           I&apos;m actively seeking IT support opportunities where I can apply my technical skills and customer service expertise. 
           Whether you have a position available or just want to discuss IT support solutions, I&apos;d love to hear from you!
@@ -81,7 +81,7 @@ const EmailSection = () => {
       <div className='z-10'>
         <form className='flex flex-col' onSubmit={handleSubmit} noValidate>
           <div className='mb-6'>
-            <label htmlFor='email' className='text-white block mb-2 text-sm font-medium'>
+            <label htmlFor='email' className='text-text block mb-2 text-sm font-medium'>
               Your Email *
             </label>
             <input
@@ -95,7 +95,7 @@ const EmailSection = () => {
             />
           </div>
           <div className='mb-6'>
-            <label htmlFor='subject' className='text-white block mb-2 text-sm font-medium'>
+            <label htmlFor='subject' className='text-text block mb-2 text-sm font-medium'>
               Subject *
             </label>
             <input
@@ -109,7 +109,7 @@ const EmailSection = () => {
             />
           </div>
           <div className='mb-6'>
-            <label htmlFor='message' className='text-white block mb-2 text-sm font-medium'>
+            <label htmlFor='message' className='text-text block mb-2 text-sm font-medium'>
               Message *
             </label>
             <textarea
@@ -125,7 +125,7 @@ const EmailSection = () => {
           <button
             type='submit'
             disabled={isSubmitting}
-            className='bg-[#22D3EE] hover:bg-[#38BDF8] disabled:bg-[#22D3EE]/50 disabled:cursor-not-allowed text-white font-medium py-3 px-6 rounded-md w-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F]'
+            className='bg-[#22D3EE] hover:bg-[#38BDF8] disabled:bg-[#22D3EE]/50 disabled:cursor-not-allowed text-text font-medium py-3 px-6 rounded-md w-full transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-[#06090F]'
             aria-describedby="submit-status"
           >
             {isSubmitting ? "Sending..." : "Send Message"}

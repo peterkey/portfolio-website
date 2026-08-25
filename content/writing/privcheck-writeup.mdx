@@ -1,0 +1,81 @@
+---
+title: "PRIVCHECK: What I Built and Why"
+date: "2025-09-03"
+tags: ["project", "nlp", "privacy", "python", "react"]
+summary: "Most privacy policies are deliberately unreadable. PRIVCHECK is a tool that parses them and surfaces what actually matters — in plain English, with a risk score."
+draft: false
+---
+
+Privacy policies are written to be ignored. They're long, dense, legally hedged to the point of meaninglessness, and almost everyone clicks Accept without reading a word. I know I do.
+
+That bothered me. So I built PRIVCHECK.
+
+## What It Does
+
+You paste a privacy policy — or a URL — and get back a structured breakdown:
+
+- What data the company collects
+- Who they share it with
+- How long they retain it
+- Your opt-out options (if any)
+- A risk score (0–100) based on a weighted assessment of concerning clauses
+
+The output is designed to be fast to scan. Headers, bullet points, no legalese. If something scores high on the risk metric, you should know about it in under 30 seconds.
+
+## The Stack
+
+- **React** (Next.js) frontend — simple, form-based, no unnecessary interactivity
+- **FastAPI** backend — handles ingestion, parsing, scoring
+- **PostgreSQL** — stores past analyses, which lets me cache results and build up a dataset over time
+- **spaCy + transformers** — the NLP layer
+
+The backend is the interesting part.
+
+## How the NLP Works
+
+Privacy policies have a recognisable structure — sections like "Data Collection", "Third Party Sharing", "Data Retention". The first pass is chunking the document into these semantic sections using pattern matching and a lightweight classification model.
+
+Once chunked, each section goes through:
+
+1. **Entity extraction** — identifying data types (email, location, browsing history), actors (advertisers, analytics providers), and retention periods
+2. **Clause classification** — flagging concerning patterns (data sold to third parties, indefinite retention, no opt-out mechanism)
+3. **Scoring** — each flagged clause adds to the risk score based on a weighted rubric
+
+The scoring rubric is opinionated. "We share your data with advertising partners" gets weighted heavily. "We retain anonymised analytics for up to 12 months" gets weighted lightly. You can disagree with my weights — I'd say that's a feature, not a bug.
+
+```python
+RISK_WEIGHTS = {
+    "data_sold_to_third_parties": 25,
+    "no_opt_out_mechanism": 20,
+    "indefinite_retention": 15,
+    "location_tracking": 12,
+    "biometric_data_collection": 18,
+    "children_data": 22,
+    "third_party_analytics": 5,
+}
+
+def score_document(flagged_clauses: list[str]) -> int:
+    total = sum(RISK_WEIGHTS.get(clause, 0) for clause in flagged_clauses)
+    return min(total, 100)
+```
+
+## What I Learnt
+
+**NLP on legal text is hard.** Legal language uses a lot of hedging — "we may", "in certain circumstances", "as permitted by applicable law" — that makes it genuinely difficult to extract clear claims. The model struggles most with these cases, and I'd rather it miss something than falsely flag it.
+
+**Caching matters immediately.** Big tech privacy policies (Google, Meta, Amazon) get submitted constantly. Running the full NLP pipeline is slow — around 4-8 seconds per document. Storing results in Postgres and returning cached analyses for known documents brought average response time down from ~6 seconds to under 200ms for repeat queries.
+
+**The frontend design was harder than the backend.** I spent more time thinking about how to present risk information clearly than I did on the NLP. Colour-coded risk scores feel alarming in a way that isn't useful. I ended up with a simple 0–100 score with a short plain-English interpretation ("Low concern", "Review recommended", "High concern") and a table of specific flagged clauses beneath.
+
+## What's Next
+
+The project is live but still rough in places. Things on my list:
+
+- Better handling of multi-language policies (currently English-only)
+- A comparison view — analyse two policies and diff the risk scores
+- A public API so developers can integrate it into their own tools
+- Improving the model's handling of ambiguous hedging language
+
+---
+
+If you've ever wondered what you actually agreed to, [give it a try](https://privcheck.app). Paste in a privacy policy you accepted without reading. I won't judge.

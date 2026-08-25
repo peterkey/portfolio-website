@@ -1,65 +1,46 @@
-import { Rajdhani, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
+import SmoothScroll from "@/app/components/SmoothScroll";
+import CustomCursor from "@/app/components/CustomCursor";
+import RouteKey from "@/app/components/RouteKey";
+import ScrollProgress from "@/app/components/ScrollProgress";
 
-const rajdhani = Rajdhani({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: '--font-rajdhani',
-  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
   display: 'swap',
 });
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  variable: '--font-ibm',
-  weight: ['300', '400', '500', '600'],
-  display: 'swap',
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: '--font-mono',
+  variable: '--font-plex',
   weight: ['400', '500', '600'],
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Peter Williams-Key - IT Support Specialist Portfolio",
-  description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance. Experienced in Windows administration, network support, and CompTIA A+ certified professional.",
-  keywords: ["IT Support Specialist", "Help Desk Technician", "Technical Support", "Windows Administration", "Network Troubleshooting", "CompTIA A+", "Customer Service", "System Maintenance"],
+  title: "Peter Williams-Key — IT Support & Infrastructure",
+  description: "IT support professional based in Wales, UK. Strong home lab background, CompTIA Network+ in progress, and a genuine interest in keeping systems running.",
+  keywords: ["IT Support", "Service Desk", "Infrastructure", "Docker", "Linux", "Proxmox", "Home Lab", "Wales", "CompTIA"],
   authors: [{ name: "Peter Williams-Key" }],
   creator: "Peter Williams-Key",
-  publisher: "Peter Williams-Key",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL("https://your-domain.com"),
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL("https://peterkey.dev"),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Peter Williams-Key - IT Support Specialist Portfolio",
-    description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance.",
-    url: "https://your-domain.com",
-    siteName: "Peter Williams-Key Portfolio",
-    images: [
-      {
-        url: "/images/profile-pic.png",
-        width: 1200,
-        height: 630,
-        alt: "Peter Williams-Key - IT Support Specialist",
-      },
-    ],
-    locale: "en_US",
+    title: "Peter Williams-Key — IT Support & Infrastructure",
+    description: "IT support professional based in Wales, UK. Strong home lab background, CompTIA Network+ in progress, and a genuine interest in keeping systems running.",
+    url: "https://peterkey.dev",
+    siteName: "Peter Williams-Key",
+    locale: "en_GB",
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Peter Williams-Key — IT Support & Infrastructure" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Peter Williams-Key - IT Support Specialist Portfolio",
-    description: "IT Support Specialist specializing in technical troubleshooting, customer service, and system maintenance.",
-    images: ["/images/profile-pic.png"],
+    title: "Peter Williams-Key — IT Support & Infrastructure",
+    description: "IT support professional based in Wales, UK. Strong home lab background, CompTIA Network+ in progress, and a genuine interest in keeping systems running.",
     creator: "@peterkey",
   },
   robots: {
@@ -73,9 +54,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
 };
 
 export default function RootLayout({
@@ -84,18 +62,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#060D18" />
+        <meta name="theme-color" content="#0E1512" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Fontshare — Clash Display (headings). Body is IBM Plex Sans, self-hosted via next/font. */}
+        {/* crossOrigin required so the preconnected socket can be reused for CORS font fetches */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        {/* Preload the CSS so @font-face declarations are parsed sooner, starting font fetches earlier */}
+        <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+        />
       </head>
       <body
-        className={`${rajdhani.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} font-body bg-trueAutumn-dark text-trueAutumn-textDark`}
+        className={`${ibmPlexMono.variable} ${ibmPlexSans.variable} bg-base text-text`}
         suppressHydrationWarning={true}
       >
-        {children}
+        <SmoothScroll>
+          <ScrollProgress />
+          <CustomCursor />
+          <RouteKey>{children}</RouteKey>
+        </SmoothScroll>
       </body>
     </html>
   );

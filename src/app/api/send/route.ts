@@ -2,7 +2,6 @@ import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
 // Input validation schema
@@ -38,7 +37,7 @@ function checkRateLimit(ip: string): boolean {
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
-    const ip = request.ip || request.headers.get("x-forwarded-for") || "unknown";
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
@@ -82,6 +81,7 @@ export async function POST(request: NextRequest) {
     const sanitizedMessage = message.trim();
 
     // Send email
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const data = await resend.emails.send({
       from: fromEmail!,
       to: ["prkey94@gmail.com", sanitizedEmail],

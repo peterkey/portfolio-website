@@ -1,211 +1,141 @@
-"use client";
-import { motion } from "framer-motion";
-import {
-  ComputerDesktopIcon,
-  UserGroupIcon,
-  AcademicCapIcon,
-  CheckCircleIcon,
-  ServerIcon,
-  CommandLineIcon,
-} from "@heroicons/react/24/outline";
+'use client';
 
-const technicalSkills = [
-  { label: "Microsoft 365 & Azure AD",   icon: "01" },
-  { label: "Windows OS Troubleshooting", icon: "02" },
-  { label: "Linux Administration",       icon: "03" },
-  { label: "Docker & Containerisation",  icon: "04" },
-  { label: "Bash / CLI Workflows",       icon: "05" },
-  { label: "TCP/IP Networking",          icon: "06" },
-  { label: "Active Directory",           icon: "07" },
-  { label: "Remote Support Tools",       icon: "08" },
+import { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+
+const FACTS = [
+  { label: 'Based in',    value: 'Wales, UK'              },
+  { label: 'Education',   value: 'BSc Sound Technology'   },
+  { label: 'Seeking',     value: 'IT Support Role'        },
+  { label: 'Stack',       value: 'React, Next.js, FastAPI' },
+  { label: 'Interests',   value: 'Systems, Automation'    },
 ];
 
-const softSkills = [
-  "Problem Solving",
-  "Technical Documentation",
-  "User Training",
-  "Team Collaboration",
-  "Communication",
-  "Adaptability",
-];
+export default function AboutSection() {
+  const ref     = useRef<HTMLDivElement>(null);
+  const inView  = useInView(ref, { once: true, margin: '-10% 0px' });
+  const reduced = useReducedMotion();
 
-const AboutSection = () => {
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: reduced ? 0 : 24 },
+    animate: inView ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+  });
+
   return (
-    <section
-      id="about"
-      className="py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden"
-      aria-labelledby="about-heading"
-    >
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-
-        {/* ── Header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <span className="eyebrow mb-3">Who I am</span>
-          <div className="grid lg:grid-cols-2 gap-8 items-end">
-            <h2
-              id="about-heading"
-              className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark font-heading leading-tight"
-            >
-              IT Support Professional<br />
-              <span className="text-[#FF6B35]">with a Systems Mindset</span>
-            </h2>
-            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed text-base lg:text-lg">
-              I combine hands-on helpdesk experience with a genuine drive toward infrastructure
-              and Linux systems administration — actively building the skills that bridge
-              first-line support and systems engineering.
-            </p>
-          </div>
+    <section id="about" className="py-24 md:py-32 bg-base">
+      <div className="container-site" ref={ref}>
+        {/* Section header */}
+        <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-16">
+          <span className="label text-muted">About</span>
+          <div className="h-px bg-border max-w-16 flex-1" aria-hidden="true" />
         </motion.div>
 
-        {/* ── Bio + Skills grid ── */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 lg:gap-24 items-start">
+          {/* Main text */}
+          <div>
+            <div className="overflow-hidden mb-8">
+              <motion.h2
+                initial={{ y: reduced ? '0%' : '110%' }}
+                animate={inView ? { y: '0%' } : {}}
+                transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-heading text-section font-semibold text-text"
+                style={{ letterSpacing: '-0.03em' }}
+              >
+                I got here via a sound studio,
+                <br />
+                <span style={{ color: '#2E7D6F' }}>not a bootcamp.</span>
+              </motion.h2>
+            </div>
 
-          {/* Bio card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 glow-card glass border rounded-2xl p-8 space-y-4"
-          >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
-                <CommandLineIcon className="h-5 w-5" />
-              </div>
-              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Background</h3>
-            </div>
-            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
-              In my current role I provide first-line IT support in a high-volume environment —
-              diagnosing and resolving Microsoft 365, Windows OS, and Active Directory issues
-              for colleagues and customers daily. I&apos;ve become the go-to troubleshooting contact
-              on-site, consistently resolving issues within minutes.
-            </p>
-            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
-              Outside of work I run a personal home lab: I migrated my primary machine to Linux,
-              repurposed a legacy iMac into a self-hosted Docker server, and manage containerised
-              services using Docker Compose. This hands-on infrastructure work has given me
-              practical experience in Linux administration, CLI-driven workflows, container
-              networking, and service management — skills I&apos;m actively building on.
-            </p>
-            <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed">
-              I&apos;m currently studying for CompTIA A+ and Microsoft 365 Fundamentals (MS-900),
-              targeting roles in IT support or junior systems administration where I can grow
-              from helpdesk foundations into infrastructure engineering.
-            </p>
-          </motion.div>
+            <div className="space-y-5 font-body text-base leading-relaxed" style={{ color: 'rgba(250,250,250,0.80)' }}>
+              <motion.p {...fadeUp(0.2)}>
+                I got into tech slowly — not a lightbulb moment, more like being pulled in
+                deeper over time until there was no going back. It started with breaking things
+                and wanting to understand why they broke. It never really stopped being that.
+              </motion.p>
 
-          {/* Career Goals card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="glow-card glass border rounded-2xl p-8 flex flex-col"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6B35]/10 flex items-center justify-center text-[#FF6B35]">
-                <AcademicCapIcon className="h-5 w-5" />
-              </div>
-              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Goals</h3>
-            </div>
-            <div className="space-y-4 flex-1">
-              {[
-                { num: "→", text: "Land a dedicated IT support or junior sysadmin role" },
-                { num: "→", text: "Earn CompTIA A+ and MS-900 certifications" },
-                { num: "→", text: "Grow from helpdesk into systems & infrastructure engineering" },
-                { num: "→", text: "Deepen Linux, Docker, and networking expertise through real projects" },
-              ].map((item) => (
-                <div key={item.text} className="flex gap-3">
-                  <span className="font-mono text-[#00D9FF] text-sm mt-0.5 shrink-0">{item.num}</span>
-                  <span className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+              <motion.p {...fadeUp(0.28)}>
+                The Sound Technology degree was a genuine passion at the time, and I don&apos;t
+                regret a day of it. I don&apos;t make music anymore, but I still think about systems
+                the same way I thought about audio: signal flow, feedback loops, what happens
+                when you change one thing and everything else shifts. The degree just came with
+                different tools.
+              </motion.p>
 
-        {/* ── Skills row ── */}
-        <div className="grid md:grid-cols-2 gap-6 mt-6">
+              <motion.p {...fadeUp(0.36)}>
+                What actually gets me is the stuff underneath the abstractions — containers,
+                networking, how computers actually work. I self-host everything I can, run a
+                home lab on a repurposed iMac, put Linux on a MacBook Apple abandoned. Not
+                because I had to — because I wanted to know how. I&apos;ve built full-stack applications
+                for real clients, but the home lab is where I go when I want to think. They&apos;re
+                the same impulse. Right now I&apos;m looking for IT support or service desk work
+                where I can actually get stuck in — somewhere that values people who fix things
+                properly the first time.
+              </motion.p>
+            </div>
 
-          {/* Technical Skills */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="glow-card glass border rounded-2xl p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
-                <ComputerDesktopIcon className="h-5 w-5" />
-              </div>
-              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Technical Skills</h3>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {technicalSkills.map((skill) => (
-                <div key={skill.label} className="flex items-center gap-2.5">
-                  <span className="font-mono text-[9px] text-[#00D9FF]/40 tracking-widest shrink-0 w-5">{skill.icon}</span>
-                  <span className="text-trueAutumn-textSecondaryDark text-sm font-body">{skill.label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+            {/* Pull quote */}
+            <motion.blockquote
+              {...fadeUp(0.44)}
+              className="mt-12 relative pl-5"
+            >
+              <div
+                className="absolute left-0 top-0 bottom-0 w-0.5 bg-accent"
+                aria-hidden="true"
+              />
+              <p
+                className="font-heading font-semibold text-text"
+                style={{
+                  fontSize: 'clamp(1.2rem, 2.8vw, 1.9rem)',
+                  letterSpacing: '-0.025em',
+                  lineHeight: '1.2',
+                }}
+              >
+                &ldquo;Signal flow, feedback loops, what happens when you change one thing and everything else shifts.&rdquo;
+              </p>
+              <footer className="mt-4 label text-muted">
+                — On how audio taught him systems thinking
+              </footer>
+            </motion.blockquote>
+          </div>
 
-          {/* Soft Skills + Currently Learning */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="glow-card glass border rounded-2xl p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-[#FF6B35]/10 flex items-center justify-center text-[#FF6B35]">
-                <UserGroupIcon className="h-5 w-5" />
-              </div>
-              <h3 className="font-heading font-semibold text-trueAutumn-textDark text-base">Soft Skills</h3>
-            </div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {softSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="text-xs font-mono text-trueAutumn-textSecondaryDark border border-[#1A3A5C] rounded-full px-3 py-1"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-            <div className="border-t border-[#1A3A5C] pt-5">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center text-[#00D9FF]">
-                  <ServerIcon className="h-5 w-5" />
-                </div>
-                <h4 className="font-heading font-medium text-trueAutumn-textDark text-sm">Currently Learning</h4>
-              </div>
+          {/* Right column: workspace photo + facts */}
+          <motion.div {...fadeUp(0.2)} className="space-y-0">
+            {/* Quick Facts */}
+            <div className="label text-muted mb-6">Quick Facts</div>
+            {FACTS.map((fact, i) => (
+              <motion.div
+                key={fact.label}
+                initial={{ opacity: 0, x: reduced ? 0 : 16 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                className="flex justify-between items-baseline py-4 border-b border-border last:border-0"
+              >
+                <span className="label text-muted">{fact.label}</span>
+                <span className="font-body text-text text-sm text-right max-w-[60%]">{fact.value}</span>
+              </motion.div>
+            ))}
+
+            {/* Stack visual */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mt-10 p-5 bg-lift border border-accent/15"
+            >
+              <div className="label text-muted mb-4">Core Stack</div>
               <div className="flex flex-wrap gap-2">
-                {["CompTIA A+", "MS-900", "Kubernetes", "Ansible", "Networking+"].map((item) => (
-                  <span
-                    key={item}
-                    className="text-xs font-mono text-[#FF6B35] border border-[#FF6B35]/25 bg-[#FF6B35]/5 rounded-full px-3 py-1"
-                  >
-                    {item}
+                {['React', 'Next.js', 'TypeScript', 'FastAPI', 'Python', 'PostgreSQL', 'Docker', 'Tailwind'].map((t) => (
+                  <span key={t} className="font-mono text-[0.7rem] text-text px-2.5 py-1 border border-border hover:border-accent/50 hover:text-accent transition-colors duration-200">
+                    {t}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}

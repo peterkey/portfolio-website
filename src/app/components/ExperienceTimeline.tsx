@@ -1,274 +1,243 @@
-"use client";
-import { motion } from "framer-motion";
-import {
-  BriefcaseIcon,
-  AcademicCapIcon,
-  ServerIcon,
-  CalendarIcon,
-  CodeBracketIcon,
-} from "@heroicons/react/24/outline";
+'use client';
+
+import { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 
 interface TimelineEntry {
-  id: number;
   title: string;
   org: string;
   period: string;
-  type: "work" | "education" | "project";
+  type: 'work' | 'project' | 'education';
   summary: string;
   highlights: string[];
   tags?: string[];
-  accentColor: string;
-  accentBg: string;
-  icon: React.ReactNode;
+  current?: boolean;
+  sectionLabel?: string;
 }
 
-const entries: TimelineEntry[] = [
+const ENTRIES: TimelineEntry[] = [
   {
-    id: 1,
-    title: "Customer Delivery Driver & Informal IT Support",
-    org: "Tesco Stores PLC",
-    period: "2016 – Present",
-    type: "work",
+    sectionLabel: 'WORK HISTORY',
+    title: 'IT Support & Customer Service',
+    org: 'Tesco Stores PLC',
+    period: '2016 – Present',
+    type: 'work',
+    current: true,
     summary:
-      "While in a customer-facing delivery role, I became the on-site go-to for technical problems — providing first-line IT support to colleagues and resolving issues that would otherwise require escalation or an external call.",
+      'In a customer-facing delivery role, I became the on-site go-to for technical problems — first-line IT support for colleagues, resolved issues that would otherwise require escalation.',
     highlights: [
-      "Diagnosed and resolved Microsoft 365 login, access, and sync failures for 20+ colleagues",
-      "Administered, reset, and reconfigured handheld delivery devices to minimise downtime",
-      "Delivered one-to-one training sessions on new internal scheduling and HR systems",
-      "Provided technical assistance to 120+ customers weekly — triage, signposting, and resolution",
-      "Consistently resolved issues within minutes, maintaining operational continuity",
+      'Diagnosed and resolved Microsoft 365 login, access, and sync failures for 20+ colleagues',
+      'Administered, reset, and reconfigured handheld delivery devices to minimise downtime',
+      'Delivered one-to-one training on new internal scheduling and HR systems',
+      'Provided technical assistance to 120+ customers weekly',
     ],
-    tags: ["Microsoft 365", "Windows", "Active Directory", "Device Management", "User Training"],
-    accentColor: "#FF6B35",
-    accentBg: "rgba(255, 107, 53, 0.06)",
-    icon: <BriefcaseIcon className="h-5 w-5" />,
+    tags: ['Microsoft 365', 'Windows', 'Active Directory', 'Device Management'],
   },
   {
-    id: 2,
-    title: "Home Lab — Linux Migration & Self-Hosted Infrastructure",
-    org: "Personal Project",
-    period: "2024 – Present",
-    type: "project",
+    sectionLabel: 'PERSONAL PROJECTS',
+    title: 'Home Lab — Linux Migration & Self-Hosted Infrastructure',
+    org: 'Personal Project',
+    period: '2024 – Present',
+    type: 'project',
+    current: true,
     summary:
-      "Independently planned and executed a full environment migration from macOS to Linux, and repurposed a legacy iMac into a production-grade Docker server. All infrastructure is managed entirely through the command line.",
+      'Full environment migration from macOS to Linux, plus a legacy iMac repurposed into a production-grade Docker server. All infrastructure managed entirely via the command line.',
     highlights: [
-      "Migrated primary workstation from macOS to Linux — full backup, partitioning, driver config",
-      "Deployed a headless Docker server on legacy hardware running multiple production services",
-      "Configured Docker Compose stacks with persistent volumes, isolated networks, and port management",
-      "Established terminal-driven workflows for system diagnostics, package management, and updates",
-      "Running services include media management, network utilities, and self-hosted productivity tools",
+      'Migrated primary workstation from macOS to Linux — backup, partitioning, driver config',
+      'Deployed a headless Docker server running multiple production services',
+      'Configured Docker Compose stacks with persistent volumes and isolated networks',
+      'Running services: Nextcloud, Plex, Home Assistant, Tailscale, Portainer',
     ],
-    tags: ["Linux", "Docker", "Docker Compose", "Bash", "Networking", "Self-Hosting"],
-    accentColor: "#00D9FF",
-    accentBg: "rgba(0, 217, 255, 0.06)",
-    icon: <ServerIcon className="h-5 w-5" />,
+    tags: ['Linux', 'Docker', 'Docker Compose', 'Bash', 'Networking'],
   },
   {
-    id: 3,
-    title: "Full-Stack Web Development",
-    org: "Udemy Bootcamp",
-    period: "2022 – 2024",
-    type: "education",
+    title: 'Full-Stack Web Development',
+    org: 'Udemy Bootcamp',
+    period: '2022 – 2024',
+    type: 'education',
     summary:
-      "Completed an intensive full-stack bootcamp covering the complete web development stack. Gained practical experience in scripting, version control, and REST APIs — all directly transferable to IT systems work.",
+      'Intensive full-stack bootcamp covering the complete web development stack — scripting, version control, REST APIs, and modern JavaScript frameworks.',
     highlights: [
-      "Built applications end-to-end: HTML, CSS, JavaScript, React, Node.js, Express, MongoDB",
-      "Developed version control discipline using Git and GitHub across all projects",
-      "Worked with REST APIs and JSON data — skills applicable to IT automation and tooling",
-      "Strengthened debugging, documentation, and systematic problem-solving habits",
+      'Built applications end-to-end: HTML, CSS, JavaScript, React, Node.js, MongoDB',
+      'Version control discipline across all projects using Git and GitHub',
+      'REST APIs and JSON — skills applicable to automation and systems integration',
+      'Strengthened debugging, documentation, and systematic problem-solving',
     ],
-    tags: ["JavaScript", "React", "Node.js", "Git", "REST APIs", "MongoDB"],
-    accentColor: "#FF6B35",
-    accentBg: "rgba(255, 107, 53, 0.06)",
-    icon: <CodeBracketIcon className="h-5 w-5" />,
+    tags: ['JavaScript', 'React', 'Node.js', 'Git', 'REST APIs'],
   },
   {
-    id: 4,
-    title: "B.Sc. Sound Technology",
-    org: "University of South Wales",
-    period: "2012 – 2015",
-    type: "education",
+    title: 'B.Sc. Sound Technology',
+    org: 'University of South Wales',
+    period: '2012 – 2015',
+    type: 'education',
     summary:
-      "Degree in an applied technical discipline requiring hands-on use of complex hardware and software systems, project leadership, and rigorous documentation — skills that translate directly to IT environments.",
+      'Applied technical degree requiring hands-on use of complex hardware and software systems, project leadership, and rigorous documentation — directly transferable to engineering and IT.',
     highlights: [
-      "Led technical projects requiring precise hardware configuration and system integration",
-      "Developed strong documentation, reporting, and technical writing practices",
-      "Worked with professional-grade signal processing and recording hardware/software",
-      "Managed time-critical deliverables under pressure across collaborative team projects",
+      'Led technical projects requiring precise hardware configuration and system integration',
+      'Developed strong documentation, reporting, and technical writing practices',
+      'Worked with professional-grade signal processing hardware and software',
+      'Managed time-critical deliverables across collaborative team projects',
     ],
-    tags: ["Technical Leadership", "Documentation", "Systems Thinking", "Project Management"],
-    accentColor: "#00D9FF",
-    accentBg: "rgba(0, 217, 255, 0.06)",
-    icon: <AcademicCapIcon className="h-5 w-5" />,
+    tags: ['Systems Thinking', 'Documentation', 'Technical Leadership'],
   },
 ];
 
-const typeLabel: Record<TimelineEntry["type"], string> = {
-  work:      "Work Experience",
-  project:   "Personal Project",
-  education: "Education",
+const TYPE_LABEL: Record<TimelineEntry['type'], string> = {
+  work: 'Work',
+  project: 'Project',
+  education: 'Education',
 };
 
-const ExperienceTimeline = () => {
+function TimelineEntry({ entry, index }: { entry: TimelineEntry; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-8% 0px' });
+  const reduced = useReducedMotion();
+
   return (
-    <section
-      id="experience"
-      className="py-20 sm:py-28 bg-trueAutumn-cardDark relative overflow-hidden"
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: reduced ? 0 : 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+      {entry.sectionLabel && (
+        <div className="label text-muted mb-6 mt-2">{entry.sectionLabel}</div>
+      )}
+    <div className="relative grid grid-cols-[auto_1fr] gap-x-6 md:gap-x-10">
+      {/* Left: timeline spine */}
+      <div className="flex flex-col items-center">
+        {/* Dot */}
+        <div
+          className="relative z-10 w-2.5 h-2.5 rounded-full mt-1.5 shrink-0 border border-border"
+          style={{
+            backgroundColor: entry.current ? '#2E7D6F' : 'var(--surface)',
+            boxShadow: entry.current ? '0 0 8px rgba(46, 125, 111, 0.5)' : 'none',
+          }}
+        />
+        {/* Spine line — hidden on last item */}
+        <div className="w-px flex-1 mt-2" style={{ backgroundColor: 'rgba(46,125,111,0.4)' }} />
+      </div>
 
-        {/* ── Header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
+      {/* Right: content */}
+      <div className="pb-12">
+        {/* Meta row */}
+        <div className="flex flex-wrap items-center gap-3 mb-3">
+          <span className="label text-muted">{entry.period}</span>
+          <span className="label text-muted border border-border px-2 py-0.5">
+            {TYPE_LABEL[entry.type]}
+          </span>
+          {entry.current && (
+            <span className="label px-2 py-0.5 bg-accent !text-text">
+              Current
+            </span>
+          )}
+        </div>
+
+        {/* Title / org */}
+        <h3
+          className="font-heading font-semibold text-text mb-1"
+          style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', letterSpacing: '-0.02em' }}
         >
-          <span className="eyebrow mb-3">Where I&apos;ve been</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-trueAutumn-textDark mb-4 font-heading">
-            Experience & Education
-          </h2>
-          <p className="text-trueAutumn-textSecondaryDark text-lg max-w-2xl mx-auto font-body leading-relaxed">
-            From customer-facing support to hands-on infrastructure — each step building
-            toward a career in IT engineering.
-          </p>
-        </motion.div>
+          {entry.title}
+        </h3>
+        <p className="font-body text-sm text-muted mb-4">{entry.org}</p>
 
-        {/* ── Timeline ── */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div
-            className="absolute left-5 top-2 bottom-2 w-px"
-            style={{
-              background:
-                "linear-gradient(to bottom, #00D9FF 0%, #FF6B35 50%, transparent 100%)",
-              opacity: 0.25,
-            }}
-          />
+        {/* Summary */}
+        <p className="font-body text-sm leading-relaxed mb-5 max-w-[65ch]" style={{ color: 'rgba(250,250,250,0.80)' }}>
+          {entry.summary}
+        </p>
 
-          <div className="space-y-8">
-            {entries.map((entry, index) => (
-              <motion.div
-                key={entry.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative pl-14"
+        {/* Highlights */}
+        <ul className="space-y-2 mb-5 pl-3 border-l" style={{ borderColor: 'rgba(46,125,111,0.25)' }}>
+          {entry.highlights.map((h, i) => (
+            <li key={i} className="flex items-start gap-3 text-sm font-body" style={{ color: 'rgba(250,250,250,0.74)' }}>
+              <span className="mt-2 w-1 h-1 rounded-full bg-accent shrink-0" aria-hidden="true" />
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        {/* Tags */}
+        {entry.tags && (
+          <div className="flex flex-wrap gap-2">
+            {entry.tags.map((tag) => (
+              <span
+                key={tag}
+                className="font-mono text-[0.65rem] text-muted border border-border px-2.5 py-1 hover:border-accent/40 hover:text-text transition-colors duration-200"
               >
-                {/* Timeline dot */}
-                <div
-                  className="absolute left-[14px] top-6 w-[22px] h-[22px] rounded-full flex items-center justify-center border-2 -translate-x-1/2"
-                  style={{
-                    borderColor: entry.accentColor,
-                    background: "#060D18",
-                    color: entry.accentColor,
-                    boxShadow: `0 0 0 4px ${entry.accentColor}15`,
-                  }}
-                >
-                  <div className="scale-[0.55]">{entry.icon}</div>
-                </div>
-
-                {/* Card */}
-                <div
-                  className="glow-card glass border rounded-2xl overflow-hidden"
-                >
-                  {/* Card header stripe */}
-                  <div
-                    className="px-6 pt-6 pb-5 border-b border-[#1A3A5C]"
-                    style={{ background: entry.accentBg }}
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
-                      <div>
-                        <h3 className="text-lg font-semibold text-trueAutumn-textDark font-heading leading-snug">
-                          {entry.title}
-                        </h3>
-                        <p
-                          className="text-sm font-body mt-0.5"
-                          style={{ color: entry.accentColor }}
-                        >
-                          {entry.org}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-3 shrink-0">
-                        <span
-                          className="text-[10px] font-mono tracking-widest px-2.5 py-1 rounded-full border"
-                          style={{
-                            color: entry.accentColor,
-                            borderColor: `${entry.accentColor}40`,
-                            background: `${entry.accentColor}10`,
-                          }}
-                        >
-                          {typeLabel[entry.type]}
-                        </span>
-                        <div className="flex items-center gap-1.5 text-trueAutumn-textSecondaryDark text-xs font-body">
-                          <CalendarIcon className="h-3.5 w-3.5 shrink-0" />
-                          {entry.period}
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className="text-trueAutumn-textSecondaryDark text-sm font-body leading-relaxed">
-                      {entry.summary}
-                    </p>
-                  </div>
-
-                  {/* Card body */}
-                  <div className="px-6 py-5">
-                    <h4 className="text-trueAutumn-textSecondaryDark text-xs font-mono tracking-widest uppercase mb-3 opacity-60">
-                      Key Highlights
-                    </h4>
-                    <ul className="space-y-2 mb-5">
-                      {entry.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-sm font-body text-trueAutumn-textSecondaryDark">
-                          <span
-                            className="mt-1.5 w-1 h-1 rounded-full shrink-0"
-                            style={{ background: entry.accentColor }}
-                          />
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {entry.tags && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {entry.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] font-mono text-trueAutumn-textSecondaryDark border border-[#1A3A5C] rounded-full px-2.5 py-0.5"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
+                {tag}
+              </span>
             ))}
+          </div>
+        )}
+      </div>
+    </div>
+    </motion.div>
+  );
+}
+
+export default function ExperienceTimeline() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-10% 0px' });
+
+  return (
+    <section id="experience" className="py-24 md:py-32 bg-base relative overflow-hidden">
+      {/* Dim spotlight — behind first timeline entry */}
+      <div
+        className="pointer-events-none absolute top-36 -left-24 w-[730px] h-[730px] select-none"
+        aria-hidden="true"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(46, 125, 111, 0.06) 0%, transparent 60%)',
+        }}
+      />
+
+      <div className="container-site" ref={ref}>
+        {/* Header */}
+        <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-4 mb-4"
+          >
+            <span className="label text-muted">Experience & Education</span>
+            <div className="h-px flex-1 bg-border max-w-16" aria-hidden="true" />
+          </motion.div>
+
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={{ y: '110%' }}
+              animate={inView ? { y: '0%' } : {}}
+              transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="font-heading text-section font-semibold text-text"
+              style={{ letterSpacing: '-0.03em' }}
+            >
+              Where I&apos;ve Been
+            </motion.h2>
           </div>
         </div>
 
-        {/* ── Bottom callout ── */}
+        {/* Timeline */}
+        <div className="max-w-3xl">
+          {ENTRIES.map((entry, i) => (
+            <TimelineEntry key={entry.title} entry={entry} index={i} />
+          ))}
+        </div>
+
+        {/* In-progress callout */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-12 glass border rounded-2xl p-8 text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-4 max-w-3xl ml-[3.75rem] border border-border bg-lift p-6"
+          style={{ boxShadow: '0 0 0 1px rgba(79,179,160,0.05), 0 12px 28px rgba(0,0,0,0.35)' }}
         >
-          <h3 className="text-trueAutumn-textDark font-semibold mb-2 font-heading">Currently In Progress</h3>
-          <p className="text-trueAutumn-textSecondaryDark font-body leading-relaxed text-sm mb-4">
-            Actively studying toward industry certifications to formalise and credential the
-            technical skills I&apos;ve built through hands-on work.
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {["CompTIA A+", "Microsoft MS-900", "Linux Fundamentals"].map((cert) => (
+          <div className="label text-muted mb-3">Currently Studying</div>
+          <div className="flex flex-wrap gap-2">
+            {['CompTIA Network+', 'CompTIA A+', 'Microsoft MS-900'].map((cert) => (
               <span
                 key={cert}
-                className="text-xs font-mono text-[#FF6B35] border border-[#FF6B35]/25 bg-[#FF6B35]/5 rounded-full px-3 py-1"
+                className="font-mono text-[0.65rem] text-accent-bright border border-accent/30 px-3 py-1"
               >
                 {cert}
               </span>
@@ -278,6 +247,4 @@ const ExperienceTimeline = () => {
       </div>
     </section>
   );
-};
-
-export default ExperienceTimeline;
+}

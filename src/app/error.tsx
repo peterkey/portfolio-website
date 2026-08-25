@@ -10,22 +10,27 @@ export default function Error({
   reset: () => void
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error)
   }, [error])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-trueAutumn-light dark:bg-trueAutumn-dark">
+    <div className="min-h-screen flex items-center justify-center bg-base">
       <div className="text-center max-w-md mx-auto px-6">
-        <h2 className="text-2xl font-heading font-bold text-trueAutumn-textLight dark:text-trueAutumn-textDark mb-4">
-          Something went wrong!
+        <p className="label text-muted mb-6">Error</p>
+        <h2
+          className="font-heading text-heading font-semibold text-text mb-4"
+          style={{ letterSpacing: '-0.03em' }}
+        >
+          Something went wrong
         </h2>
-        <p className="text-trueAutumn-textSecondaryLight dark:text-trueAutumn-textSecondaryDark mb-6 font-body">
-          We encountered an unexpected error. Please try again.
+        <p className="text-muted mb-10 font-body text-base leading-relaxed">
+          An unexpected error occurred. Try again — if it keeps happening, it&apos;s
+          on my side, not yours.
         </p>
         <button
           onClick={reset}
-          className="inline-flex items-center px-6 py-3 bg-trueAutumn-buttonLight dark:bg-trueAutumn-buttonDark hover:bg-trueAutumn-buttonLightHover dark:hover:bg-trueAutumn-buttonDarkHover text-white font-body font-medium rounded-lg transition-colors duration-300"
+          className="inline-flex items-center gap-3 bg-accent text-white font-heading font-semibold text-sm uppercase px-7 py-3.5 hover:bg-accent/90 transition-colors duration-200"
+          style={{ letterSpacing: '0.12em' }}
         >
           Try again
         </button>

@@ -1,0 +1,100 @@
+---
+title: "Building a Home Lab That Actually Runs Itself"
+date: "2025-11-14"
+tags: ["homelab", "docker", "self-hosted", "networking"]
+summary: "Setting up Nextcloud, Tailscale, and a handful of Docker services on a Proxmox box — and getting it stable enough that I forget it's there."
+draft: false
+---
+
+I've been meaning to write this up for a while. This isn't a polished guide — it's more of a brain dump of what I actually did, what broke, and what I'd do differently.
+
+## The Hardware
+
+Picked up a second-hand HP EliteDesk mini PC. Quad-core i5, 16GB RAM, 512GB SSD. Nothing special. The goal was low power draw and silent operation. It lives in my spare room and I genuinely forget it's on most of the time.
+
+Running Proxmox on bare metal, which lets me spin up VMs or LXC containers for different workloads. LXCs are great for simple services — lighter than VMs, fast to create, easy to snapshot.
+
+## Docker Compose Is the Right Choice Here
+
+I spent a while deciding between running services directly in LXCs vs containerising everything with Docker. Ended up going with Docker Compose inside a Debian LXC, and it's been solid.
+
+The main benefit: `docker-compose.yml` is documentation. I can look at it six months later and immediately understand what's running and why.
+
+```yaml
+services:
+  nextcloud:
+    image: nextcloud:latest
+    restart: unless-stopped
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=nextcloud
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+```
+
+The `restart: unless-stopped` on everything means services come back up automatically after a reboot without needing me to intervene.
+
+## Nextcloud
+
+File sync, calendar, contacts. I was using Dropbox for years and the main motivation was just to stop paying for cloud storage. Nextcloud does everything I need and the mobile apps are decent.
+
+The setup wasn't difficult but there were a few gotchas:
+
+- **Trusted domains** — you need to explicitly add your domain (and IP) to `trusted_domains` in `config.php`, or every request gets rejected.
+- **Background jobs** — set these to cron, not AJAX. The default AJAX approach runs jobs only when someone opens the web interface, which is useless for a server you mostly access via apps.
+- **Redis for locking** — without this, Nextcloud uses file locking which can cause problems under load. Adding Redis as a service took five minutes.
+
+## Tailscale — The Part That Changed Everything
+
+This is the bit I'd recommend to anyone running a home lab. Tailscale gives you a private WireGuard mesh network. Every device I own — laptop, phone, work machine — is on a private subnet. I can access my Nextcloud instance from anywhere without opening any ports to the internet.
+
+```bash
+# Install on the server
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
+
+# On any other device
+sudo tailscale up
+```
+
+That's it. No port forwarding, no dynamic DNS, no nginx reverse proxy exposed to the internet. The Tailscale daemon handles NAT traversal.
+
+I also enabled Tailscale's subnet routing so devices on my home network that don't have Tailscale installed (smart home stuff, the printer) are still reachable from anywhere.
+
+## What's Actually Running
+
+- **Nextcloud** — file sync, calendar, contacts
+- **Vaultwarden** — self-hosted Bitwarden-compatible password manager
+- **Uptime Kuma** — simple status monitoring, sends me a push notification if anything goes down
+- **Watchtower** — auto-updates Docker images (pinned to weekly, not continuous)
+- **Portainer** — web UI for Docker, mostly useful when I'm on a device without SSH access
+
+## What I'd Do Differently
+
+Volumes. I was lazy initially and let Docker manage volumes, which meant backups were a pain. Everything's now mapped to explicit paths on the host so I can just `rsync` the whole `data/` directory to an external drive.
+
+Also: write down your environment variables somewhere sensible. I use a password manager entry for each service's env file. Sounds obvious, but I've rebuilt things from scratch because I lost the config.
+
+## The Boring Bit That Matters
+
+I run daily backups to an external drive using a simple cron job:
+
+```bash
+0 3 * * * rsync -av /opt/homelab/data/ /mnt/backup/homelab/
+```
+
+Nothing clever. It runs at 3am, takes about two minutes, and I've restored from it twice. The backup that never gets tested isn't a backup.
+
+---
+
+The whole thing costs me about £2/month in electricity. Every service I'm paying for that I've replaced with something self-hosted has paid for the hardware three times over at this point.

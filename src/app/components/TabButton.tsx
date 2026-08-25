@@ -9,8 +9,8 @@ const TabButton = ({ selectTab, active, children }: TabButtonProps) => {
     <button
       className={`px-1 py-1 w-full sm:w-auto rounded-md font-medium transition-colors ${
         active
-          ? "text-white border-b-2 border-[#22D3EE]"
-          : "text-[#6E88B5] hover:text-white"
+          ? "text-text border-b-2 border-[#22D3EE]"
+          : "text-[#6E88B5] hover:text-text"
       }`}
       onClick={selectTab}
       role="tab"
