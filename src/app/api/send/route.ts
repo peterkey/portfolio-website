@@ -37,7 +37,14 @@ function checkRateLimit(ip: string): boolean {
 export async function POST(request: NextRequest) {
   try {
     // Rate limiting
-    const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+    // x-forwarded-for is client-settable, so a caller can rotate it to dodge the
+    // rate limit. Vercel sets x-vercel-forwarded-for / x-real-ip at the edge and
+    // clients cannot override them; only fall back to XFF off-platform.
+    const ip =
+      request.headers.get("x-vercel-forwarded-for") ||
+      request.headers.get("x-real-ip") ||
+      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      "unknown";
     if (!checkRateLimit(ip)) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },

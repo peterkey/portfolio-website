@@ -53,7 +53,13 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+// Slugs come from the URL, so restrict them to the shape filenames actually
+// take. This keeps path.join from escaping WRITING_DIR via "../".
+const SLUG_PATTERN = /^[a-z0-9-]+$/i;
+
 export function getPost(slug: string): Post | null {
+  if (!SLUG_PATTERN.test(slug)) return null;
+
   const filePath = path.join(WRITING_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
 
